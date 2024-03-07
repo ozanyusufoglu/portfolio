@@ -1,0 +1,21 @@
+.component {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 5rem 10rem;
+    background-color: lavender;
+}
+
+.sourceCode {
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+    align-items: center;
+    transition: translate 200ms ease-in;
+}
+
+.sourceCode:hover {
+    color: purple;
+    transform: translateY(-2px)
+}
