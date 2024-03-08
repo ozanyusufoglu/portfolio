@@ -1,1 +1,1 @@
-# Welcome to portfolio side of Ozan
+# Hey there!
