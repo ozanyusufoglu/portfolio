@@ -5,8 +5,7 @@ import Posts from "./posts/page";
 
 export default function Home() {
 
-  return (
-    <main className={styles.main}>
+  return (<main className={styles.main}>
       <section className={styles.hero}>
         <div className={styles.heroContainer}>
           <div className={styles.heroTitle}>
