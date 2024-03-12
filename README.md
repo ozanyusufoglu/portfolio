@@ -4,4 +4,4 @@
 
 ### I will add this title to test the divergence between branches
 
-Looks like my account still prompts for password
+Tailwind and Typescript support added
