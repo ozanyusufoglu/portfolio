@@ -1,4 +1,6 @@
 import Link from "next/link"
+import Button from "@/app/components/button/Button"
+import { stringify } from "querystring"
 
 export default function PostPreview({ slug, id, title, previewItems }) {
 
@@ -11,9 +13,14 @@ export default function PostPreview({ slug, id, title, previewItems }) {
             ))
         }
         </ul>
-        <button>
+        {/* <button>
             <Link href={`/posts/${slug}`}>Read more</Link>
-        </button>
+        </button> */}
+        <Link href={`/posts/${slug}`}>
+            <Button>
+                Read more
+            </Button>
+        </Link>
     </div>
 }
 
