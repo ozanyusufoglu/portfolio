@@ -1,5 +1,4 @@
 import React from "react";
-import styles from "./sidemenu.module.css";
 
 export default function SideMenu() {
   const menuItems = [
@@ -26,12 +25,19 @@ export default function SideMenu() {
 
   const menuElements = menuItems.map((item, index) => {
     return (
-      <div key={index} className={styles.sideMenuItem}>
-        <p className={styles.itemEmoji}>{item.emoji}</p>
-        <p className={styles.itemTitle}>{item.title}</p>
+      <div
+        key={index}
+        className="flex min-w-14 cursor-pointer flex-col items-center justify-center"
+      >
+        <p>{item.emoji}</p>
+        <p className="{styles.itemTitle}">{item.title}</p>
       </div>
     );
   });
 
-  return <div className={styles.sideMenu}>{menuElements}</div>;
+  return (
+    <div className="absolute left-4 top-1/3 flex h-1/2 flex-col items-start justify-center gap-y-8">
+      {menuElements}
+    </div>
+  );
 }

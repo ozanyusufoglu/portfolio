@@ -1,18 +1,18 @@
 import { Karla } from "next/font/google";
-import Header from "./components/header/header";
-import Footer from "./components/footer/Footer";
+import Header from "../components/Header";
+import Footer from "../components/Footer";
 import "./globals.css";
 
 const karla = Karla({ subsets: ["latin"] });
 export const metadata = {
-  title: "Nextjs workshop for Scrimba",
-  description: "Author: Ozan",
+  title: "o16u",
+  description: "Author: Özgür Ozan Yusufoglu",
 };
 
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={karla.className}>
+      <body className={`${karla.className} text-grey-800`}>
         <Header />
         {children}
         <Footer />

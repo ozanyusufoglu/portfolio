@@ -1,7 +1,9 @@
 "use client";
 
 import React, { useState } from "react";
-import styles from "./dashboard.module.css";
+import Button from "@/components/Button";
+import Section from "@/components/Section";
+
 export default function Page() {
   const [count, setCount] = useState(0);
 
@@ -14,33 +16,17 @@ export default function Page() {
   }
 
   return (
-    <div className={styles.component}>
-      <section>
-        <div className={styles.innerContainer}>
-          <h2>Here is a dynamic App</h2>
-          <p className={styles.count}>{count}</p>
-          <div className={styles.buttonsContainer}>
-            <button onClick={handleDecrease}>Decrease me</button>
-            <button onClick={handleIncrease}>Increase me</button>
-          </div>
-        </div>
-      </section>
-    </div>
+    <Section>
+      <h2>Here is a dynamic App</h2>
+      <p className="text-5xl">{count}</p>
+      <div className="flex flex-row gap-x-4">
+        <Button backgroundColor="bg-purple-100" onClick={handleDecrease}>
+          Decrease me
+        </Button>
+        <Button backgroundColor="bg-red-100" onClick={handleIncrease}>
+          Increase me
+        </Button>
+      </div>
+    </Section>
   );
 }
-
-// .innerContainer {
-//     display: flex;
-//     flex-direction: column;
-//     align-items: center;
-//     gap: 1rem;
-// }
-
-// .count {
-//     font-size: 10rem;
-// }
-
-// .buttonsContainer {
-//     display: flex;
-//     gap: 1rem;
-// }

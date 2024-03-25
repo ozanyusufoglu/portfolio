@@ -1,5 +1,4 @@
-import PostPreview from "@/app/components/postPreview/PostPreview";
-import Link from "next/link";
+import PostPreview from "@/components/PostPreview";
 import { postData } from "./postData";
 
 export default function Posts() {
@@ -7,5 +6,7 @@ export default function Posts() {
     return <PostPreview key={index} {...post} />;
   });
 
-  return <section className="posts">{postPreviews}</section>;
+  return (
+    <section className="p-x-40 flex flex-row gap-x-20">{postPreviews}</section>
+  );
 }
