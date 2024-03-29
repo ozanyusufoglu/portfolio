@@ -1,0 +1,10 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+ul,
+li {
+  list-style-type: none;
+  border: none;
+  margin: none;
+}

@@ -12,8 +12,8 @@ module.exports = {
     extend: {
       boxShadow: {
         brutal: "-4px 4px  0px black",
-        brutalHover: "-2px 2px  0px grey",
-        brutalActive: "-1px 1px  0px grey",
+        brutalHover: "-2px 2px  0px purple",
+        brutalActive: "-1px 1px  0px purple",
       },
       animation: {
         float: "1s ease-in-out infinite alternate-reverse",
