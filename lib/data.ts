@@ -2,15 +2,14 @@ export const features = [
        { title: "Minimize Context Switch", 
         description: "Don't jump between browser tabs. Monkeymind keeps your workflow in single a page by bringing your goals, actions and tools together.",
         alt:"Minimal context switch",
-        src:"react.svg"
+        src:"/session_feedback.png"
     },{
         title: "Use your time efficiently with sessions", 
         description: "Pomodoros, apples or bananas, choose your optimal time windows to realize your goals, track and visualize your outputs",
         alt:"Minimal context switch",
-        src:"react.svg"
+        src:"/runningPomodoro.png"
     }
-
-]
+] as const
 
 
 export const links = [
@@ -26,46 +25,46 @@ export const links = [
         title:"Blog",
         link:"/posts"
     },
-   
-]
+] as const
 
 export const posts = [
+  { 
+    slug: "time",
+    title: "Time",
+    icon: "🍅",  
+    previewItems: [
+      "Full-stack App Framework",
+      "All-in-one backend services",
+      "Working on both client and server side",
+      "Easy integration with Vercel",
+    ],
+    content:
+      "Temporal processing is another area of interest in cognitive psychology. Researchers investigate how individuals perceive and process time, how attention fluctuates over time, and how time affects cognitive processes such as memory and decision-making."
+  },
+     
+   ,
     {
-      slug: "javascript",
-      title: "Javascript",
-      id: 0,
+      slug: "attention",
+      title: "Attention",
+      icon: "🧠",
       previewItems: [
-        "Programming language",
-        "Makes your UI programmable",
-        "Lets you to fetch data",
-      ],
-      content:
-        "JavaScript, often abbreviated as JS, is a programming language and core technology of the World Wide Web, alongside HTML and CSS. As of 2024, 98.9% of websites use JavaScript on the client side for webpage behavior, often incorporating third-party libraries.",
-    },
-    {
-      slug: "react",
-      title: "React.js",
-      id: 1,
-      previewItems: [
-        "Frontend library",
         "Reusable UI components",
-        "Dynamically working on client side",
+        "Dynamically working onon client side",
         "code downloads to browser",
       ],
       content:
-        "React is a free and open-source front-end JavaScript library for building user interfaces based on components. It is maintained by Meta and a community of individual developers and companies. React can be used to develop single-page, mobile, or server-rendered applications with frameworks like Next.js",
-    },
-    {
-      slug: "next",
-      title: "Nextjs",
-      id: 2,
-      previewItems: [
-        "Full-stack App Framework",
-        "All-in-one backend services",
-        "Working on both client and server side",
-        "Easy integration with Vercel",
-      ],
-      content:
-        "Next.js is an open-source web development framework created by the private company Vercel providing React-based web applications with server-side rendering and static website generation.",
-    },
-  ];
+       "Attention is a central concept in cognitive psychology and neuroscience. Researchers study attentional processes to understand how individuals select and focus on certain stimuli while ignoring others. Models such as the spotlight model of attention and the feature integration theory provide frameworks for understanding how attention operates."
+      },
+      {
+        slug: "information",
+        title: "Information",
+        icon: "🥫",
+        previewItems: [
+          "Programming language",
+          "Makes your UI programmable",
+          "Lets you to fetch data",
+        ],
+        content:"Information processing theories in psychology describe how individuals perceive, encode, store, and retrieve information. These theories often consider factors such as the amount of information presented, its complexity, and its relevance to the task at hand. Information theory, developed by Claude Shannon, provides a mathematical framework for quantifying information content."
+      }
+  ] as const;
+

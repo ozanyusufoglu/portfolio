@@ -17,7 +17,7 @@ export default function Posts() {
   return (
     <Section
       styleProps="flex flex-col flex-wrap 
-        justify-center gap-x-20 gap-y-20 lg:flex-row 
+        justify-center gap-x-20 gap-y-20 lg:flex-row items-center 
         lg:flex-nowrap"
     >
       {postPreviews}

@@ -7,8 +7,7 @@ export default function Footer() {
   return (
     <div
       className="flex flex-col items-center justify-center
-        bg-purple-100 p-8 dark:bg-slate-600
-        dark:text-white"
+        bg-red-300 p-8 dark:bg-slate-600 dark:text-white"
     >
       <div>
         <NavigationItem href="https://github.com/ozanyusufoglu/scrimba-nextjs-workshop">

@@ -21,8 +21,8 @@ const NavigationItem = ({
         <div
           className="cursor-pointer p-4 text-lg text-gray-500
             transition-all duration-200 ease-out
-            hover:font-bold hover:text-purple-800
-            dark:text-white dark:hover:text-purple-300"
+            hover:font-bold hover:text-violet-800
+            dark:text-white dark:hover:text-violet-300"
         >
           {children}
         </div>

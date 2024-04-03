@@ -4,7 +4,7 @@ import React, { ReactEventHandler } from 'react';
 type ButtonProps = {
   children: React.ReactNode;
   disabled?: boolean;
-  onClick: () => void;
+  onClick?: () => void;
   styleProps: string;
 };
 
@@ -16,11 +16,13 @@ export default function Button({
 }: ButtonProps) {
   return (
     <button
-      className={`rounded ${styleProps} border-2 border-slate-900
-      p-4 font-bold uppercase shadow-brutal
-      shadow-purple-400 transition-all duration-200
-      ease-out hover:translate-y-1 text-nowrap
-      hover:shadow-brutalHover dark:text-purple-800`}
+      className={`rounded border-2 border-slate-900 p-4 font-bold
+      uppercase shadow-brutal shadow-red-400 transition
+      duration-200 ease-out hover:translate-y-1
+      text-nowrap hover:shadow-brutalHover
+      dark:bg-slate-600 dark:shadow-slate-900
+      dark:hover:shadow-slate-950 dark:text-slate-100
+      ${styleProps}`}
       onClick={onClick}
       disabled={disabled}
     >

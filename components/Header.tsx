@@ -15,12 +15,21 @@ export default function Header() {
         animate={{ y: 0, opacity: 1 }}
       >
         <NavigationItem href="/">
-          logo
+          <div className="flex flex-row justify-center gap-x-4 items-center">
+            <span className="text-5xl">🐵</span>
+            <span
+              className="text-3xl font-bold text-gray-950
+                dark:text-gray-300"
+            >
+              Monkeymind
+            </span>
+          </div>
         </NavigationItem>
         <nav
-          className="rounded-md border-2 border-solid border-purple-200
-            bg-white dark:bg-slate-600 dark:border-slate-600
-            bg-opacity-80 px-2 py-2 shadow-lg backdrop-blur-md"
+          className="rounded-md bg-white dark:bg-slate-600
+            bg-opacity-80 px-2 py-2 shadow-lg backdrop-blur-md
+            transition border-gray-600 border-2
+            dark:border-slate-950"
         >
           <ul className="flex flex-row items-center">
             {links.map((item, index) => (
@@ -35,7 +44,7 @@ export default function Header() {
         </nav>
         <NavigationItem href="/dashboard">
           <Button
-            styleProps="border-2 border-purple-600 bg-purple-100 text-slate-800 hover:text-purple-800"
+            styleProps="border-2 bg-red-50 text-red-950 hover:text-violet-300 shadow-red-300 hover:shadow-red-400 dark:shadow-slate-700"
             onClick={null}
           >
             Launch App

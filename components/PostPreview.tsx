@@ -4,37 +4,53 @@ import Button from './Button';
 
 type PostPreviewProps = {
   slug: string;
-  id: number;
   title: string;
-  previewItems: {}[];
+  content: string;
+  icon: string;
+  previewItems: string[];
 };
 
 export default function PostPreview({
   slug,
-  id,
   title,
-  previewItems,
+  content,
+  icon,
 }: PostPreviewProps) {
   return (
     <div
-      className="flex flex-col items-start justify-center gap-4
-        rounded-sm border-2 border-solid border-black p-12
-        text-lg shadow-brutal lg:flex-auto"
-      key={id}
+      className="flex max-w-screen flex-col items-start
+        justify-center gap-y-8 rounded-md border-2
+        border-solid border-black p-12 shadow-brutal
+        hover:shadow-brutalHover bg-white max-w-sm
+        hover:translate-y-1 transition dark:bg-slate-600
+        dark:shadow-slate-800 dark:hover:shadow-slate-950"
     >
-      <h2 className="text-2xl font-bold">
-        {title}
-      </h2>
-      <ul className="flex flex-col items-start gap-y-4">
+      <div className="flex gap-x-4 items-center">
+        <p
+          className="text-3xl border-2 border-slate-950 rounded-full
+            bg-white w-12 h-12 flex items-center
+            justify-center"
+        >
+          {icon}
+        </p>
+        <h2 className="text-2xl font-bold">
+          {title}
+        </h2>
+      </div>
+
+      <p className="font-regular line-clamp-6 ">
+        {content}
+      </p>
+      {/* <ul className="flex flex-col items-start gap-y-4">
         {previewItems.map(
-          (item: any, index: number) => (
+          (item: string, index: number) => (
             <li key={index}>{item}</li>
           )
         )}
-      </ul>
+      </ul> */}
       <Link href={`/posts/${slug}`}>
         <Button
-          styleProps="bg-purple-100 hover:text-purple-500"
+          styleProps="bg-red-50 hover:text-red-400 shadow-red-100"
           disabled={false}
           onClick={() => console.log('clicked')}
         >

@@ -23,7 +23,7 @@ export default function Page() {
       <p className="text-5xl">{count}</p>
       <div className="flex flex-row gap-x-4">
         <Button
-          styleProps="bg-purple-100"
+          styleProps="bg--100"
           onClick={handleDecrease}
         >
           Decrease me
