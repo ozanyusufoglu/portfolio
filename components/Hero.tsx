@@ -9,6 +9,7 @@ export default function Hero() {
     <motion.section
       initial={{ opacity: 0, y: 100 }}
       animate={{ opacity: 1, y: 0 }}
+      transition={{ delay: 0.1 }}
       className="relative flex w-1/2 flex-row gap-x-4 text-lg"
     >
       <div className="flex flex-col gap-y-4">

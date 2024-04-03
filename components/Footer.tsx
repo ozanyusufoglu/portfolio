@@ -6,12 +6,12 @@ import NavigationItem from './NavigationItem';
 export default function Footer() {
   return (
     <div
-      className="flex flex-col items-center justify-center
-        bg-red-300 p-8 dark:bg-slate-600 dark:text-white"
+      className="flex flex-col items-center justify-center w-screen
+        bg-red-400 p-16 dark:bg-slate-600 dark:text-white"
     >
       <div>
         <NavigationItem href="https://github.com/ozanyusufoglu/scrimba-nextjs-workshop">
-          <div className="flex flex-row items-center space-x-4">
+          <div className="flex flex-row items-center space-x-4 text-white">
             <Image
               src="github-mark.svg"
               alt="github logo"
@@ -27,7 +27,7 @@ export default function Footer() {
           Built by{' '}
           <Link
             href="https://github.com/ozanyusufoglu/"
-            className="font-bold"
+            className="font-bold text-white"
           >
             Özgür Ozan
           </Link>{' '}

@@ -18,7 +18,8 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body
         className={`${karla.className} bg-white text-slate-800
-        dark:bg-slate-700 dark:text-slate-100`}
+        dark:bg-slate-700 dark:text-slate-100 flex
+        flex-col items-center`}
       >
         <Header />
         {children}
