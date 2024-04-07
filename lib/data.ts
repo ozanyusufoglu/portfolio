@@ -1,58 +1,71 @@
+import pomodoro from '@/public/pomodoro.png';
+import feedback from '@/public/feedback.png';
 export const features = [
-       { title: "Minimize Context Switch", 
-        description: "Don't jump between browser tabs. Monkeymind keeps your workflow in single a page by bringing your goals, actions and tools together.",
-        alt:"Minimal context switch",
-        src:"/session_feedback.png"
-    },{
-        title: "Use your time efficiently with sessions", 
-        description: "Pomodoros, apples or bananas, choose your optimal time windows to realize your goals, track and visualize your outputs",
-        alt:"Minimal context switch",
-        src:"/runningPomodoro.png"
-    }
-] as const
-
+  {
+    title: 'Less Context Switch',
+    description:
+      "Don't jump between browser tabs. Monkeymind keeps your workflow in a single page by bringing your goals, actions and tools together.",
+    alt: 'Minimal context switch',
+    detail: '',
+    src: feedback,
+  },
+  {
+    title:
+      'Use sessions to manage time and track your accumulated progress',
+    description:
+      'Pomodoros, apples or bananas, choose your optimal time windows to realize your goals, visualize your outputs',
+    alt: 'Minimal context switch',
+    detail:
+      'Use pomodoro teqnique, flowtime or create your custom sessions',
+    src: pomodoro,
+  },
+] as const;
 
 export const links = [
-    {
-        title:"Home",
-        link:"/"
-    },
-    {
-        title:"About",
-        link:"/about"
-    },
-    {
-        title:"Blog",
-        link:"/posts"
-    },
-] as const
+  {
+    title: 'Home',
+    link: '/',
+  },
+  {
+    title: 'About',
+    link: '/about',
+  },
+  {
+    title: 'Blog',
+    link: '/blog',
+  },
+  {
+    title: 'Posts',
+    link: '/posts',
+  },
+] as const;
 
 export const posts = [
-  { 
-    slug: "time",
-    title: "Time",
-    icon: "🍅",  
-    cover:"",
+  {
+    slug: 'time',
+    title: 'Time',
+    icon: '🍅',
+    cover: '',
     previewItems: [
-      "Full-stack App Framework",
-      "All-in-one backend services",
-      "Working on both client and server side",
-      "Easy integration with Vercel",
+      'Full-stack App Framework',
+      'All-in-one backend services',
+      'Working on both client and server side',
+      'Easy integration with Vercel',
     ],
-    content: 
-      "Temporal processing is another area of interest in cognitive psychology. Researchers investigate how individuals perceive and process time, how attention fluctuates over time, and how time affects cognitive processes such as memory and decision-making. "
+    content:
+      'Temporal processing is another area of interest in cognitive psychology. Researchers investigate how individuals perceive and process time, how attention fluctuates over time, and how time affects cognitive processes such as memory and decision-making. ',
   },
-    {
-      slug: "attention",
-      title: "Attention",
-      cover:"",
-      icon: "🧠",
-      previewItems: [
-        "Reusable UI components",
-        "Dynamically working onon client side",
-        "code downloads to browser",
-      ],
-      content: `Attention is a central concept in cognitive psychology and neuroscience. 
+  {
+    slug: 'attention',
+    title: 'Attention',
+    cover: '',
+    icon: '🧠',
+    previewItems: [
+      'Reusable UI components',
+      'Dynamically working onon client side',
+      'code downloads to browser',
+    ],
+    content: `Attention is a central concept in cognitive psychology and neuroscience. 
       Researchers study attentional processes to understand how individuals select and focus on certain stimuli while ignoring others. Models such as the spotlight model of attention and the feature integration theory provide frameworks for understanding how attention operates.
 
       There is ongoing research into the relationship between the design of technology products and attention problems, such as attention deficit hyperactivity disorder (ADHD) or general distractibility. While the evidence is not yet conclusive, there is a growing concern that certain aspects of technology design could be exacerbating attention problems in society.
@@ -63,16 +76,15 @@ export const posts = [
       
       There are also concerns about the use of certain colors, sounds, and visual effects in technology design, which can be highly stimulating and potentially overstimulating for some users. These design elements may be used intentionally to capture and hold the user's attention, but they could also contribute to attention problems in certain individuals.
       
-      While it is possible that some product designers are exploiting the cognitive system of users, it is important to note that most designers are likely not intentionally trying to harm their users. However, there is a growing movement for "ethical design," which emphasizes the need for designers to consider the impact of their work on users' well-being and to design products that are mindful of users' attention and cognitive resources.`
-      
-      },
-      {
-        slug: "information",
-        title: "Information",
-        cover:"",
-        icon: "🥫",
-        previewItems: [],
-        content:"Information processing theories in psychology describe how individuals perceive, encode, store, and retrieve information. These theories often consider factors such as the amount of information presented, its complexity, and its relevance to the task at hand. Information theory, developed by Claude Shannon, provides a mathematical framework for quantifying information content."
-      }
-  ] as const;
-
+      While it is possible that some product designers are exploiting the cognitive system of users, it is important to note that most designers are likely not intentionally trying to harm their users. However, there is a growing movement for "ethical design," which emphasizes the need for designers to consider the impact of their work on users' well-being and to design products that are mindful of users' attention and cognitive resources.`,
+  },
+  {
+    slug: 'information',
+    title: 'Information',
+    cover: '',
+    icon: '🥫',
+    previewItems: [],
+    content:
+      'Information processing theories in psychology describe how individuals perceive, encode, store, and retrieve information. These theories often consider factors such as the amount of information presented, its complexity, and its relevance to the task at hand. Information theory, developed by Claude Shannon, provides a mathematical framework for quantifying information content.',
+  },
+] as const;

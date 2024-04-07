@@ -1,10 +1,8 @@
-import Image from 'next/image';
 import Posts from './posts/page';
 import Feature from '../components/Feature';
 import Section from '../components/Section';
 import Hero from '@/components/Hero';
 import { features } from '@/lib/data';
-import { links } from '@/lib/data';
 
 export default function Home() {
   return (

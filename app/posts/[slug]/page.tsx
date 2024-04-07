@@ -20,7 +20,7 @@ export default function Post({ params }) {
       <h1 className="text-5xl font-bold ">
         {post.title}
       </h1>
-      <p className="font-thin text-pretty">
+      <p className="font-regular text-pretty">
         {post.content}
       </p>
     </motion.div>

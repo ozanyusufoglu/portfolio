@@ -19,6 +19,7 @@ export default function Hero() {
           }
         >
           {'Get things done,'}
+          {/* {'Retire your monkeymind'} */}
         </p>
         <div className={'text-8xl font-bold'}>
           <h1>{"Don't"}</h1>

@@ -7,7 +7,7 @@ type PostPreviewProps = {
   title: string;
   content: string;
   icon: string;
-  previewItems: string[];
+  previewItems: readonly string[];
 };
 
 export default function PostPreview({
@@ -38,7 +38,7 @@ export default function PostPreview({
         </h2>
       </div>
 
-      <p className="font-regular line-clamp-6 ">
+      <p className="font-regular text-lg line-clamp-6 ">
         {content}
       </p>
       {/* <ul className="flex flex-col items-start gap-y-4">

@@ -21,13 +21,13 @@ export default function Header() {
               className="text-3xl font-bold text-gray-950
                 dark:text-gray-300"
             >
-              Monkeymind
+              monkeymind
             </span>
           </div>
         </NavigationItem>
         <nav
           className="rounded-md bg-white dark:bg-slate-600
-            bg-opacity-80 px-2 py-2 shadow-lg backdrop-blur-md
+            bg-opacity-80 px-2 py-2 backdrop-blur-md
             transition border-gray-600 border-2
             dark:border-slate-950"
         >
