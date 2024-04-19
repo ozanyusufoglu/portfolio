@@ -3,18 +3,17 @@ import Link from 'next/link';
 import Button from './Button';
 
 type PostPreviewProps = {
-  slug: string;
   title: string;
-  content: string;
-  icon: string;
-  previewItems: readonly string[];
+  slug: string;
+  icon?: string;
+  previewItems?: string;
 };
 
 export default function PostPreview({
-  slug,
   title,
-  content,
+  slug,
   icon,
+  previewItems,
 }: PostPreviewProps) {
   return (
     <div
@@ -39,7 +38,7 @@ export default function PostPreview({
       </div>
 
       <p className="font-regular text-lg line-clamp-6 ">
-        {content}
+        {previewItems}
       </p>
       {/* <ul className="flex flex-col items-start gap-y-4">
         {previewItems.map(

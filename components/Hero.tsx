@@ -3,6 +3,8 @@
 import React from 'react';
 import Button from './Button';
 import { motion } from 'framer-motion';
+import Monkey from './monkey';
+import Brain from './brain';
 
 export default function Hero() {
   return (
@@ -37,6 +39,7 @@ export default function Hero() {
           Launch App
         </Button>
       </div>
+
       <div
         className="w-min-1/2 flex flex-col justify-center
           items-center gap-y-8"
@@ -45,9 +48,11 @@ export default function Hero() {
           🐒
 
         </p> */}
-        <p className="animate-spin-slow text-9xl">
+        <Brain className="animate-pulse" />
+        <Monkey className="animate-bounce absolute" />
+        {/* <p className="animate-spin-slow text-9xl">
           🧠
-        </p>
+        </p> */}
       </div>
     </motion.section>
   );

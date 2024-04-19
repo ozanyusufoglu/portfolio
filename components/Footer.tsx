@@ -10,7 +10,7 @@ export default function Footer() {
   return (
     <div
       className="flex flex-row items-center justify-between
-        w-screen bg-slate-300 p-16 dark:bg-slate-800
+        w-screen bg-red-400 p-16 dark:bg-slate-800
         dark:text-white"
     >
       <div>

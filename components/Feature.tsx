@@ -1,8 +1,10 @@
 import React from 'react';
-import Image from 'next/image';
+import Image, {
+  StaticImageData,
+} from 'next/image';
 
 type featureProps = {
-  src: string;
+  src: StaticImageData;
   title: string;
   description: string;
   alt?: string;

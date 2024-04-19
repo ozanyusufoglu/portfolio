@@ -1,5 +1,4 @@
-import { CssVariable } from 'next/dist/compiled/@next/font';
-import React, { ReactEventHandler } from 'react';
+import React from 'react';
 
 type ButtonProps = {
   children: React.ReactNode;
