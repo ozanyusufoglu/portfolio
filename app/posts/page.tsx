@@ -1,12 +1,9 @@
 import Section from '@/components/Section';
 import PostPreview from '../../components/PostPreview';
-import { posts } from '@/lib/data';
-import getPostdata from '@/lib/getPostData';
+import getPostsMetadata from '@/lib/getPostsMetadata';
 
 export default async function Posts() {
-  const postData = await getPostdata();
-
-  console.log(posts);
+  const postData = await getPostsMetadata();
 
   // const postPreviews = posts.map(
   //   (post, index) => {
@@ -22,7 +19,7 @@ export default async function Posts() {
 
   const postPreviews = postData.map(
     (post, index) => {
-      console.log({ ...post });
+      console.log(post);
       return (
         <PostPreview
           key={index}

@@ -1,9 +1,9 @@
 import fs, { readFile, readFileSync } from 'fs';
-import path from 'path';
 import matter from 'gray-matter';
 import { cache } from 'react';
+import { compileMDX } from 'next-mdx-remote/rsc';
 
-export default async function getPostsDa() {
+const getPostsMetaData = cache(async () => {
   const postsFolder = 'md/';
   const postFiles = fs.readdirSync(postsFolder);
 
@@ -22,11 +22,21 @@ export default async function getPostsDa() {
       rawFileContent
     );
 
-    console.log(data);
+    //     const { frontmatter, content } = await compileMDX({
+    // source: rawFileContent,
+    // options: { parseFrontmatter: true }}
+    // )
 
     return { ...data, body: content };
   });
 
-  console.log(contentArray);
   return contentArray;
-}
+});
+
+export default getPostsMetaData;
+
+// export async function getPost(slug: string) {
+//   const post = posts.find(
+//     (item) => item.slug === slug
+//   );
+// }

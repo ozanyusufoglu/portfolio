@@ -1,6 +1,8 @@
-import SideMenu from "../../components/SideMenu";
+import SideMenu from '../../components/SideMenu';
 
-export default function DashboardLayout({ children }) {
+export default function DashboardLayout({
+  children,
+}) {
   return (
     <>
       <SideMenu />

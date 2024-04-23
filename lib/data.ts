@@ -3,10 +3,10 @@ import feedback from '@/public/feedback.png';
 
 export const features = [
   {
-    title: 'Less Context Switch',
+    title: 'Minimize Context Switch',
     description:
       "Don't jump between browser tabs. Monkeymind keeps your workflow in a single page by bringing your goals, actions and tools together.",
-    alt: 'Minimal context switch',
+    alt: 'No context switch',
     detail: '',
     src: feedback,
   },
