@@ -8,6 +8,7 @@ type featureProps = {
   title: string;
   description: string;
   alt?: string;
+  previewItems?: readonly string[];
 };
 
 export default function Feature({
@@ -15,6 +16,7 @@ export default function Feature({
   title,
   description,
   alt,
+  previewItems,
 }: featureProps) {
   return (
     <div
@@ -42,6 +44,11 @@ export default function Feature({
           {title}
         </h3>
         <p className="text-xl">{description}</p>
+        <ul>
+          {previewItems.map((item, index) => (
+            <li key={index}>{item}</li>
+          ))}
+        </ul>
       </div>
     </div>
   );

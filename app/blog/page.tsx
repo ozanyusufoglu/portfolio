@@ -1,22 +1,11 @@
 import Section from '@/components/Section';
 import PostPreview from '../../components/PostPreview';
-import { values } from '@/util/data';
-import ValuePreview from '@/components/ValuePreview';
 import { getPosts } from '@/util/getPostsMetadata';
 
 export default async function Posts() {
-  // const postData = await getPostsMetadata();
+  const postsData = await getPosts();
 
-  const valuePreviews = values.map((value, index) => {
-    return (
-      <ValuePreview
-        key={index}
-        {...value}
-      />
-    );
-  });
-
-  // const postPreviews = postData.map(
+  // const postPreviews = posts.map(
   //   (post, index) => {
   //     console.log(post);
   //     return (
@@ -28,13 +17,26 @@ export default async function Posts() {
   //   }
   // );
 
+  const postPreviews = postsData.map((post, index) => {
+    const { title, slug, icon, cover, previewItems } = post;
+    return (
+      <PostPreview
+        key={index}
+        title={title}
+        icon={icon}
+        slug={slug}
+        cover={cover}
+        previewItems={previewItems}
+      />
+    );
+  });
+
   return (
     <Section
       styleProps="flex flex-col flex-wrap 
-        justify-center gap-x-20 gap-y-20 lg:flex-row items-center 
-        "
+        justify-start gap-x-20 gap-y-20 lg:flex-row items-center"
     >
-      {valuePreviews}
+      {postPreviews}
     </Section>
   );
 }

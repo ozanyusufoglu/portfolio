@@ -10,10 +10,10 @@ export default function Footer() {
   return (
     <div
       className="flex flex-row items-center justify-between
-        w-screen bg-red-400 p-16 dark:bg-slate-800
-        dark:text-white"
+        text-white w-screen bg-red-400 p-16
+        dark:bg-slate-800 dark:text-white"
     >
-      <div>
+      {/* <div>
         <NavigationItem href="https://github.com/ozanyusufoglu/scrimba-nextjs-workshop">
           <div className="flex flex-row items-center space-x-4">
             <Image
@@ -25,7 +25,7 @@ export default function Footer() {
             <p>Show me to the source code</p>
           </div>
         </NavigationItem>
-      </div>
+      </div> */}
       <p>2024</p>
       <div className="flex flex-col gap-y-8">
         <div className="text-right">

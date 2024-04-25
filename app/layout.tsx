@@ -1,7 +1,4 @@
-import {
-  Karla,
-  Urbanist,
-} from 'next/font/google';
+import { Karla, Urbanist } from 'next/font/google';
 
 import Header from '../components/Header';
 import Footer from '../components/Footer';
@@ -19,9 +16,8 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body
-        className={`${urbanist.className} bg-white text-slate-800
-        dark:bg-slate-700 dark:text-slate-100 flex
-        flex-col items-center`}
+        className={`${urbanist.className} bg-white text-slate-800 dark:bg-slate-700
+        dark:text-slate-100 flex flex-col items-center`}
       >
         <Header />
         {children}

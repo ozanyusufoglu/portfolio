@@ -5,7 +5,7 @@ module.exports = {
     './app/**/*.{js,ts,jsx,tsx,mdx}', // Note the addition of the `app` directory.
     './pages/**/*.{js,ts,jsx,tsx,mdx}',
     './components/**/*.{js,ts,jsx,tsx,mdx}',
-
+    './mdx-components.tsx',
     // Or if using `src` directory:
     './src/**/*.{js,ts,jsx,tsx,mdx}',
   ],
@@ -17,8 +17,7 @@ module.exports = {
         brutalActive: '-2px 2px  0px',
       },
       animation: {
-        float:
-          '1s ease-in-out infinite alternate-reverse',
+        float: '1s ease-in-out infinite alternate-reverse',
         'spin-slow': 'spin 5s linear infinite',
       },
       keyframes: {

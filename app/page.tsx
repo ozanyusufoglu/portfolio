@@ -2,7 +2,7 @@ import Posts from './posts/page';
 import Feature from '../components/Feature';
 import Section from '../components/Section';
 import Hero from '@/components/Hero';
-import { features } from '@/lib/data';
+import { features } from '@/util/data';
 
 export default function Home() {
   return (
@@ -25,6 +25,7 @@ export default function Home() {
               alt={item.alt}
               title={item.title}
               description={item.description}
+              previewItems={item.previewItems}
             />
           );
         })}

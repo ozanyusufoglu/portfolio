@@ -2,21 +2,21 @@
 import Link from 'next/link';
 import Button from './Button';
 
-type PostPreviewProps = {
+type ValuePreviewProps = {
   title: string;
   slug: string;
   icon?: string;
-  cover?: string;
-  previewItems?: string;
+  previewItems?: readonly string[];
+  body: string;
 };
 
-export default function PostPreview({
+export default function ValuePreview({
   title,
   slug,
   icon,
-  cover,
   previewItems,
-}: PostPreviewProps) {
+  body,
+}: ValuePreviewProps) {
   return (
     <div
       className="flex max-w-screen flex-col items-start justify-center gap-y-8 rounded-md
@@ -34,7 +34,7 @@ export default function PostPreview({
         <h2 className="text-2xl font-bold">{title}</h2>
       </div>
 
-      <p className="font-regular text-lg line-clamp-6 ">{previewItems}</p>
+      <p className="font-regular text-lg line-clamp-6 ">{body}</p>
       {/* <ul className="flex flex-col items-start gap-y-4">
         {previewItems.map(
           (item: string, index: number) => (
@@ -42,7 +42,7 @@ export default function PostPreview({
           )
         )}
       </ul> */}
-      <Link href={`/blog/${slug}`}>
+      <Link href={`/posts/${slug}`}>
         <Button
           styleProps="bg-red-50 hover:text-red-400 shadow-red-100"
           disabled={false}
