@@ -1,0 +1,14 @@
+export type projectPreviewProps = {
+  title: string;
+  description: string;
+  slug: string;
+  personal?: boolean;
+  dates?: string;
+  company?: string;
+  misc?: string;
+  duration?: string;
+  icon?: string;
+  body: string;
+  previewItems?: readonly string[];
+  tags: readonly string[];
+};

@@ -1,10 +1,8 @@
 'use client';
 
 import React from 'react';
-import Button from './Button';
 import { motion } from 'framer-motion';
-import Monkey from './monkey';
-import Brain from './brain';
+import Image from 'next/image';
 
 export default function Hero() {
   return (
@@ -14,39 +12,28 @@ export default function Hero() {
       transition={{ delay: 0.1 }}
       className="relative flex w-1/2 flex-row gap-x-4 text-lg flex-wrap"
     >
-      <div className="flex flex-col gap-y-4">
-        <div className={'text-2xl text-gray-500 dark:text-gray-100 font-bold'}>
-          {/* Get things done */}
-          Why <span className="text-red-400">postpone</span> yourself?
-          {/* {'Retire your monkeymind'} */}
-        </div>
-
-        <div className={'text-8xl font-bold'}>
-          <h1>Get</h1>
-
-          <h1>things</h1>
-          <h1 className="text-red-400 dark:text-red-300">done!</h1>
-        </div>
-        <p className="my-8 text-xl">
-          Focus on things really matter with Monkeymind by bringing your
-          attention and time management tools together.
-        </p>
-        <Button styleProps="flex-initial bg-red-50 shadow-red-300 hover:translate-y-2 hover:shadow-red-500 w-fit">
-          Launch App
-        </Button>
+      <div className="flex flex-row gap-x-8 justify-between items-center">
+        <h1 className="text-5xl font-bold">Özgür Ozan Yusufoglu</h1>
+        <Image
+          src="/ozgur_ozan.jpeg"
+          alt="ozan portrait"
+          width={200}
+          height={200}
+          className="rounded-md"
+        ></Image>
       </div>
 
-      <div className="w-min-1/2 flex flex-col justify-center items-center gap-y-8">
-        {/* <p className="animate-bounce text-8xl">
-          🐒
-
-        </p> */}
-        <Brain className="animate-pulse" />
-        <Monkey className="animate-bounce absolute" />
-        {/* <p className="animate-spin-slow text-9xl">
-          🧠
-        </p> */}
-      </div>
+      <p>Hi, nice to meet you🤞</p>
+      <br />
+      <p>
+        I’m a Frontend Engineer with with Electrical & Electronics Engineering
+        background. I formerly worked as an R&D Manager and coordinated multiple
+        projects supported by The Scientific and Technological Research Council
+        of Turkey (TUBITAK), the national partner of EU Horizon 2020 Programme.
+        While I wasn't actively coding with this hat, I led the development team
+        to build user-centered products that tackled critical problems in
+        diverse domains, by utilizing R&D methodologies.
+      </p>
     </motion.section>
   );
 }

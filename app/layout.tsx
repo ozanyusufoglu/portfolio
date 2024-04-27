@@ -1,4 +1,4 @@
-import { Karla, Urbanist } from 'next/font/google';
+import { Karla, Urbanist, Josefin_Sans } from 'next/font/google';
 
 import Header from '../components/Header';
 import Footer from '../components/Footer';
@@ -6,10 +6,11 @@ import './globals.css';
 
 const karla = Karla({ subsets: ['latin'] });
 const urbanist = Urbanist({ subsets: ['latin'] });
+// const josefin = Josefin_Sans({ subsets: ['latin'] });
 
 export const metadata = {
-  title: 'Monkeymind',
-  description: "Don't postpone yourself!",
+  title: 'Ozan Yusufoglu',
+  description: 'Software Engineer, Personal Website',
 };
 
 export default function RootLayout({ children }) {

@@ -9,23 +9,17 @@ import { RxEnvelopeClosed } from 'react-icons/rx';
 export default function Footer() {
   return (
     <div
-      className="flex flex-row items-center justify-between
-        text-white w-screen bg-red-400 p-16
+      className="flex flex-row items-center justify-between text-white w-screen bg-slate-400 p-16
         dark:bg-slate-800 dark:text-white"
     >
-      {/* <div>
+      <div>
         <NavigationItem href="https://github.com/ozanyusufoglu/scrimba-nextjs-workshop">
           <div className="flex flex-row items-center space-x-4">
-            <Image
-              src="github-mark.svg"
-              alt="github logo"
-              width={30}
-              height={30}
-            ></Image>
-            <p>Show me to the source code</p>
+            <RxGithubLogo color="white" />
+            <p className="text-white">Show me to the source code</p>
           </div>
         </NavigationItem>
-      </div> */}
+      </div>
       <p>2024</p>
       <div className="flex flex-col gap-y-8">
         <div className="text-right">

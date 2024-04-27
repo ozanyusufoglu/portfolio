@@ -1,14 +1,7 @@
 'use client';
 import Link from 'next/link';
 import Button from './Button';
-
-type PostPreviewProps = {
-  title: string;
-  slug: string;
-  icon?: string;
-  cover?: string;
-  previewItems?: string;
-};
+import { postPreviewProps } from '@/app/types/post';
 
 export default function PostPreview({
   title,
@@ -16,7 +9,7 @@ export default function PostPreview({
   icon,
   cover,
   previewItems,
-}: PostPreviewProps) {
+}: postPreviewProps) {
   return (
     <div
       className="flex max-w-screen flex-col items-start justify-center gap-y-8 rounded-md

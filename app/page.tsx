@@ -1,4 +1,4 @@
-import Posts from './posts/page';
+import Projects from './projects/page';
 import Feature from '../components/Feature';
 import Section from '../components/Section';
 import Hero from '@/components/Hero';
@@ -13,23 +13,7 @@ export default function Home() {
       >
         <Hero />
       </Section>
-
-      <Posts />
-
-      <Section styleProps="flex flex-col gap-y-8">
-        {features.map((item, index) => {
-          return (
-            <Feature
-              key={index}
-              src={item.src}
-              alt={item.alt}
-              title={item.title}
-              description={item.description}
-              previewItems={item.previewItems}
-            />
-          );
-        })}
-      </Section>
+      <Projects />
     </main>
   );
 }

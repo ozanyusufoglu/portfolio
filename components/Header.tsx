@@ -5,46 +5,44 @@ import NavigationItem from './NavigationItem';
 import { motion } from 'framer-motion';
 import Button from './Button';
 import { links } from '@/util/data';
+import Ozanlogo from '@/components/svgComponents/ozanlogo';
 
 export default function Header() {
   return (
     <header className="top-2 z-10 w-screen">
       <motion.div
-        className="flex flex-row items-center justify-between w-screen px-8 flex-wrap"
+        className="flex flex-row items-center justify-between w-screen px-8 flex-wrap lg:flex-nowrap"
         initial={{ y: -100, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
       >
         <NavigationItem href="/">
           <div className="flex flex-row justify-center gap-x-4 items-center">
-            <span className="text-5xl">🐵</span>
+            <Ozanlogo />
             <span className="text-3xl font-bold text-gray-950 dark:text-gray-300">
-              monkeymind
+              Ö.Ozan Yusufoglu
             </span>
           </div>
         </NavigationItem>
         <nav
-          className="rounded-md bg-white dark:bg-slate-600 bg-opacity-80 px-2 py-2 backdrop-blur-md
-            transition border-gray-600 border-2 dark:border-slate-950"
+          className="rounded-md bg-white dark:bg-slate-600 bg-opacity-80 px-2 py-2 transition
+            dark:border-slate-950 flex flex-row items-center"
         >
-          <ul className="flex flex-row items-center">
-            {links.map((item, index) => (
-              <NavigationItem
-                key={index}
-                href={item.link}
-              >
-                <p>{item.title}</p>
-              </NavigationItem>
-            ))}
-          </ul>
-        </nav>
-        <NavigationItem href="/dashboard">
+          {links.map((item, index) => (
+            <NavigationItem
+              key={index}
+              href={item.link}
+            >
+              <p>{item.title}</p>
+            </NavigationItem>
+          ))}
+
           <Button
-            styleProps="border-2 bg-red-50 text-red-950 hover:text-violet-300 shadow-red-300 hover:shadow-red-400 dark:shadow-slate-700"
+            styleProps="rounded-full p-4"
             onClick={null}
           >
-            Launch App
+            🌞
           </Button>
-        </NavigationItem>
+        </nav>
       </motion.div>
     </header>
   );

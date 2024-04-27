@@ -2,7 +2,7 @@ import fs, { readFileSync } from 'fs';
 import path from 'path';
 import { cache } from 'react';
 import matter from 'gray-matter';
-import { Post } from '@/app/types/Post';
+import { postProps } from '@/app/types/Post';
 
 const postsFolder = path.join(process.cwd(), 'content');
 

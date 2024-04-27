@@ -2,16 +2,9 @@
 import Link from 'next/link';
 import React, { ReactNode } from 'react';
 import { motion } from 'framer-motion';
+import { navItemProps } from '@/app/types/navigationItem';
 
-type navItemProps = {
-  children: ReactNode;
-  href: string;
-};
-
-const NavigationItem = ({
-  children,
-  href,
-}: navItemProps) => {
+const NavigationItem = ({ children, href }: navItemProps) => {
   return (
     <motion.li
       className="list-none"
@@ -20,10 +13,8 @@ const NavigationItem = ({
     >
       <Link href={href}>
         <div
-          className="cursor-pointer p-4 text-lg text-gray-500
-            transition-all duration-200 ease-out
-            hover:font-bold hover:text-violet-800
-            dark:text-white dark:hover:text-violet-300"
+          className="cursor-pointer p-4 text-lg text-gray-500 transition-all duration-200 ease-out
+            hover:text-violet-950 dark:text-white dark:hover:text-violet-300"
         >
           {children}
         </div>

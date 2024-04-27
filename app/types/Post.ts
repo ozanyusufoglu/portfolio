@@ -1,4 +1,4 @@
-export type Post = {
+export type postPreviewProps = {
   title: string;
   slug: string;
   icon?: string;
