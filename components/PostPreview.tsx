@@ -1,7 +1,7 @@
 'use client';
 import Link from 'next/link';
 import Button from './Button';
-import { postPreviewProps } from '@/app/types/post';
+import { postPreviewProps } from '@/types/postPreview';
 
 export default function PostPreview({
   title,

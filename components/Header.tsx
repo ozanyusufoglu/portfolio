@@ -6,10 +6,11 @@ import { motion } from 'framer-motion';
 import Button from './Button';
 import { links } from '@/util/data';
 import Ozanlogo from '@/components/svgComponents/ozanlogo';
+import { GoMoon } from 'react-icons/go';
 
 export default function Header() {
   return (
-    <header className="top-2 z-10 w-screen">
+    <header className="absolute top-2 z-10 w-screen">
       <motion.div
         className="flex flex-row items-center justify-between w-screen px-8 flex-wrap lg:flex-nowrap"
         initial={{ y: -100, opacity: 0 }}
@@ -40,7 +41,7 @@ export default function Header() {
             styleProps="rounded-full p-4"
             onClick={null}
           >
-            🌞
+            <GoMoon />
           </Button>
         </nav>
       </motion.div>

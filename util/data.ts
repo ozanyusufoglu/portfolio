@@ -79,6 +79,7 @@ export const projects = [
       'virtualization',
       'remote-browser',
     ],
+    imageUrl: pomodoro,
   },
   {
     title: 'Browser Virtualization Protocol for Seamless Data Security',
@@ -100,6 +101,7 @@ export const projects = [
       'virtualization',
       'remote-browser',
     ],
+    imageUrl: feedback,
   },
   {
     title: 'Sales Monitoring Platform for Fast Moving Consumer Goods',
@@ -115,6 +117,7 @@ export const projects = [
     body: '',
     previewItems: [],
     tags: ['FMCG', 'IoT', 'Retail', 'PoS', 'Data aggregation'],
+    imageUrl: feedback,
   },
   {
     title: 'Cloud-based Point-of-Sale Application for IoT Ready Platform',
@@ -122,7 +125,7 @@ export const projects = [
       'Retail management platform and cloud-based point-of-sale application running on Beko 520TR IoT Ready hardware, integrated with new-generation cash registers according to new Turkish law. In cooperation with Arçelik A.Ş. ',
     slug: '',
     personal: false,
-    dates: [],
+    dates: '',
     company: 'Yenihayat Informatics',
     misc: 'TÜBİTAK 1507 R&D Programme',
     duration: '2 years',
@@ -130,6 +133,7 @@ export const projects = [
     body: '',
     previewItems: [],
     tags: [],
+    imageUrl: feedback,
   },
   {
     title: 'High-density DVB-IP Transmodulator Appliance ',
@@ -145,6 +149,7 @@ export const projects = [
     body: '',
     previewItems: [],
     tags: [],
+    imageUrl: feedback,
   },
   {
     title: 'DVB-IP Streamer Middleware Platform for Hospitality',
@@ -152,7 +157,7 @@ export const projects = [
       'All-in-one IPTV streaming platform capable of QPSK demodulation and MPTS, set-top box & user management, VoD, and digital services over STB.',
     slug: '',
     personal: false,
-    dates: [],
+    dates: '',
     company: '',
     misc: 'KOSGEB R&D SME Grant Program 2013.33',
     duration: 'string',
@@ -160,5 +165,6 @@ export const projects = [
     body: '',
     previewItems: [],
     tags: [],
+    imageUrl: feedback,
   },
 ] as const;

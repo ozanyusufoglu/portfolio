@@ -4,5 +4,5 @@ export type postPreviewProps = {
   icon?: string;
   cover?: string;
   previewItems?: string;
-  body: string;
+  body?: string;
 };

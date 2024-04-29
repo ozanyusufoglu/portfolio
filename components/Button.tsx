@@ -1,5 +1,5 @@
 import React from 'react';
-import { buttonProps } from '@/app/types/button';
+import { buttonProps } from '@/types/button';
 // with interface instead of type, no need to explictly decleare children
 
 export default function Button({

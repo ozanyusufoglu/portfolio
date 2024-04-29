@@ -2,9 +2,9 @@ import fs, { readFileSync } from 'fs';
 import path from 'path';
 import { cache } from 'react';
 import matter from 'gray-matter';
-import { postProps } from '@/app/types/Post';
+import { postPreviewProps } from '@/types/postPreview';
 
-const postsFolder = path.join(process.cwd(), 'content');
+const postsFolder = path.join(process.cwd(), 'markdown');
 
 export async function getPostBySlug(slug: string) {
   const postName = slug + '.mdx';
@@ -33,7 +33,7 @@ export async function getPostBySlug(slug: string) {
     ...data,
     body: content,
     // slug: path.parse(postPath).name,
-  } as Post;
+  } as postPreviewProps;
 
   // const postFiles = fs.readdirSync(postsFolder);
 }

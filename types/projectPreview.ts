@@ -1,3 +1,5 @@
+import { StaticImageData } from 'next/image';
+
 export type projectPreviewProps = {
   title: string;
   description: string;
@@ -11,4 +13,5 @@ export type projectPreviewProps = {
   body: string;
   previewItems?: readonly string[];
   tags: readonly string[];
+  imageUrl?: StaticImageData;
 };
