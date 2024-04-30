@@ -29,12 +29,13 @@ export default function ProjectPreview({
 }: projectPreviewProps) {
   const projectPreviewRef = useRef<HTMLDivElement>(null);
 
-  // To animate an element with scroll, you need to pass 2 values to useScroll
+  // To animate an targetElement with scroll, you need to pass 2 values to useScroll
   // 1. element ref to be animated
-  // 2. offset values for viewport and the element in an array,
+  // 2. offset values for viewport and the targetElement in an array,
   //    to define where animation starts and ends depending on the scroll position
   //    * [0, 1] -> 0 represents the start of the viewport, 1 represents the end of the elements (from bottom to top)
   //    *
+
   const { scrollYProgress } = useScroll({
     target: projectPreviewRef,
     offset: ['0 1', '1.33 1'],
@@ -45,7 +46,7 @@ export default function ProjectPreview({
   const tagElements = tags?.map((tag, index) => (
     <span
       key={index}
-      className="bg-zinc-100 rounded-md group-hover:bg-zinc-200 transition p-2 text-sm"
+      className="bg-zinc-100 rounded-md group-hover:bg-violet-100 transition p-2 text-sm"
     >
       {tag}
     </span>
@@ -64,7 +65,7 @@ export default function ProjectPreview({
         className="flex flex-row justify-center gap-x-8 shadow-md hover:shadow-lg
           hover:-translate-y-1 transition dark:bg-slate-600 dark:shadow-slate-800 min-h-5
           dark:hover:shadow-slate-950 bg-zinc-50 w-full overflow-hidden relative p-8
-          hover:bg-zinc-100"
+          hover:bg-zinc-50"
       >
         <div
           className="flex flex-col gap-4 lg:w-2/3 pl-12 ml-auto group-even:mr-auto group-even:p-8

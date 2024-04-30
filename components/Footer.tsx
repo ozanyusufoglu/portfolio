@@ -32,17 +32,7 @@ export default function Footer() {
           </Link>
           <p>with 🐵🧠</p>
         </div>
-        <div className="flex flex-row gap-x-4">
-          <Link href="https://github.com/ozanyusufoglu/">
-            <RxGithubLogo />
-          </Link>
-          <Link href="#">
-            <RxLinkedinLogo />
-          </Link>
-          <Link href="ozanyusufoglu@protonmail.com">
-            <RxEnvelopeClosed />
-          </Link>
-        </div>
+        <ContactLinks />
       </div>
     </div>
   );

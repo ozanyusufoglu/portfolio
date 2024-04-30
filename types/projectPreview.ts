@@ -5,6 +5,7 @@ export type projectPreviewProps = {
   description: string;
   slug: string;
   personal?: boolean;
+  link?: string;
   dates?: string;
   company?: string;
   misc?: string;
