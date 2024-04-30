@@ -1,23 +1,24 @@
-import { Karla, Urbanist, Josefin_Sans } from 'next/font/google';
+import { Karla, Urbanist, Roboto_Slab, League_Spartan } from 'next/font/google';
 
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import './globals.css';
 
-const karla = Karla({ subsets: ['latin'] });
-const urbanist = Urbanist({ subsets: ['latin'] });
-// const josefin = Josefin_Sans({ subsets: ['latin'] });
+const karla = Karla({ subsets: ['latin-ext'] });
+const urbanist = Urbanist({ subsets: ['latin-ext'] });
+const spartan = League_Spartan({ subsets: ['latin-ext'] });
+const slab = Roboto_Slab({ subsets: ['latin-ext'] });
 
 export const metadata = {
   title: 'Ozan Yusufoglu',
-  description: 'Software Engineer, Personal Website',
+  description: 'Frontend Engineer, Personal Website',
 };
 
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body
-        className={`${urbanist.className} bg-white text-slate-800 dark:bg-slate-700
+        className={`${spartan.className} bg-white text-slate-800 dark:bg-slate-700
         dark:text-slate-100 flex flex-col items-center`}
       >
         <Header />

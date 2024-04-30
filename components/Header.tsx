@@ -18,10 +18,10 @@ export default function Header() {
       >
         <NavigationItem href="/">
           <div className="flex flex-row justify-center gap-x-4 items-center">
-            <Ozanlogo />
-            <span className="text-3xl font-bold text-gray-950 dark:text-gray-300">
+            <Ozanlogo className="scale-x-100" />
+            {/* <span className="text-3xl font-bold text-gray-950 dark:text-gray-300">
               Ö.Ozan Yusufoglu
-            </span>
+            </span> */}
           </div>
         </NavigationItem>
         <nav

@@ -5,6 +5,7 @@ import { motion } from 'framer-motion';
 import Image from 'next/image';
 import Section from './Section';
 import About from '@/markdown/about-me.mdx';
+import { ContactLinks } from './Footer';
 
 export default function Hero() {
   return (
@@ -30,6 +31,7 @@ export default function Hero() {
         </div>
         <div className="prose antialiased text-lg">
           <About />
+          <ContactLinks />
         </div>
 
         {/* <div className="prose">
