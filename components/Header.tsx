@@ -7,12 +7,14 @@ import Button from './Button';
 import { links } from '@/util/data';
 import Ozanlogo from '@/components/svgComponents/ozanlogo';
 import { GoMoon } from 'react-icons/go';
+import ToggleThemeBtn from './ToggleThemeBtn';
 
 export default function Header() {
   return (
-    <header className="absolute top-2 z-10 w-screen">
+    <header className="md:absolute top-2 w-screen cursor-pointer z-10">
       <motion.div
-        className="flex flex-row items-center justify-between w-screen px-8 flex-wrap lg:flex-nowrap"
+        className="flex flex-row items-center justify-between w-screen px-8 flex-wrap
+          lg:flex-nowrap"
         initial={{ y: -100, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
       >
@@ -24,10 +26,7 @@ export default function Header() {
             </span> */}
           </div>
         </NavigationItem>
-        <nav
-          className="rounded-md bg-white dark:bg-slate-600 bg-opacity-80 px-2 py-2 transition
-            dark:border-slate-950 flex flex-row items-center"
-        >
+        <nav className="px-2 py-2 transition dark:border-slate-950 flex flex-row items-center z-40">
           {links.map((item, index) => (
             <NavigationItem
               key={index}
@@ -37,12 +36,13 @@ export default function Header() {
             </NavigationItem>
           ))}
 
-          <Button
-            styleProps="rounded-full p-4"
+          <ToggleThemeBtn />
+          {/* <Button
+            styleProps="rounded-full p-4 cursor-pointer"
             onClick={null}
           >
             <GoMoon />
-          </Button>
+          </Button> */}
         </nav>
       </motion.div>
     </header>

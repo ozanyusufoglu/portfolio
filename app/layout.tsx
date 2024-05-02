@@ -16,10 +16,13 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
+    <html
+      lang="en"
+      className="dark"
+    >
       <body
-        className={`${spartan.className} bg-white text-slate-800 dark:bg-slate-700
-        dark:text-slate-100 flex flex-col items-center`}
+        className={`${urbanist.className} bg-white text-slate-800 dark:bg-gray-600 dark:text-gray-50
+        flex flex-col items-center`}
       >
         <Header />
         {children}

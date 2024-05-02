@@ -7,14 +7,14 @@ import { navItemProps } from '@/types/navigationItem';
 const NavigationItem = ({ children, href }: navItemProps) => {
   return (
     <motion.li
-      className="list-none"
+      className="list-none cursor-default"
       initial={{ y: -100, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
     >
       <Link href={href}>
         <div
-          className="cursor-pointer p-4 text-lg font-md text-gray-500 transition-all duration-200
-            ease-out hover:text-violet-950 dark:text-white dark:hover:text-violet-300"
+          className="p-4 cursor-pointer text-lg font-md text-gray-500 transition-all duration-200
+            ease-out hover:text-violet-950 dark:text-white dark:hover:text-violet-300 z-50"
         >
           {children}
         </div>

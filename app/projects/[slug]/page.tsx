@@ -7,7 +7,6 @@ export default async function PostPage({ params }) {
 
   const targetPost = await getPostBySlug(slug);
 
-  console.log(targetPost.title);
   const components = { Button };
   // it already returns the content as a react component bcs of compileMDX
   return (

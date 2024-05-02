@@ -4,23 +4,33 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
 import Section from './Section';
-import About from '@/markdown/about-me.mdx';
-import { ContactLinks } from './Footer';
+import AboutMe from '@/markdown/about-me.mdx';
+import { ContactLinks } from './ContactLinks';
+import { TechStackList } from './TechStackLinks';
+import cn from '@/util/cn';
 
 export default function Hero() {
   return (
     <Section
-      styleProps="flex flex-auto flex-col items-center
+      styleProps="flex flex-col items-center
           justify-center gap-x-20"
     >
       <motion.div
         initial={{ opacity: 0, y: 100 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.1 }}
-        className="relative mx-auto flex w-1/2 flex-row items-center justify-center gap-x-4 text-lg flex-wrap"
+        className={cn(
+          `relative mx-auto flex flex-col items-center justify-center gap-8 text-lg
+          flex-wrap`,
+
+          // md
+          'lg:w-1/2 md:flex-row'
+        )}
       >
-        <div className="flex flex-row gap-x-8 justify-between">
-          <h1 className="text-5xl font-bold">Özgür Ozan Yusufoglu</h1>
+        <div className="flex flex-col md:flex-row gap-8 justify-center items-center">
+          <h1 className="text-4xl sm:text-5xl font-bold text-center md:text-left">
+            Özgür Ozan Yusufoglu
+          </h1>
           <Image
             src="/ozgur_ozan.jpeg"
             alt="ozan portrait"
@@ -29,25 +39,13 @@ export default function Hero() {
             className="rounded-md"
           ></Image>
         </div>
-        <div className="prose antialiased text-lg">
-          <About />
+        <div className="prose antialiased text-lg dark:text-white">
+          <AboutMe />
+        </div>
+        <div className="flex flex-row w-full justify-end">
+          {/* <TechStackList /> */}
           <ContactLinks />
         </div>
-
-        {/* <div className="prose">
-          <p>Hi, nice to meet you🤞</p>
-
-          <p>
-            I’m a Frontend Engineer with with Electrical & Electronics
-            Engineering background. I formerly worked as an R&D Manager and
-            coordinated multiple projects supported by The Scientific and
-            Technological Research Council of Turkey (TUBITAK), the national
-            partner of EU Horizon 2020 Programme. While I wasn't actively coding
-            with this hat, I led the development team to build user-centered
-            products that tackled critical problems in diverse domains, by
-            utilizing R&D methodologies.
-          </p>
-        </div> */}
       </motion.div>
     </Section>
   );
