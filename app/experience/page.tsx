@@ -1,0 +1,70 @@
+import React from 'react';
+import Section from '@/components/Section';
+// import WorkExperience from '@/components/WorkExperience';
+import WorkExperienceLite from '@/components/WorkExperienceLite';
+import { experiences } from '@/util/data';
+import ProjectPreview from '@/components/ProjectPreview';
+
+export default async function Experience() {
+  const projectElements = experiences[3].projects.map((project, index) => {
+    return (
+      <React.Fragment key={index}>
+        <ProjectPreview {...project} />
+      </React.Fragment>
+    );
+  });
+
+  const jobs = experiences.map((item, index) => {
+    if (item.type === 'work') {
+      return (
+        <React.Fragment key={index}>
+          <WorkExperienceLite
+            companyName={item.company}
+            description={item.description}
+            projects={item.projects}
+            dates={item.dates}
+            position={item.position}
+            link={item.link}
+          />
+        </React.Fragment>
+      );
+    }
+  });
+
+  const trainings = experiences.map((item, index) => {
+    if (item.type === 'training')
+      return (
+        <React.Fragment key={index}>
+          <WorkExperienceLite
+            companyName={item.company}
+            description={item.description}
+            projects={item.projects}
+            dates={item.dates}
+            position={item.position}
+            link={item.link}
+          />
+        </React.Fragment>
+      );
+  });
+
+  return (
+    <Section className="flex gap-y-12 flex-col w-screen justify-center xl:w-2/3 lg:mx-auto xl:mt-52 p-4">
+      {/* <div className="flex flex-col gap-y-2">
+        <p className="text-lg font-bold">Trainings</p>
+        {trainings}
+      </div> */}
+      <div className="flex flex-col gap-y-2">
+        <p className="text-lg font-semibold p-4">Professional</p>
+        {trainings}
+        {jobs}
+      </div>
+
+      <div>
+        {projectElements ? (
+          <p className="font-semibold text-lg mb-8 p-4">R&D Projects</p>
+        ) : null}
+        <div className="flex flex-col gap-y-4">{projectElements}</div>
+      </div>
+    </Section>
+  );
+}

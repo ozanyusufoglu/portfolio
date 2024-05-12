@@ -2,7 +2,11 @@
 import Link from 'next/link';
 import React, { ReactNode } from 'react';
 import { motion } from 'framer-motion';
-import { navItemProps } from '@/types/navigationItem';
+
+export type navItemProps = {
+  children: ReactNode;
+  href: string;
+};
 
 const NavigationItem = ({ children, href }: navItemProps) => {
   return (

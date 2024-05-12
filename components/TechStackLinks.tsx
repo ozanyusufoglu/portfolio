@@ -1,28 +1,32 @@
 import { FaReact } from 'react-icons/fa6';
 import { TbBrandFirebase, TbBrandNextjs } from 'react-icons/tb';
 import { SiOpenai } from 'react-icons/si';
+import { SiTailwindcss } from 'react-icons/si';
+import { SiTypescript } from 'react-icons/si';
 
 export function TechStackList() {
   return (
     <div className="flex flex-col gap-4 items-center">
-      <p>Techstack</p>
-      <p>
-        My current tech stack is React <FaReact className="inline" />, Firebase
-        <TbBrandFirebase className="inline" />, Nextjs
-        <TbBrandNextjs className="inline" />
-      </p>
-      <div className="flex flex-row gap-4 text-lg">
+      <p className="self-center">Tech stack I use</p>
+      <div className="flex flex-row justify-center flex-wrap gap-8 text-lg md:flex-nowrap">
         <p>
-          <FaReact />
+          React <FaReact className="inline" />
+        </p>
+
+        <p>
+          Typescript <SiTypescript className="inline" />
         </p>
         <p>
-          <TbBrandFirebase />
+          Next.js <TbBrandNextjs className="inline" />
         </p>
         <p>
-          <TbBrandNextjs />
+          Tailwind <SiTailwindcss className="inline" />
         </p>
         <p>
-          <SiOpenai />
+          Firebase <TbBrandFirebase className="inline" />
+        </p>
+        <p>
+          OpenAI <SiOpenai className="inline" />
         </p>
       </div>
     </div>

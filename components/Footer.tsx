@@ -9,8 +9,8 @@ import Ozanlogo from './svgComponents/ozanlogo';
 export default function Footer() {
   return (
     <div
-      className="flex flex-row items-center gap-8 w-screen bg-slate-800 p-8 md:p-16
-        dark:bg-slate-800 text-white"
+      className="flex flex-row items-center gap-8 w-screen p-8 md:p-16 dark:bg-gray-700
+        bg-gray-100"
     >
       <div className="flex flex-col gap-y-8">
         <div className="text-left">
@@ -27,13 +27,14 @@ export default function Footer() {
         </div>
       </div>
 
-      <div className="ml-auto">
-        <NavigationItem href="https://github.com/ozanyusufoglu/scrimba-nextjs-workshop">
+      <div className="flex flex-col ml-auto">
+        <NavigationItem href="https://github.com/ozanyusufoglu/portfolio">
           <div className="flex md:flex-row flex-col text-right items-end md:items-center gap-4">
-            <RxGithubLogo color="white" />
-            <p className="text-white">Take me to source code</p>
+            <RxGithubLogo />
+            <p className="">Take me the to source code</p>
           </div>
         </NavigationItem>
+        <p className="self-center">2024</p>
       </div>
     </div>
   );

@@ -5,18 +5,6 @@ import { getPosts } from '@/util/getPostsMetadata';
 export default async function Posts() {
   const postsData = await getPosts();
 
-  // const postPreviews = posts.map(
-  //   (post, index) => {
-  //     console.log(post);
-  //     return (
-  //       <PostPreview
-  //         key={index}
-  //         {...post}
-  //       />
-  //     );
-  //   }
-  // );
-
   const postPreviews = postsData.map((post, index) => {
     const { title, slug, icon, cover, previewItems } = post;
     return (
@@ -32,10 +20,7 @@ export default async function Posts() {
   });
 
   return (
-    <Section
-      styleProps="flex flex-col flex-wrap 
-        justify-start gap-x-20 gap-y-20 lg:flex-row items-center"
-    >
+    <Section className="flex flex-col flex-wrap justify-start gap-x-20 gap-y-20 lg:flex-row items-center">
       {postPreviews}
     </Section>
   );

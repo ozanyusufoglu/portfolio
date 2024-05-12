@@ -11,10 +11,7 @@ import cn from '@/util/cn';
 
 export default function Hero() {
   return (
-    <Section
-      styleProps="flex flex-col items-center
-          justify-center gap-x-20"
-    >
+    <Section className="flex flex-col items-center justify-center gap-x-20">
       <motion.div
         initial={{ opacity: 0, y: 100 }}
         animate={{ opacity: 1, y: 0 }}
@@ -28,9 +25,14 @@ export default function Hero() {
         )}
       >
         <div className="flex flex-col md:flex-row gap-8 justify-center items-center">
-          <h1 className="text-4xl sm:text-5xl font-bold text-center md:text-left">
-            Özgür Ozan Yusufoglu
-          </h1>
+          <div className="flex flex-col gap-y-8">
+            <h1 className="text-4xl sm:text-5xl font-bold text-center md:text-left">
+              Özgür Ozan Yusufoglu
+            </h1>
+            <p className="font-semibold text-2xl">Full-stack Developer</p>
+            <ContactLinks />
+          </div>
+
           <Image
             src="/ozgur_ozan.jpeg"
             alt="ozan portrait"
@@ -39,12 +41,11 @@ export default function Hero() {
             className="rounded-md"
           ></Image>
         </div>
-        <div className="prose antialiased text-lg dark:text-white">
+        <div className="prose antialiased text-lg dark:prose-invert">
           <AboutMe />
         </div>
         <div className="flex flex-row w-full justify-end">
-          {/* <TechStackList /> */}
-          <ContactLinks />
+          <TechStackList />
         </div>
       </motion.div>
     </Section>

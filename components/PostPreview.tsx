@@ -37,7 +37,7 @@ export default function PostPreview({
       </ul> */}
       <Link href={`/blog/${slug}`}>
         <Button
-          styleProps="bg-red-50 hover:text-red-400 shadow-red-100"
+          className="bg-red-50 hover:text-red-400 shadow-red-100"
           disabled={false}
           onClick={() => console.log('clicked')}
         >

@@ -4,10 +4,9 @@ import Header from '../components/Header';
 import Footer from '../components/Footer';
 import './globals.css';
 
-const karla = Karla({ subsets: ['latin-ext'] });
-const urbanist = Urbanist({ subsets: ['latin-ext'] });
+// const karla = Karla({ subsets: ['latin-ext'] });
+// const urbanist = Urbanist({ subsets: ['latin-ext'] });
 const spartan = League_Spartan({ subsets: ['latin-ext'] });
-const slab = Roboto_Slab({ subsets: ['latin-ext'] });
 
 export const metadata = {
   title: 'Ozan Yusufoglu',
@@ -21,7 +20,7 @@ export default function RootLayout({ children }) {
       className="dark"
     >
       <body
-        className={`${urbanist.className} bg-white text-slate-800 dark:bg-gray-600 dark:text-gray-50
+        className={`${spartan.className} bg-white text-slate-800 dark:bg-gray-800 dark:text-gray-50
         flex flex-col items-center`}
       >
         <Header />

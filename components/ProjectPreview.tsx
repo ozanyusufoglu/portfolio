@@ -1,18 +1,30 @@
 'use client';
 
-import Link from 'next/link';
-import Button from './Button';
 import Image from 'next/image';
-import clsx from 'clsx';
-import { twMerge } from 'tailwind-merge';
-import { projectPreviewProps } from '@/types/projectPreview';
-import Section from './Section';
+import { StaticImageData } from 'next/image';
 import { motion, useScroll, useTransform } from 'framer-motion';
-import { ReactDOM, useRef } from 'react';
+import { useRef } from 'react';
 import { GrTools } from 'react-icons/gr';
 import cn from '@/util/cn';
-import { compileFunction } from 'vm';
 
+export type projectPreviewProps = {
+  title: string;
+  description: string;
+  slug: string;
+  personal?: boolean;
+  link?: string | null;
+  dates?: string | null;
+  company?: string | null;
+  position?: string | null;
+  misc?: string | null;
+  duration?: string | null;
+  icon?: string | null;
+  body: string | null;
+  previewItems?: readonly string[] | null;
+  imageUrl?: StaticImageData | string | null;
+  tags: readonly string[] | null;
+  tools: readonly string[] | null;
+};
 // 👇 a practical way to declare a types from data throug typeof
 
 // import { projects } from '@/util/data';
@@ -56,7 +68,7 @@ export default function ProjectPreview({
     <span
       key={index}
       className="bg-zinc-100 rounded-md group-hover:bg-zinc-200 transition p-2 text-sm
-        dark:bg-gray-500 dark:group-hover:bg-gray-600"
+        dark:bg-gray-700 dark:group-hover:bg-gray-600"
     >
       {tag}
     </span>
@@ -66,7 +78,7 @@ export default function ProjectPreview({
     <span
       key={index}
       className="bg-violet-50 rounded-md group-hover:bg-violet-100 transition p-2 text-sm flex
-        flex-row gap-x-2 items-center dark:bg-gray-500 dark:group-hover:bg-gray-600"
+        flex-row gap-x-2 items-center dark:bg-gray-700 dark:group-hover:bg-gray-600"
     >
       <GrTools />
       {tool}
@@ -76,20 +88,20 @@ export default function ProjectPreview({
     <motion.div
       style={{ scale: scaleRatio, opacity: opacityRatio }}
       ref={projectPreviewRef}
-      className="group"
+      className="group dark:text-gray-300"
     >
       {personal ? (
         <div
           className={cn(
             // component base
             `justify-center text-lg gap-x-8 shadow-md transition-all bg-zinc-50 w-full
-            overflow-hidden relative sm:p-8 min-h-5`,
+            overflow-hidden relative sm:p-8 min-h-5 rounded`,
 
             // hover
             'hover:-translate-y-1 hover:shadow-lg ',
 
             // dark
-            'dark:bg-gray-700 dark:hover:bg-gray-800'
+            'dark:bg-gray-700 dark:hover:bg-gray-900'
 
             // professional Project
           )}
@@ -137,13 +149,13 @@ export default function ProjectPreview({
         <div
           className={cn(
             `group rounded-md flex flex-row text-md transition-all w-full overflow-hidden
-            relative min-h-5 p-8 bg-zinc-50`,
+            relative p-4`,
 
             // hover
-            'hover:shadow-sm hover:bg-zinc-50 ',
+            'hover:bg-gray-50',
 
             // dark
-            'dark:bg-gray-600 dark:hover:bg-gray-700'
+            'dark:bg-gray-700 dark:hover:bg-gray-900 dark:group-hover:hover:bg-gray-600'
           )}
         >
           <div
@@ -153,10 +165,16 @@ export default function ProjectPreview({
               // With images push text left or right
             )}
           >
-            <h1 className="font-bold">{title}</h1>
-            <p className="text-gray-500">{misc}</p>
-            <p className="font-regular line-clamp-4">{description}</p>
-            <div className="flex flex-row ">
+            <div className="flex flex-row gap-x-4">
+              <h1 className="font-medium">{title}</h1>
+              <p className="text-gray-400 dark:text-gray-400">{misc}</p>
+              <p className="text-gray-400 dark:text-gray-400 ml-auto">
+                {dates}
+              </p>
+            </div>
+
+            <p className="font-regular">{description}</p>
+            <div className="flex flex-row">
               <div className="flex flex-wrap gap-2 text-sm">
                 {tagElements}
                 {toolElements}

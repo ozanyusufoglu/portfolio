@@ -1,17 +1,16 @@
 'use client';
-
-import React, { ReactNode } from 'react';
+import React from 'react';
 import NavigationItem from './NavigationItem';
 import { motion } from 'framer-motion';
-import Button from './Button';
 import { links } from '@/util/data';
 import Ozanlogo from '@/components/svgComponents/ozanlogo';
-import { GoMoon } from 'react-icons/go';
 import ToggleThemeBtn from './ToggleThemeBtn';
+import useToggleTheme from '@/hooks/toggleTheme';
 
 export default function Header() {
+  const { theme, setTheme } = useToggleTheme();
   return (
-    <header className="md:absolute top-2 w-screen cursor-pointer z-10">
+    <header className="md:absolute top-2 w-screen z-10">
       <motion.div
         className="flex flex-row items-center justify-between w-screen px-8 flex-wrap
           lg:flex-nowrap"
@@ -20,7 +19,7 @@ export default function Header() {
       >
         <NavigationItem href="/">
           <div className="flex flex-row justify-center gap-x-4 items-center">
-            <Ozanlogo className="scale-x-100" />
+            <Ozanlogo dark={theme === 'dark'} />
             {/* <span className="text-3xl font-bold text-gray-950 dark:text-gray-300">
               Ö.Ozan Yusufoglu
             </span> */}
@@ -36,13 +35,10 @@ export default function Header() {
             </NavigationItem>
           ))}
 
-          <ToggleThemeBtn />
-          {/* <Button
-            styleProps="rounded-full p-4 cursor-pointer"
-            onClick={null}
-          >
-            <GoMoon />
-          </Button> */}
+          <ToggleThemeBtn
+            theme={theme}
+            setTheme={setTheme}
+          />
         </nav>
       </motion.div>
     </header>
