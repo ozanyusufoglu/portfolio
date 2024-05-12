@@ -1,8 +1,5 @@
-import pomodoro from '@/public/pomodoro.png';
-import feedback from '@/public/feedback.png';
 import kuko from '@/public/kuko_homepage.png';
 import monkeymind_landing from '@/public/monkeymind_landing.png';
-import { SiScrimba } from 'react-icons/si';
 
 export const links = [
   {
@@ -23,13 +20,13 @@ export const projects = [
       'Monkeymind is an AI based productivity tool designed to help users strengthen their cognitive muscles, enabling them to stay focused and attentive to their goals. Create your custom sessions to realize goals and track earnings of your actions.',
     personal: true,
     link: 'https://www.monkeymind.work/spotlight',
-    dates: 'May 2023 ',
+    dates: 'May 2023',
     company: null,
     misc: null,
     duration: null,
     icon: null,
     body: null,
-    previewItems: [],
+    previewItems: null,
     tools: ['React', 'Next.js', 'Firebase', 'OpenAI API', 'Framer API'],
     tags: [
       'attention',
@@ -54,7 +51,7 @@ export const projects = [
     duration: null,
     icon: null,
     body: null,
-    previewItems: [],
+    previewItems: null,
     tags: ['Leipzig', 'community', 'events', 'culture', 'solidarity'],
     tools: ['Ruby', 'middleman', 'SSG', 'headless CMS'],
     imageUrl: kuko,
@@ -73,14 +70,14 @@ export const projects = [
     duration: '2 years',
     icon: null,
     body: null,
-    previewItems: [],
+    previewItems: null,
     tags: [
       'cybersecurity',
       'browser-isolation',
       'zero-trust',
       'phishing-protection',
     ],
-    tools: [],
+    tools: null,
     imageUrl: null,
   },
   {
@@ -97,9 +94,9 @@ export const projects = [
     duration: '2 years',
     icon: null,
     body: null,
-    previewItems: [],
+    previewItems: null,
     tags: ['FMCG', 'IoT', 'Retail', 'PoS', 'Data aggregation'],
-    tools: [],
+    tools: null,
     imageUrl: null,
   },
   {
@@ -135,7 +132,7 @@ export const projects = [
     duration: null,
     icon: null,
     body: null,
-    previewItems: [],
+    previewItems: null,
     tags: ['Iptv', 'Digital Video Broadcasting'],
     tools: null,
     imageUrl: null,
@@ -154,7 +151,7 @@ export const projects = [
     duration: '18 months',
     icon: null,
     body: null,
-    previewItems: [],
+    previewItems: null,
     tags: ['IPTV', 'Set-Top-Box', 'Video-on-Demand', 'Hospitaility'],
     tools: null,
     imageUrl: null,
@@ -246,7 +243,7 @@ export const experiences = [
         slug: null,
         personal: false,
         link: null,
-        dates: 2016 - 2018,
+        dates: '2016 - 2018',
         duration: null,
         misc: 'TÜBİTAK 1507 R&D Programme',
         icon: null,

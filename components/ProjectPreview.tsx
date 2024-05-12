@@ -9,8 +9,8 @@ import cn from '@/util/cn';
 
 export type projectPreviewProps = {
   title: string;
-  description: string;
   slug: string;
+  description: string;
   personal?: boolean;
   link?: string | null;
   dates?: string | null;
@@ -35,18 +35,18 @@ export default function ProjectPreview({
   description,
   slug,
   personal,
+  link,
   dates,
   company,
   position,
+  misc,
   duration,
   icon,
   body,
   previewItems,
-  tags,
   imageUrl,
+  tags,
   tools,
-  link,
-  misc,
 }: projectPreviewProps) {
   const projectPreviewRef = useRef<HTMLDivElement>(null);
 

@@ -2,7 +2,7 @@ import fs, { readFileSync } from 'fs';
 import path from 'path';
 import { cache } from 'react';
 import matter from 'gray-matter';
-import { postPreviewProps } from '@/types/postPreview';
+import { postPreviewProps } from '@/components/PostPreview';
 
 const postsFolder = path.join(process.cwd(), 'markdown');
 

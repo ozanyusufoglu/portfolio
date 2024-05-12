@@ -1,8 +1,15 @@
 'use client';
 import Link from 'next/link';
 import Button from './Button';
-import { postPreviewProps } from '@/types/postPreview';
 
+export type postPreviewProps = {
+  title: string;
+  slug: string;
+  icon?: string;
+  cover?: string;
+  previewItems?: string;
+  body?: string;
+};
 export default function PostPreview({
   title,
   slug,

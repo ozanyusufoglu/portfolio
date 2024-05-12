@@ -19,13 +19,13 @@ export default function WorkExperience({
   position,
   link,
 }: experienceProps) {
-  const projectElements = projects?.map((project, index) => {
-    return (
-      <React.Fragment key={index}>
-        <ProjectPreview {...project} />
-      </React.Fragment>
-    );
-  });
+  // const projectElements = projects?.map((project, index) => {
+  //   return (
+  //     <React.Fragment key={index}>
+  //       <ProjectPreview {...project} />
+  //     </React.Fragment>
+  //   );
+  // });
 
   return (
     <div
@@ -60,7 +60,7 @@ export default function WorkExperience({
       <p>{description}</p>
       <div className="flex flex-col">
         {projects ? <p className="font-bold mt-12">Projects</p> : null}
-        {projectElements}
+        {/* {projectElements} */}
       </div>
     </div>
   );
