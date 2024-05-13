@@ -4,7 +4,7 @@ import { RxGithubLogo } from 'react-icons/rx';
 
 export function ContactLinks() {
   return (
-    <div className="flex flex-row gap-x-4">
+    <div className="flex gap-4">
       <a
         href="https://github.com/ozanyusufoglu/"
         target="_blank"

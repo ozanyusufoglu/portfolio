@@ -7,8 +7,8 @@ export const links = [
     link: '/',
   },
   {
-    title: 'Experience',
-    link: '/experience',
+    title: 'Work',
+    link: '/work',
   },
 ] as const;
 
@@ -159,6 +159,16 @@ export const projects = [
 ] as const;
 
 export const experiences = [
+  {
+    company: 'Freelance',
+    description: '',
+    position: 'R&D Consultancy',
+    dates: '2022-present',
+    duration: '',
+    link: '',
+    projects: null,
+    type: 'work',
+  },
   {
     company: 'Scrimba',
     description:

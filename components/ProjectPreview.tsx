@@ -68,7 +68,7 @@ export default function ProjectPreview({
     <span
       key={index}
       className="bg-zinc-100 rounded-md group-hover:bg-zinc-200 transition p-2 text-sm
-        dark:bg-gray-700 dark:group-hover:bg-gray-600"
+        dark:bg-gray-600 dark:group-hover:bg-gray-500"
     >
       {tag}
     </span>
@@ -78,7 +78,7 @@ export default function ProjectPreview({
     <span
       key={index}
       className="bg-violet-50 rounded-md group-hover:bg-violet-100 transition p-2 text-sm flex
-        flex-row gap-x-2 items-center dark:bg-gray-700 dark:group-hover:bg-gray-600"
+        flex-row gap-x-2 items-center dark:bg-gray-600 dark:group-hover:bg-gray-600"
     >
       <GrTools />
       {tool}
