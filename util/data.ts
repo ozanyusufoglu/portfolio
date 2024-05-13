@@ -160,16 +160,6 @@ export const projects = [
 
 export const experiences = [
   {
-    company: 'Freelance',
-    description: '',
-    position: 'R&D Consultancy',
-    dates: '2022-present',
-    duration: '',
-    link: '',
-    projects: null,
-    type: 'work',
-  },
-  {
     company: 'Scrimba',
     description:
       'I join to the bootcamp to retool myself with advanced React and ecosystem ',
@@ -181,11 +171,21 @@ export const experiences = [
     type: 'training',
   },
   {
-    company: 'Innogate',
+    company: 'Freelance',
+    description: '',
+    position: 'R&D Consultant',
+    dates: '2022-present',
+    duration: '',
+    link: '',
+    projects: null,
+    type: 'work',
+  },
+  {
+    company: 'Innogate Startup Accelerator',
     description:
       'Innogate is an accelerator program for early phase startups, preparing companies ready for US market',
-    position: 'Startup Accelerator',
-    dates: '6 months, 2021',
+    position: 'Product Manager',
+    dates: '6 months, 2020',
     duration: '6 months',
     link: 'https://innogate.org/en/homepage/',
     projects: null,
@@ -196,12 +196,13 @@ export const experiences = [
     description:
       'Isoolate is an enterprise security platform providing browser isolation and manageability against against critical web-born threads. I carried out early phase R&D process and product development. We took part successfully in ITU Innogate Startup Accelerator 12th cohort as a promising cyber-security solution.  ',
     position: 'Product Manager',
-    dates: '2019 - 2021',
+    dates: '2019 - 2020',
     duration: '1 year',
     link: 'https://www.defensx.com/',
     projects: null,
     type: 'work',
   },
+
   {
     company: 'Yenihayat Informatics',
     position: 'R&D Manager',
