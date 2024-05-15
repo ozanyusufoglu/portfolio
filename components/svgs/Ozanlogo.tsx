@@ -1,5 +1,5 @@
 import * as React from 'react';
-const Ozanlogo = ({ dark }) => (
+const OzanLogo = ({ dark }) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     width={68}
@@ -40,4 +40,4 @@ const Ozanlogo = ({ dark }) => (
     />
   </svg>
 );
-export default Ozanlogo;
+export default OzanLogo;

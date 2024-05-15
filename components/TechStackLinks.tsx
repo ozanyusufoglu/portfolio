@@ -4,7 +4,9 @@ import { SiOpenai } from 'react-icons/si';
 import { SiTailwindcss } from 'react-icons/si';
 import { SiTypescript } from 'react-icons/si';
 
-export function TechStackList() {
+import { techs } from '@/util/data';
+
+export default function TechStackList() {
   return (
     <div className="flex flex-col gap-4 items-center">
       <p className="self-center">Tech stack I use</p>
@@ -12,7 +14,6 @@ export function TechStackList() {
         <p>
           React <FaReact className="inline" />
         </p>
-
         <p>
           Typescript <SiTypescript className="inline" />
         </p>

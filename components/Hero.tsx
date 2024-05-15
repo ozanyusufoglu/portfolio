@@ -4,9 +4,9 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
 import Section from './Section';
-import AboutMe from '@/markdown/about-me.mdx';
+import AboutMe from './about-me.mdx';
 import { ContactLinks } from './ContactLinks';
-import { TechStackList } from './TechStackLinks';
+import TechStackList from './TechStackLinks';
 import cn from '@/util/cn';
 
 export default function Hero() {

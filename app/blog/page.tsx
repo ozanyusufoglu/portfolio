@@ -1,6 +1,6 @@
 import Section from '@/components/Section';
 import PostPreview from '../../components/PostPreview';
-import { getPosts } from '@/util/getPostsMetadata';
+import { getPosts, getAllPostsSlug } from '@/util/getPostsMetadata';
 
 export default async function Posts() {
   const postsData = await getPosts();

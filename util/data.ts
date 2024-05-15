@@ -1,5 +1,6 @@
 import kuko from '@/public/kuko_homepage.png';
 import monkeymind_landing from '@/public/monkeymind_landing.png';
+import { SiTailwindcss } from 'react-icons/si';
 
 export const links = [
   {
@@ -12,6 +13,7 @@ export const links = [
   },
 ] as const;
 
+export const techs = [{ title: 'Tailwind', SVG: SiTailwindcss }];
 export const projects = [
   {
     title: 'Monkeymind',
