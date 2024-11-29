@@ -12,7 +12,7 @@ export function ContactLinks() {
         <RxGithubLogo />
       </a>
       <a
-        href="https://www.linkedin.com/in/%C3%B6zg%C3%BCr-ozan-yusufoglu-71b68424"
+        href="https://www.linkedin.com/in/ozanyusufoglu/"
         target="_blank"
       >
         <RxLinkedinLogo />

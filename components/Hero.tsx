@@ -28,7 +28,7 @@ export default function Hero() {
             <h1 className="text-4xl sm:text-5xl font-bold text-center sm:text-left">
               Özgür Ozan Yusufoglu
             </h1>
-            <p className="font-semibold text-3xl">Front-end Engineer</p>
+            <p className="font-semibold text-3xl">Software Engineer</p>
             <ContactLinks />
           </div>
 
