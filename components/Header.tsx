@@ -5,7 +5,6 @@ import { motion } from 'framer-motion';
 import { links } from '@/util/data';
 import ToggleThemeBtn from './ToggleThemeBtn';
 import useToggleTheme from '@/hooks/toggleTheme';
-import OzanLogo from './svgs/OzanLogo';
 
 export default function Header() {
   const { theme, setTheme } = useToggleTheme();
@@ -18,7 +17,7 @@ export default function Header() {
       >
         <NavigationItem href="/">
           <div className="flex flex-row justify-center gap-4 items-center">
-            <OzanLogo dark={theme === 'dark'} />
+            {/* <OzanLogo dark={theme === 'dark'} /> */}
             <span className="hidden sm:block text-3xl font-semibold text-gray-950 dark:text-gray-50">
               Ö.Ozan Yusufoglu
             </span>
