@@ -3,9 +3,9 @@ import React from 'react';
 import NavigationItem from './NavigationItem';
 import { motion } from 'framer-motion';
 import { links } from '@/util/data';
-import OzanLogo from '@/components/svgs/OzanLogo';
 import ToggleThemeBtn from './ToggleThemeBtn';
 import useToggleTheme from '@/hooks/toggleTheme';
+import OzanLogo from './svgs/OzanLogo';
 
 export default function Header() {
   const { theme, setTheme } = useToggleTheme();
