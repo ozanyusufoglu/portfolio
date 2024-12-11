@@ -21,7 +21,7 @@ export const projects = [
     description:
       'Monkeymind is an AI based productivity tool designed to help users strengthen their cognitive muscles, enabling them to stay focused and attentive to their goals. Create your custom sessions to realize goals and track earnings of your actions.',
     personal: true,
-    link: 'https://www.monkeymind.work/spotlight',
+    link: 'https://www.monkeymind.ai',
     dates: 'May 2023',
     company: null,
     misc: null,
