@@ -1,64 +1,30 @@
-// const withMDX = require('@next/mdx')();
-
-// const nextConfig = {
-//   // Configure `pageExtensions` to include MDX files
-//   pageExtensions: [
-//     'js',
-//     'jsx',
-//     'mdx',
-//     'ts',
-//     'tsx',
-//   ],
-//   // Optionally, add any other Next.js config below
-// };
-
-// module.exports = withMDX(nextConfig);
-
-// /** @type {import('next').NextConfig} */
-// import nextMDX from '@next/mdx';
-// import remarkFrontmatter from 'remark-frontmatter';
-
-// const withMDX = nextMDX({
-//   extension: /\.mdx?$/,
-//   options: {
-//     remarkPlugins: [remarkFrontmatter],
-//     rehypePlugins: [],
-//   },
-// });
-
-// export default withMDX({
-//   pageExtensions: [
-//     'ts',
-//     'tsx',
-//     'js',
-//     'jsx',
-//     'md',
-//     'mdx',
-//   ],
-// });
-
+import nextMDX from '@next/mdx';
 import remarkFrontmatter from 'remark-frontmatter';
-import createMDX from '@next/mdx';
+import remarkGfm from 'remark-gfm';
+import rehypePrettyCode from 'rehype-pretty-code';
 
+/** @type {import('rehype-pretty-code').Options} */
 /** @type {import('next').NextConfig} */
+/** @type {import('rehype-pretty-code').Options} */
+
 const nextConfig = {
-  // Configure `pageExtensions`` to include MDX files
-  pageExtensions: [
-    'js',
-    'jsx',
-    'md',
-    'mdx',
-    'ts',
-    'tsx',
-  ],
-  // Optionally, add any other Next.js config below
+  pageExtensions: ['js', 'jsx', 'md', 'mdx', 'ts', 'tsx'],
 };
 
-const withMDX = createMDX({
+const options = {
+  theme: 'monokai',
+  keepBackground: true,
+  // onVisitHighlightedLine(node) {
+  //   // Each line node by default has `class="line"`.
+  //   node.properties.className?.push('highlighted');
+  // },
+};
+const withMDX = nextMDX({
   // Add markdown plugins here, as desired
+  extension: /\.mdx?$/,
   options: {
-    remarkPlugins: [remarkFrontmatter],
-    rehypePlugins: [],
+    remarkPlugins: [remarkFrontmatter, remarkGfm],
+    rehypePlugins: [[rehypePrettyCode, options]],
   },
 });
 

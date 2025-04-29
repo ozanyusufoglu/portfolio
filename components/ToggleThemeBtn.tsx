@@ -1,8 +1,13 @@
+'use client';
 import { GoMoon } from 'react-icons/go';
 import { GoSun } from 'react-icons/go';
 import Button from './Button';
+import useToggleTheme from '@/hooks/toggleTheme';
+import cn from '@/util/cn';
 
-export default function ToggleThemeBtn({ theme, setTheme }) {
+export default function ToggleThemeBtn({ className }) {
+  const { theme, setTheme } = useToggleTheme();
+
   const handleClick = () => {
     if (theme === 'light') {
       document.documentElement.classList.add('dark');
@@ -17,7 +22,10 @@ export default function ToggleThemeBtn({ theme, setTheme }) {
 
   return (
     <Button
-      className="rounded-full p-4 cursor-pointer transition active:brutalActive top-8 right-8"
+      className={cn(
+        'rounded-full p-4 cursor-pointer transition active:brutalActive',
+        className
+      )}
       onClick={handleClick}
     >
       {theme === 'dark' ? <GoSun /> : <GoMoon />}

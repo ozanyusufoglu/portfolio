@@ -1,0 +1,231 @@
+---
+title: "Stream Markdown LLM Content to Tiptap"
+slug: "stream-markdown"
+icon: "🧠"
+cover: ""
+previewItems: Migrating from ReactMarkdown to Tiptap for Enhanced Markdown Rendering in Next.js
+description: "Learn how to migrate from react-markdown to Tiptap for enhanced Markdown rendering in Next.js. This guide covers installation, initial content rendering, managing conversation flow, styling, and handling dynamic data streams."
+createdAt: 2023-10-01T00:00:00.000Z
+updatedAt: 2023-10-01T00:00:00.000Z
+tags: ["tiptap", "nextjs", "react"]
+---
+
+
+# **Migrating from ReactMarkdown to Tiptap for Enhanced Markdown Rendering in Next.js**
+
+The evolution of web applications often necessitates upgrading or replacing existing components to leverage new features, improve performance, or gain greater control over functionality. In the context of rendering Markdown content within a Next.js project, a transition from a dedicated rendering component like react-markdown to a more comprehensive rich text editor framework such as Tiptap, utilizing the tiptap-markdown extension, presents both opportunities and challenges. While react-markdown efficiently handles the basic task of displaying Markdown, Tiptap's underlying architecture as a full-fledged editor provides a foundation for future enhancements, including the potential to introduce in-place editing capabilities directly within the conversation interface [^1]. This move towards a more robust framework allows for greater flexibility and customization, addressing requirements such as precise styling, nuanced handling of different message roles in a conversation, and the accurate rendering of interactive elements like task lists. The process of migrating to Tiptap involves careful consideration of installation, initial content rendering, managing different content types, styling to maintain visual consistency, and handling dynamic data streams.
+
+## **Setting Up Tiptap with Markdown in a Next.js Environment**
+
+The initial step in integrating Tiptap with Markdown rendering capabilities into a Next.js project involves installing the necessary packages. This is achieved using either npm or yarn, the package managers commonly employed in JavaScript-based projects. The core Tiptap libraries, including @tiptap/core and @tiptap/react, are fundamental as they provide the base editor functionality and the React‑specific bindings required to use Tiptap components within a Next.js application [^3]. Additionally, the @tiptap/starter‑kit offers a collection of essential extensions that add basic but crucial functionalities to the editor, such as support for paragraphs, headings, and fundamental text formatting options like bold and italic [^3]. Finally, the tiptap‑markdown package is the key to enabling Markdown parsing and rendering within the Tiptap editor. These packages can be installed by running the following commands in the root directory of the Next.js project:
+
+Bash
+
+```bash
+npm install @tiptap/core @tiptap/react @tiptap/starter-kit tiptap-markdown
+```
+
+or
+
+Bash
+
+```bash
+yarn add @tiptap/core @tiptap/react @tiptap/starter-kit tiptap-markdown
+```
+
+It is important to ensure that the core Tiptap packages are installed alongside tiptap‑markdown as the latter depends on the former to function correctly. Specifically, tiptap‑markdown leverages @tiptap/core for its integration with the Tiptap editor and relies on the prosemirror‑markdown library, which is part of the ProseMirror ecosystem, for the actual parsing and serialization of Markdown syntax.
+
+## **Rendering Initial Markdown Content in Tiptap**
+
+Once the necessary packages are installed, the next step involves configuring a Tiptap editor instance to display existing Markdown content. The tiptap‑markdown extension allows for the direct use of Markdown strings as initial content through the content option provided in the useEditor hook [^9]. This hook is the primary way to create and manage a Tiptap editor instance within a React component. By including the Markdown extension in the extensions array passed to useEditor, the editor becomes capable of interpreting Markdown content. The following code snippet illustrates how this can be implemented:
+
+JavaScript
+
+```javascript
+import React from "react";
+import { useEditor, EditorContent } from "@tiptap/react";
+import StarterKit from "@tiptap/starter-kit";
+import Markdown from "tiptap-markdown";
+
+const MyTiptapEditor = ({ initialMarkdownContent }) => {
+  const editor = useEditor({
+    extensions: [StarterKit, Markdown],
+    content: initialMarkdownContent, // Pass your Markdown string here
+  });
+
+  if (!editor) {
+    return null;
+  }
+
+  return <EditorContent editor={editor} />;
+};
+
+export default MyTiptapEditor;
+```
+
+In this example, the `initialMarkdownContent` prop, which will receive the Markdown string from the `message.content` of the ConversationItem, is directly assigned to the content option of the editor. Tiptap employs a schema to define the structure and rules for the content it manages, [^11], [^11], [^11]. When tiptap‑markdown encounters a Markdown string provided as initial content, it parses this string and transforms it into a structured document representation that adheres to the enabled extensions and the underlying ProseMirror schema [^4]. This structured format ensures consistency in rendering and enables further manipulation of the content within the Tiptap editor.
+
+## **Managing Conversation Flow: Handling User and Assistant Roles**
+
+To effectively display a conversation within a single Tiptap editor instance, it is crucial to visually differentiate between messages from the user and the assistant. One approach to achieve this involves defining custom node types within Tiptap: UserMessage and AssistantMessage [^3]. These custom nodes extend Tiptap's functionality to represent distinct types of content within the editor. Defining a custom node extension typically involves specifying properties such as name (a unique identifier), group (which helps categorize the node within the schema, likely block for messages), and content (defining what kind of content the node can contain, such as `paragraph*` to allow one or more paragraphs within a message) [^11].
+
+To utilize these custom nodes, the incoming message data might need to be adapted. For instance, a simple role identifier (e.g., `[user]` or `[assistant]`) could be prepended to the Markdown content of each message. Subsequently, it becomes necessary to customize how tiptap‑markdown parses this content [^12]. The default Markdown parser will not inherently recognize these custom role identifiers. Customizing the parsing logic might involve extending the Markdown extension provided by tiptap‑markdown or implementing custom input rules within Tiptap that detect the role‑specific syntax and trigger the creation of the corresponding UserMessage or AssistantMessage nodes.
+
+For scenarios requiring more complex rendering or interactive elements within user and assistant messages, Tiptap's Node Views offer a powerful mechanism [^13]. Node Views allow developers to render React components directly within the Tiptap editor, enabling highly customized and interactive content that goes beyond basic text and formatting. As an alternative, for simpler visual distinctions, applying attributes (e.g., `role: 'user'`) to a base paragraph node and then using CSS to style the content based on these attributes can also be a viable approach. The group property defined for the custom message nodes plays a crucial role in determining where these nodes can be placed within the Tiptap document structure [^11]. By setting the group to `block`, for example, user and assistant messages will be treated as distinct block‑level elements in the conversation flow.
+
+## **Styling Tiptap Content for Visual Consistency**
+
+A key requirement for migrating to Tiptap is to ensure that the rendered Markdown content visually matches the existing styling applied to the react‑markdown component within the user's ConversationItem. Tiptap is a "headless" editor framework, meaning it does not provide any default styling for the content it manages [^4]. Therefore, all styling must be implemented by targeting the HTML elements that Tiptap generates.
+
+One effective way to apply custom styles is by utilizing the HTMLAttributes option within the definitions of the custom message nodes (UserMessage and AssistantMessage) [^18]. This option allows for the addition of custom CSS classes directly to the HTML elements rendered for these nodes. By assigning class names that mirror those used in the original ConversationItem component (e.g., `bg-neutral-100`, `text-right`, `gap-2`, `p-4`), the existing CSS rules can be leveraged. Additionally, the `.tiptap` class, which Tiptap adds to its main container element, can be used to scope styles specifically to the editor content if needed [^36].
+
+For example, to replicate the styling for user messages, the UserMessage node definition might include `HTMLAttributes: { class: 'user-message-container' }`, and the paragraph within it might have `HTMLAttributes: { class: 'user-message-text' }`. Corresponding CSS rules can then be defined:
+
+CSS
+
+```css
+.tiptap .user-message-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 0.5rem; /* Equivalent to gap-2 */
+  align-self: flex-end;
+  border-radius: 1.5rem 1.5rem 0 1.5rem; /* Approximating rounded-full rounded-tr-none */
+  background-color: #f3f4f6; /* Equivalent to bg-neutral-100 */
+  padding: 1rem; /* Approximating px-4 */
+  text-align: right;
+}
+
+.tiptap .user-message-text {
+  width: 100%;
+  border-radius: 1.5rem;
+  padding: 0.5rem 1.5rem; /* Equivalent to p-2 px-6 */
+  text-align: right;
+  /* Add dark mode styles as well */
+}
+
+.tiptap .assistant-message {
+  gap: 0.5rem; /* Equivalent to gap-2 */
+  padding: 1rem; /* Equivalent to p-4 */
+}
+```
+
+## **Rendering Task Lists with Tiptap Extensions**
+
+To ensure that todo items from the Markdown content are rendered correctly, similar to the CheckboxRenderer used with react‑markdown, Tiptap provides dedicated extensions: `@tiptap/extension-task-list` and `@tiptap/extension-task-item`, [^14], [^14], [^14], [^44]. These extensions can be installed using the following commands:
+
+Bash
+
+```bash
+npm install @tiptap/extension-task-list @tiptap/extension-task-item
+```
+
+or
+
+Bash
+
+```bash
+yarn add @tiptap/extension-task-list @tiptap/extension-task-item
+```
+
+Once installed, these extensions need to be included in the extensions array when initializing the Tiptap editor:
+
+JavaScript
+
+```javascript
+import React from "react";
+import { useEditor, EditorContent } from "@tiptap/react";
+import StarterKit from "@tiptap/starter-kit";
+import Markdown from "tiptap-markdown";
+import TaskList from "@tiptap/extension-task-list";
+import TaskItem from "@tiptap/extension-task-item";
+
+const MyTiptapEditor = ({ initialMarkdownContent }) => {
+  const editor = useEditor({
+    extensions: [StarterKit, Markdown, TaskList, TaskItem],
+    content: initialMarkdownContent,
+  });
+
+  if (!editor) {
+    return null;
+  }
+
+  return <EditorContent editor={editor} />;
+};
+
+export default MyTiptapEditor;
+```
+
+With these extensions registered, Tiptap should automatically recognize and render Markdown task list syntax (`- [ ]` for unchecked and `- [x]` for checked items) as interactive checkboxes within the editor. The `@tiptap/extension-task-list` provides the overall structure for the task list (`<ul data-type="taskList">`), while `@tiptap/extension-task-item` renders each individual task item (`<li data-type="taskItem" data-checked="...">`). These extensions offer configuration options such as nested to allow task items to be nested within each other and itemTypeName to customize the class name applied to task list items [^44]. It is highly probable that the tiptap‑markdown extension relies on these dedicated task list extensions to correctly interpret and render task list items from the Markdown input. Therefore, ensuring that tiptap‑markdown is included alongside the task list extensions in the editor's configuration is essential. Snippets [^25] and [^25] indicate Tiptap's inherent support for Markdown shortcuts, which encompasses the standard syntax for creating task lists.
+
+## **Considerations and Best Practices for Streaming Markdown Content**
+
+When replacing react‑markdown with Tiptap for rendering dynamic Markdown content from a streaming source, several factors need to be considered. While Tiptap is a performant editor, continuously appending large amounts of content, especially during a streaming process, can potentially lead to performance degradation [^39].
+
+Tiptap's Content AI module (which may require a subscription) provides the `streamContent` command, which is specifically designed for efficiently handling streaming content into the editor [^41]. This command allows for appending content at the end of the editor or replacing content within a specified range, offering more granular control over how streamed data is inserted. To use `streamContent` for appending new Markdown chunks from a streaming source like Vercel AI SDK, the end position of the editor's content needs to be determined using `editor.state.doc.content.size`. The `streamContent` command can then be called with this end position and a callback function that handles fetching and writing the streamed data using the provided write function.
+
+For optimal performance and control, consider transforming the streamed Markdown content into Tiptap‑compatible HTML or JSON format on the backend or frontend before inserting it into the editor using `streamContent` [^42], [^45], [^46], [^47], [^14]. This pre‑processing step can reduce the load on the editor by providing data in a format it handles more efficiently. When integrating with Vercel AI SDK or similar streaming services, an API route in Next.js can be set up to handle the AI response as a stream, and Tiptap's streaming API can then be connected to this route2, S_R151, S_R154].
+
+Finally, it is important to be aware of potential subtle differences in how Markdown syntax is interpreted and rendered between react‑markdown and tiptap‑markdown [^48], [^24], [^46], [^47]. Thoroughly testing the rendering of various Markdown elements, including any custom syntax or edge cases present in the `message.content`, is crucial to ensure visual consistency after the migration. Custom parsing rules within tiptap‑markdown might be necessary to address any discrepancies.
+
+## **Conclusion and Next Steps**
+
+Migrating from react‑markdown to Tiptap with the tiptap‑markdown extension offers a pathway to a more extensible and feature‑rich solution for rendering Markdown content in a Next.js application. The process involves several key steps: installing the necessary Tiptap and Markdown‑related packages, setting up the editor to render initial Markdown content, defining custom node types (or using attributes) to manage and style user and assistant messages distinctly, applying CSS styles to ensure visual consistency with the existing implementation, integrating Tiptap's task list extensions to handle todo items, and carefully considering the implications and best practices for efficiently rendering content from a streaming source.
+
+It is recommended to approach this migration iteratively. Starting with a basic implementation that focuses on rendering static Markdown content will provide a solid foundation. Subsequent steps can then address the more complex requirements, such as role‑based styling and the integration of task list functionality. For handling dynamic content from a streaming source, exploring Tiptap's `streamContent` command is advisable for optimized performance. Throughout the implementation process, thorough testing is essential to ensure that all Markdown elements are rendered correctly and that the visual appearance aligns with the original react‑markdown component. The official Tiptap documentation and the tiptap‑markdown repository serve as valuable resources for more advanced customization options and API details.
+
+---
+
+#### **Works cited**
+
+[^1]: [How to build a Notion-like text editor in React and TipTap](https://vikramthyagarajan.medium.com/how-to-build-a-notion-like-text-editor-in-react-and-tiptap-7f394c36ed9d)
+[^2]: [React Tiptap Editor](https://reactjs-tiptap-editor.vercel.app/)
+[^3]: [Extensions](https://tiptap.dev/docs/editor/core-concepts/extensions)
+[^4]: [How to Implement Basic Tiptap Editor for Next.js](https://medium.com/@soojlee0701/how-to-implement-basic-tiptap-editor-for-next-js-2725061b526a)
+[^5]: [React](https://tiptap.dev/docs/editor/getting-started/install/react)
+[^6]: [Next.js](https://tiptap.dev/docs/editor/getting-started/install/nextjs)
+[^7]: [How to Use Tiptap Rich Text Editor with Next.js and Tailwind CSS: A Simple Guide](https://dev.to/theresa_okoro/how-to-use-tiptap-rich-text-editor-with-nextjs-and-tailwind-css-a-simple-guide-18c2)
+[^8]: [How to Build a Rich Text Editor in Next.js Using Tiptap](https://ckriswinarto.medium.com/how-to-build-a-rich-text-editor-in-next-js-using-tiptap-aee83f4f4366)
+[^9]: [Editor Instance API](https://tiptap.dev/docs/editor/api/editor)
+[^10]: [setContent command](https://tiptap.dev/docs/editor/api/commands/content/set-content)
+[^11]: [Schema](https://tiptap.dev/docs/editor/core-concepts/schema)
+[^12]: [Custom extension](https://tiptap.dev/docs/editor/extensions/custom-extensions)
+[^13]: [Building custom extensions in Tiptap](https://www.bigbinary.com/blog/building-custom-extensions-in-tiptap)
+[^14]: [Nodes extensions](https://tiptap.dev/docs/editor/extensions/nodes)
+[^15]: [Create a custom extension using tiptap](https://stackoverflow.com/questions/79279517/create-a-custom-extension-using-tiptap)
+[^16]: [Nodes and Marks](https://tiptap.dev/docs/editor/core-concepts/nodes-and-marks)
+[^17]: [How to insert custom Vue Node in TipTap editor field?](https://github.com/ueberdosis/tiptap/discussions/2849)
+[^18]: [Extend extensions](https://tiptap.dev/docs/editor/extensions/custom-extensions/extend-existing)
+[^19]: [Export to JSON and HTML](https://tiptap.dev/docs/guides/output-json-html)
+[^20]: [Convert markdown to schema with custom text styles](https://discuss.prosemirror.net/t/convert-markdown-to-schema-with-custom-text-styles/6410)
+[^21]: [Convert markdown with Tiptap](https://tiptap.dev/docs/conversion/import-export/markdown/editor-extensions)
+[^22]: [Live 88: Note Parser Development Session, TipTap Extensions & Getting Simple Podcast Q&A](https://www.youtube.com/watch?v=h2DIegiRFvM)
+[^23]: [Node views](https://tiptap.dev/docs/editor/extensions/custom-extensions/node-views)
+[^24]: [tiptap-markdown/docs/migration.md](https://github.com/aguingand/tiptap-markdown/blob/main/docs/migration.md)
+[^25]: [Markdown shortcuts example](https://tiptap.dev/docs/examples/basics/markdown-shortcuts)
+[^26]: [tiptap-markdown](https://github.com/aguingand/tiptap-markdown)
+[^27]: [How to define a custom Markdown syntax?](https://github.com/ueberdosis/tiptap/discussions/3682)
+[^28]: [MarkdownExtension](https://remirror.io/docs/extensions/markdown-extension)
+[^29]: [marekdedic/prosemirror-unified](https://github.com/marekdedic/prosemirror-unified)
+[^30]: [ProseMirror Markdown integration](https://github.com/ProseMirror/prosemirror-markdown)
+[^31]: [Extending the schema of a pre-defined doc](https://discuss.prosemirror.net/t/extending-the-schema-of-a-pre-defined-doc/2104)
+[^32]: [Custom markdown format](https://discuss.prosemirror.net/t/custom-markdown-format/41)
+[^33]: [Interactive React & Vue views example](https://tiptap.dev/docs/examples/advanced/interactive-react-and-vue-views)
+[^34]: [Examples](https://tiptap.dev/docs/examples)
+[^35]: [How to Use Tiptap Rich Text Editor with Next.js and Tailwind CSS - Theresa's thoughts](https://theresao.hashnode.dev/how-to-use-tiptap-rich-text-editor-with-nextjs-and-tailwind-css-a-simple-guide?source=more_articles_bottom_blogs)
+[^36]: [Style your editor](https://tiptap.dev/docs/editor/getting-started/style-editor)
+[^37]: [Tiptap Editor with Vue.js, Tailwind CSS and Laravel](https://www.youtube.com/watch?v=vphOHH5j5LQ)
+[^38]: [How to Build a Rich Text Editor in Next.js Using Tiptap](https://m.youtube.com/watch?v=QVffer2fRfg)
+[^39]: [Integration performance](https://tiptap.dev/docs/guides/performance)
+[^40]: [[Bug]: Editor notoriously slow when having large content](https://github.com/ueberdosis/tiptap/issues/4491)
+[^41]: [Stream Content](https://tiptap.dev/docs/content-ai/capabilities/text-generation/stream)
+[^42]: [Integrate a custom LLM](https://tiptap.dev/docs/content-ai/custom-llms/integrate)
+[^43]: [Style threads](https://tiptap.dev/docs/comments/core-concepts/style-threads)
+[^44]: [prosemirror-inputrules/CHANGELOG.md](https://github.com/ProseMirror/prosemirror-inputrules/blob/master/CHANGELOG.md)
+[^45]: [What's the Best Markdown Library for React?](https://www.reddit.com/r/react/comments/1em6n2s/whats_the_best_markdown_library_for_react/)
+[^46]: [Issues](https://github.com/aguingand/tiptap-markdown/issues)
+[^47]: [[Bug]: Markdown content not rendering correctly](https://github.com/ueberdosis/tiptap/issues/5303)
+[^48]: [Markdown input and output](https://github.com/ueberdosis/tiptap/issues/66)
+
+---
+

@@ -11,7 +11,7 @@ export default function Section({ children, className }: sectionProps) {
     <motion.section
       initial={{ y: -100, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
-      className={cn('min-h-screen w-screen p-8 sm:p-20', className)}
+      className={cn('min-h-screen w-screen p-8', className)}
     >
       {children}
     </motion.section>

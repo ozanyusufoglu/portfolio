@@ -1,22 +1,27 @@
-import { getPostBySlug, getAllPostsSlug } from '@/util/getPostsMetadata';
-import { MDXRemote } from 'next-mdx-remote/rsc';
+import { getPostDataBySlug } from '@/util/getPostDataBySlug';
 import Button from '@/components/Button';
 
-export async function generateStaticParams() {
-  return getAllPostsSlug();
-}
 export default async function PostPage({ params }) {
   const components = { Button };
   const { slug } = params;
 
-  const slugs = await generateStaticParams();
-
-  const targetPost = await getPostBySlug(slug);
-
+  const { mdxContent } = await getPostDataBySlug(slug);
+  const MDXPost = (await import(`@/markdown/${slug}.mdx`)).default;
   return (
-    <MDXRemote
-      source={targetPost.body}
-      components={components}
-    />
+    <div>
+      {/* <button
+        className="fixed left-60 top-60 transition hover:scale-105 active:scale-100 cursor-pointer
+          flex flex-col border-2 gap-4 prose-p:m-0 items-center"
+      >
+        <p className="text-3xl hover:drop-shadow-lg rounded-full">🧠</p>
+        <p className="text-sm">Share</p>
+      </button> */}
+      <MDXPost />
+    </div>
+
+    // <MDXRemote
+    //   source={mdxContent}
+    //   components={components}
+    // />
   );
 }

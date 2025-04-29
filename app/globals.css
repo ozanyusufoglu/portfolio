@@ -6,7 +6,7 @@ a {
   @apply cursor-pointer;
 }
 
-:root {
+/* :root {
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 214, 219, 220;
   --background-end-rgb: 255, 255, 255;
@@ -18,20 +18,52 @@ a {
     --background-start-rgb: 0, 0, 0;
     --background-end-rgb: 0, 0, 0;
   }
-}
+} */
 
-body {
-  /* color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb)); */
-}
+/* body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+} */
 
 @layer utilities {
   .text-balance {
     text-wrap: balance;
   }
+}
+
+/* code {
+  background-color: #f5f3ff;
+} */
+
+/* pre {
+  background-color: lightgray;
+} */
+
+pre {
+  overflow-x: auto;
+  width: 100%;
+  padding: 1rem 0;
+}
+
+pre [data-line] {
+  padding: 0 1rem;
+}
+
+html.dark {
+  pre[data-theme='light'],
+  code[data-theme='light'] {
+    display: none;
+  }
+}
+
+html.light {
+  pre[data-theme='dark'],
+  code[data-theme='dark'] {
+    display: none;
+  }
+}
+
+code {
+  background: #f5f3ff;
+  color: #c4b5fd;
 }

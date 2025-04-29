@@ -1,0 +1,210 @@
+---
+title: "Next.js Server Actions & Firebase Authentication: A Practical Guide"
+slug: "use-firestore-with-server-actions"
+icon: "🧠"
+cover: ""
+previewItems: Moving your Firestore mutation logic (like adding a new task) into a Next.js App Router Server Action provides several benefits.
+createdAt: 2025-04-25T00:00:00.000Z
+updatedAt: 2025-04-25T00:00:00.000Z
+tags: ["nextjs", "firebase", "server-actions"]
+description: "Learn how to securely handle Firebase Firestore mutations using Next.js Server Actions. This guide covers the transition from client-side to server-side operations, ensuring secure authentication and efficient data handling."
+---
+
+# Next.js Server Actions & Firebase Authentication: A Practical Guide
+
+## Why Move Firebase Mutations to Server Actions
+
+Moving your Firestore mutation logic (like adding a new task) into a **Next.js App Router Server Action** provides several benefits:
+
+- **Security (Protect Secrets & Logic):** By doing the write on the server, you keep sensitive operations and API keys out of the client bundle. This isolates logic on the server so you don’t risk exposing secret keys or credentials in client-side code. For example, if your `createTask` or `addNewCloudTask` needed a secret API key or admin privileges, running it client-side would be dangerous – server actions avoid that risk.
+- **Simpler API (No Custom API Routes Needed):** Server Actions are **asynchronous functions that run on the server** (triggered from your components). They allow you to handle form submissions or onClick events directly on the server without writing a separate API endpoint. This means you can call a server function from your React component, and Next.js will handle invoking it on the server for you.
+- **Reduced Client Bundle & Better UX:** Offloading work to the server means less JavaScript sent to the browser. Your client code becomes lighter (since database writes aren’t done in the browser), and you can leverage features like optimistic UI updates more easily. In short, Server Actions help make your app faster and more secure by doing heavy-lifting on the server.
+
+## Firebase Client-Side Auth and ID Tokens
+
+Before diving into server-side auth, let's recap how Firebase auth works on the **client side**:
+
+- When a user signs in with Firebase (using email/password, Google, etc.), Firebase issues an **ID token** for that user. The ID token is a JSON Web Token (JWT) that uniquely identifies the user and is used by Firebase services (Firestore, Realtime DB, etc.) to validate that user’s requests.
+- **Short-Lived but Auto-Refreshed:** ID tokens are short-lived (about 1 hour) for security. The Firebase client SDK automatically refreshes them behind the scenes using a refresh token so the user stays logged in. You typically don’t see this process; the SDK ensures you always have a valid ID token as long as the user is authenticated.
+- **Used in Firestore Calls:** On the client, when you call Firestore (e.g. `addDoc()` or `setDoc()`), the client SDK includes your ID token with those requests under the hood. Firestore’s security rules then check that token to confirm the user is allowed to perform the action. This is why, if your Firestore rules say a user can write to `tasks` collection only if they’re logged in (e.g., `request.auth != null`), the client-side calls succeed _only_ when the ID token is valid.
+
+In summary, the ID token is the proof of identity for the user. It’s stored in memory by Firebase Auth on the client. You can manually retrieve it by calling `firebase.auth().currentUser.getIdToken()`, which gives you the JWT string. This token contains the user’s UID and some profile info, and is signed by Firebase.
+
+**Why is this important for server actions?** Because on the server, you won’t have direct access to the user's `currentUser` or ID token automatically – you’ll need to pass this token to your server action to know **who** is performing the action.
+
+## How Server Actions Handle Authentication
+
+When you move a Firebase mutation to a server action, you need a way to authenticate the user on the server side. The typical flow looks like this:
+
+1. **Client: Get the ID Token** – Before calling the server action, the client should obtain the current user’s ID token (JWT). In a Firebase Web SDK, that’s usually `await firebase.auth().currentUser.getIdToken()`. This token represents the user's identity and session.
+2. **Call the Server Action with Token** – Next, pass this token (and any necessary data for the task) to your server action. For example, if your server action is `addNewCloudTask`, you might call it like:
+   ```js
+   const token = await firebase.auth().currentUser.getIdToken();
+   await addNewCloudTask(taskData, token);
+   ```
+   Under the hood, this will make an HTTPS request from the browser to your Next.js app, calling the server action.
+3. **Server: Verify the Token** – Inside the server action, you will verify that ID token to ensure it’s valid and get the user’s identity. The easiest way is to use the Firebase Admin SDK’s auth module (or an equivalent) to verify the JWT. Firebase provides a method to do this: `adminAuth.verifyIdToken(token)`. When you call this on the server, several checks happen:
+   - The token’s signature is verified (to ensure it was indeed issued by **your** Firebase project and not tampered with).
+   - The token’s expiration is checked (not expired, not revoked, etc.).
+   - If everything is good, you get back the **decoded token**, which includes the user’s info (in particular, the user’s `uid`). In other words, the Admin SDK will return the user’s identity if the token is valid.
+4. **Perform the Firestore Operation as that User / on their behalf** – Once verified, you know the request is coming from an authenticated user. You can then safely perform the action (e.g., add a new Firestore document). At this point, you have two options:
+   - **Use Firebase Admin SDK to write to Firestore:** With Admin SDK, you have full access to your Firestore. You would typically still include some user identifier in the new task (for example, set a `userId` field to the `uid` from the token) and enforce security in your application logic. (Note: Admin SDK bypasses Firestore security rules, so you should manually ensure the user is allowed to do what they’re doing by checking the decoded token’s uid against the data being written.)
+   - **Or, use the ID token with Firestore’s REST API or client SDK:** This is a bit more advanced and not usually necessary for simple setups. It would mean using the token to perform the write with normal user permissions (so Firestore rules still apply). In practice, most Next.js apps use the Admin SDK on the server for simplicity.
+
+**In short:** the server action authenticates the user by verifying the ID token that the client provides. This is the core of how you maintain the user's identity when moving from client-side to server-side execution. As the Firebase docs note, once you have the ID token on the client, you should send it to your backend and validate it with the Admin SDK. This ensures that instead of trusting any user input blindly, your server only performs the action if the token is legitimate (issued by Firebase for a logged-in user of your app).
+
+> **Note:** Setting up the Firebase Admin SDK in a Next.js app requires initializing it with your Firebase project credentials (typically a service account JSON or using environment variables). This setup is usually done once, at app startup. _However, if you’re focusing just on the transition without fully introducing Admin SDK yet_, you could skip direct token verification **temporarily** – but be cautious: without verification, your server action would have to trust the token string blindly. It’s highly recommended to include verification to truly secure the action. (If you don’t want to use the Admin SDK immediately, another approach is to use Firebase Auth’s REST API to verify the token, but using the Admin SDK is the simplest and most robust way in Node.js.)
+
+## Example: Converting `addNewCloudTask` to a Server Action
+
+Let's walk through transforming your existing client-side function into a secure server action. We’ll assume your current setup looks roughly like this:
+
+### **Original Client-Side Mutation (before)**
+
+```javascript
+// firebaseClient.js (client-side Firebase config & utils)
+import { initializeApp } from 'firebase/app';
+import {
+  getFirestore,
+  collection,
+  addDoc,
+  serverTimestamp,
+} from 'firebase/firestore';
+
+const firebaseConfig = {
+  /* your Firebase config (apiKey, authDomain, etc) */
+};
+const app = initializeApp(firebaseConfig);
+export const db = getFirestore(app);
+
+// addNewCloudTask: adds a task to Firestore (client-side implementation)
+export async function addNewCloudTask(taskData) {
+  // Assume taskData is an object with task info
+  taskData.createdAt = serverTimestamp(); // add a timestamp
+  const docRef = await addDoc(collection(db, 'tasks'), taskData);
+  return docRef.id; // return new document ID
+}
+```
+
+```javascript
+// In a React Client Component, using the above function
+import { addNewCloudTask } from './firebaseClient'; // (client-side)
+import { auth } from './firebaseClient'; // Firebase Auth instance
+
+async function handleAddTask() {
+  // Ensure user is signed in
+  const user = auth.currentUser;
+  if (!user) {
+    alert('Please log in first');
+    return;
+  }
+  // Call client-side function to add task
+  const newTask = { title: 'My Task', description: 'Example' };
+  const newId = await addNewCloudTask(newTask);
+  console.log('Task created with ID:', newId);
+}
+```
+
+In the above setup, `addNewCloudTask` runs on the client. It uses the client SDK (`addDoc`) which will use the user's credentials (their ID token) under the hood. Now we’ll move `addNewCloudTask` to the server.
+
+### **Server Action Mutation (after)**
+
+**Step 1: Define the server action** – Create a new file (or section) for the server action. It must be inside the Next.js App directory (for example, you could put it in `app/actions/addTaskAction.js`). Mark it with the `"use server"` directive at the top. For example:
+
+```javascript
+// app/actions/addTaskAction.js (runs on server)
+'use server';
+
+import { initializeApp, applicationDefault } from 'firebase-admin/app';
+import { getAuth } from 'firebase-admin/auth';
+import { getFirestore } from 'firebase-admin/firestore';
+
+// Initialize Firebase Admin SDK (do this only once in your app)
+const app = initializeApp({
+  credential: applicationDefault(), // or use cert from env vars
+  // You might also specify projectId, etc., if not using default credentials
+});
+const auth = getAuth(app);
+const db = getFirestore(app);
+
+// Our server action function:
+export async function addNewCloudTask(taskData, token) {
+  // 1. Verify the ID token to authenticate the user
+  let decodedToken;
+  try {
+    decodedToken = await auth.verifyIdToken(token);
+  } catch (err) {
+    console.error('Invalid ID token:', err);
+    throw new Error('Unauthorized'); // Throw an error if token is invalid
+  }
+  const userId = decodedToken.uid; // authenticated user's UID
+
+  // 2. Perform the Firestore write operation on behalf of this user
+  // (You can set up the data as needed; include the userId for traceability or security)
+  const newTask = {
+    ...taskData,
+    userId: userId,
+    createdAt: new Date(),
+  };
+  const docRef = await db.collection('tasks').add(newTask);
+  return docRef.id;
+}
+```
+
+A few notes on the above server action:
+
+- We used the Firebase **Admin SDK** (`firebase-admin`) to initialize `auth` and `db`. This requires credentials: here we used `applicationDefault()` for simplicity, but in a real app you might use a service account (`cert`) or set the `GOOGLE_APPLICATION_CREDENTIALS` env var. Ensure this initialization code runs only once (you can have a check to not re-initialize if already done, to avoid redundant connections).
+- The function `addNewCloudTask` now accepts `taskData` and an ID `token`. It verifies the token and obtains the `uid`. If verification fails, it throws an error (you might handle this in the UI with a try/catch around the action call).
+- We then add the task to Firestore using the Admin SDK (`db.collection().add`). We include `userId` in the document for record. (Since we’re using Admin SDK, Firestore security rules are bypassed; if you want to enforce rules, you could instead structure your data such that rules aren’t needed or manually check conditions. In this simple case, we trust that the userId from the token is the rightful owner of this new task.)
+
+**Step 2: Call the server action from a client component** – In your client-side React component (which could still be a component in the App Router, marked `"use client"` because it has an event handler), you will import the server action and invoke it. For example:
+
+```javascript
+// app/components/NewTaskButton.jsx (a client component)
+'use client';
+
+import { addNewCloudTask } from '../actions/addTaskAction';
+import { auth } from '../firebaseClient'; // your Firebase client auth (for currentUser)
+
+function NewTaskButton() {
+  async function handleAddTask() {
+    const user = auth.currentUser;
+    if (!user) {
+      alert('Please log in first');
+      return;
+    }
+    const token = await user.getIdToken(); // get ID token from Firebase Auth
+    const taskData = { title: 'My Task', description: 'Example' };
+    try {
+      const newTaskId = await addNewCloudTask(taskData, token); // call server action
+      console.log('Task created with ID:', newTaskId);
+      // You can update local state or UI optimistically here if needed
+    } catch (e) {
+      console.error('Failed to create task:', e);
+      // handle error (e.g., show message to user)
+    }
+  }
+
+  return <button onClick={handleAddTask}>Add Task</button>;
+}
+
+export default NewTaskButton;
+```
+
+A few things to notice in this client code:
+
+- We imported `addNewCloudTask` directly from the server action module. We didn’t have to do a manual `fetch` or API call – Next.js abstracts that. When you call `await addNewCloudTask(...)` in a client component, Next.js will serialize the call and send it to the server for you.
+- We made sure to get a fresh ID token (`user.getIdToken()`) at the time of the action. This ensures we send a valid token (Firebase will refresh it if it’s expired).
+- The rest is similar to before, except now the actual Firestore write happens on the server.
+
+## Best Practices for Securing Server Actions
+
+When transitioning to server actions with Firebase, keep these best practices in mind:
+
+- **Use the `"use server"` directive:** Always include `"use server"` at the top of any file or function definition that should run as a server action. This ensures Next.js treats it as a server-only function. Without this, your function might not behave as an action (and could even be bundled to the client unintentionally).
+- **Validate **all** incoming data:** Never trust client-provided data blindly. In our example, the ID token is validated using Firebase Admin SDK to ensure the user is authentic. This is crucial – as the Firebase documentation emphasizes, you should send the ID token over HTTPS and verify it on the backend for each request. Similarly, validate or sanitize other `taskData` fields if needed to prevent any malicious input from affecting your database.
+- **Keep Credentials Secret:** If you use the Firebase Admin SDK, do **not** expose your service account credentials or private keys to the client. Store them in environment variables or a secure storage. Next.js allows using environment vars that are only available on the server side (e.g., those not prefixed with `NEXT_PUBLIC_`). Your Admin SDK initialization should use these secrets securely. (For example, you might set `GOOGLE_APPLICATION_CREDENTIALS` to point to a JSON key file path, or use `initializeApp({credential: cert(JSON.parse(process.env.FIREBASE_SERVICE_ACCOUNT))})`).
+- **Use Security Rules / Checks Appropriately:** Remember that when using the Admin SDK, your writes bypass Firestore security rules. That means you need to enforce any important checks in your server logic. For instance, if normally a user should only be able to add tasks to their own record, ensure your server action uses the `uid` from the token and attaches it to the data (as we did with `userId`), or verifies that any provided `userId` in `taskData` matches the authenticated user. Essentially, **mimic the intent of your security rules** in the server code. (If you prefer to keep using security rules, an alternative is to call Firestore via its REST API with the ID token, but this is rarely necessary in a Next.js environment.)
+- **Minimal Admin Setup (for now):** Since your focus is on the transition, you can start by implementing token verification and the Firestore write as shown. Using the Admin SDK **does** require some setup (service account credentials), but it is the recommended way to verify Firebase ID tokens on a server. If setting up the Admin SDK feels heavy, know that it’s usually a one-time setup and greatly improves security. There’s no need for you to fully overhaul your auth system – you’re simply extending it to the server by trusting Firebase’s tokens. Eventually, you might also consider using Firebase Authentication’s session cookies or Next.js middleware for a more seamless auth across server components, but those are optional enhancements down the road.
+
+By following the above approach, your Next.js App Router app will handle Firebase mutations in a secure, scalable way. The client still uses Firebase Authentication to sign in users and get tokens, but all database writes go through trusted server code. This pattern makes your app more secure (no direct writes from client) and often easier to maintain. You’ve essentially created a simple authenticated API **without** having to manually write an API route – leveraging Next.js server actions and Firebase’s token system together.

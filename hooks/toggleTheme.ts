@@ -8,7 +8,8 @@ export default function useToggleTheme() {
   useEffect(() => {
     const localTheme = localStorage.getItem('theme') as Theme | null;
 
-    if (localTheme === 'light') {
+    console.log(theme);
+    if (localTheme === 'light' && localTheme) {
       setTheme(localTheme);
       document.documentElement.classList.remove('dark');
     } else {

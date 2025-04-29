@@ -1,6 +1,6 @@
 import Section from '@/components/Section';
 import PostPreview from '../../components/PostPreview';
-import { getPosts, getAllPostsSlug } from '@/util/getPostsMetadata';
+import { getPosts } from '@/util/getPostDataBySlug';
 
 export default async function Posts() {
   const postsData = await getPosts();
@@ -20,7 +20,12 @@ export default async function Posts() {
   });
 
   return (
-    <Section className="flex flex-col flex-wrap justify-start gap-x-20 gap-y-20 lg:flex-row items-center">
+    <Section className="flex flex-col gap-8 sm:pt-40 prose-a:no-underline prose ">
+      <h1 className="text-4xl font-medium">Blog 🧠</h1>
+      <p className="">
+        A mostly a technical blog where I share some cases or challanges when
+        building products 🐵 + 🧠 + 🤖
+      </p>
       {postPreviews}
     </Section>
   );

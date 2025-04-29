@@ -4,12 +4,16 @@ import { SiTailwindcss } from 'react-icons/si';
 
 export const links = [
   {
-    title: 'Home',
+    title: 'About',
     link: '/',
   },
   {
     title: 'Work',
     link: '/work',
+  },
+  {
+    title: 'Blog',
+    link: '/blog',
   },
 ] as const;
 
