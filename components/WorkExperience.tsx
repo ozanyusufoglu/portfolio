@@ -33,7 +33,7 @@ export default function WorkExperience({
         // component base
         'flex flex-col gap-y-4 rounded-md p-8 relative bg-gray-50',
         // dark
-        ' dark:bg-gray-700 dark:text-gray-50'
+        ' dark:bg-zinc-800 dark:text-gray-50'
         // hover
         // ' hover:bg-gray-100'
       )}

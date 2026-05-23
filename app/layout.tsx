@@ -18,10 +18,16 @@ export default function RootLayout({ children }) {
   return (
     <html
       lang="en"
-      className="dark"
     >
+      <head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `(function(){try{var t=localStorage.getItem('theme');if(t==='dark'||(t===null&&window.matchMedia('(prefers-color-scheme: dark)').matches)){document.documentElement.classList.add('dark')}}catch(e){}})()`,
+          }}
+        />
+      </head>
       <body
-        className={`${mainFont.className} bg-white dark:bg-gray-800 dark:text-gray-50 flex flex-col
+        className={`${mainFont.className} bg-white dark:bg-zinc-900 dark:text-gray-50 flex flex-col
         items-center`}
       >
         <Header />

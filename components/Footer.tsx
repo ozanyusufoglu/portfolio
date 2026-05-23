@@ -8,7 +8,7 @@ export default function Footer() {
   return (
     <div
       className="flex flex-row items-center justify-between gap-8 w-screen p-8 md:p-16
-        dark:bg-gray-700 bg-gray-100"
+        dark:bg-zinc-800 bg-gray-100"
     >
       <div className="flex flex-col gap-8">
         <div className="text-left">
@@ -35,7 +35,7 @@ export default function Footer() {
             <p className="">See the source code</p>
           </div>
         </NavigationItem>
-        <p className="self-end">2024</p>
+        <p className="self-end">2026</p>
       </div>
     </div>
   );

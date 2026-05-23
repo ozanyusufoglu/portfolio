@@ -1,6 +1,4 @@
-import { RxLinkedinLogo } from 'react-icons/rx';
-import { RxEnvelopeClosed } from 'react-icons/rx';
-import { RxGithubLogo } from 'react-icons/rx';
+import { RxLinkedinLogo, RxEnvelopeClosed, RxGithubLogo } from 'react-icons/rx';
 
 export function ContactLinks() {
   return (

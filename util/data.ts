@@ -1,5 +1,6 @@
 import kuko from '@/public/kuko_homepage.png';
-import monkeymind_landing from '@/public/monkeymind_landing.png';
+import monkeymind_landing from '@/public/monkeymind2.png';
+import indiehood from '@/public/indiehood2.png';
 import { SiTailwindcss } from 'react-icons/si';
 
 export const links = [
@@ -20,26 +21,58 @@ export const links = [
 export const techs = [{ title: 'Tailwind', SVG: SiTailwindcss }];
 export const projects = [
   {
-    title: 'Monkeymind',
-    slug: 'monkeymind',
+    title: 'Indiehood',
+    slug: 'indiehood',
     description:
-      'Monkeymind is an AI based productivity tool designed to help users strengthen their cognitive muscles, enabling them to stay focused and attentive to their goals. Create your custom sessions to realize goals and track earnings of your actions.',
+      'Indiehood is a community-first map to discover niche events and spaces. ',
     personal: true,
-    link: 'https://www.monkeymind.ai',
-    dates: 'May 2023',
+    link: 'https://www.indiehood.io',
+    dates: 'May 2025',
     company: null,
     misc: null,
     duration: null,
     icon: null,
     body: null,
     previewItems: null,
-    tools: ['React', 'Next.js', 'Firebase', 'OpenAI API', 'Framer API'],
+    tools: ['React', 'Next.js', 'Supabase', 'Mapbox', 'Framer Motion'],
+    tags: [
+      'community',
+      'events',
+      'rsvp',
+      'hyperlocality',
+      'user-generated-content',
+    ],
+    imageUrl: indiehood,
+  },
+  {
+    title: 'Monkeymind',
+    slug: 'monkeymind',
+    description:
+      'Monkeymind is an AI based productivity tool designed to help users strengthen their cognitive muscles, enabling them to stay focused and attentive to their goals. Create your custom sessions to realize goals and track outcomes of your actions.',
+    personal: true,
+    link: 'https://www.monkeymind.vercel.app',
+    dates: 'May 2024',
+    company: null,
+    misc: null,
+    duration: null,
+    icon: null,
+    body: null,
+    previewItems: null,
+    tools: [
+      'React',
+      'Next.js',
+      'Firebase',
+      'Anthropic Claude',
+      'Vercel',
+      'Framer Motion',
+    ],
     tags: [
       'attention',
       'productivity',
       'pomodoro',
       'time management',
       'action-driven progress',
+      'mental-wellbeing',
     ],
     imageUrl: monkeymind_landing,
   },
@@ -65,7 +98,7 @@ export const projects = [
   {
     title: 'Isoolate Cyber-Security',
     description:
-      'Isoolate is an enterprise security platform providing browser isolation and manageability against against critical web-born threads. I carried out early phase R&D process and product development. We took part successfully in ITU Innogate Startup Accelerator 12th cohort as a promising cyber-security solution',
+      'Isoolate is an enterprise security platform providing browser isolation and manageability against critical web-borne threats. I carried out early phase R&D process and product development. We took part successfully in ITU Innogate Startup Accelerator 12th cohort as a promising cyber-security solution',
     slug: null,
     personal: false,
     link: null,
@@ -89,14 +122,14 @@ export const projects = [
   {
     title: 'Sales Monitoring Platform for Fast Moving Consumer Goods',
     description:
-      'ESM is a retail sales monitoring platform enabling real-time sales data aggregation from legacy POS systems through a low-cost IoT embedded board. Our machine/ software agnostic board empowered us to seamlessly handle live data previously gathered manually from the field, eliminating human error and delayed time cost. I actively involved in the pilot deployment of 200 devices in major cities of Turkey. My key learning was the significance of the human factor in real-world scenarios and thinking interaction and technology design together.',
+      'ESM is a retail sales monitoring platform enabling real-time sales data aggregation from legacy POS systems through a low-cost IoT embedded board. Our machine/ software agnostic board empowered us to seamlessly handle live data previously gathered manually from the field, eliminating human error and delayed time cost. I was actively involved in the pilot deployment of 200 devices in major cities of Turkey. My key learning was the significance of the human factor in real-world scenarios and thinking interaction and technology design together.',
     slug: null,
     personal: false,
     link: null,
     dates: '2016 - 2018',
     company: 'Yenihayat Informatics',
     position: 'R&D Manager',
-    misc: 'Major Tabacco Company',
+    misc: 'Major Tobacco Company',
     duration: '2 years',
     icon: null,
     body: null,
@@ -158,7 +191,7 @@ export const projects = [
     icon: null,
     body: null,
     previewItems: null,
-    tags: ['IPTV', 'Set-Top-Box', 'Video-on-Demand', 'Hospitaility'],
+    tags: ['IPTV', 'Set-Top-Box', 'Video-on-Demand', 'Hospitality'],
     tools: null,
     imageUrl: null,
   },
@@ -168,7 +201,7 @@ export const experiences = [
   {
     company: 'Scrimba',
     description:
-      'I join to the bootcamp to retool myself with advanced React and ecosystem ',
+      'I joined the bootcamp to retool myself with advanced React and ecosystem ',
     position: 'React Bootcamp',
     dates: '6 months, 2023',
     duration: '6 months',
@@ -200,7 +233,7 @@ export const experiences = [
   {
     company: 'Isoolate Cyber-Security',
     description:
-      'Isoolate is an enterprise security platform providing browser isolation and manageability against against critical web-born threads. I carried out early phase R&D process and product development. We took part successfully in ITU Innogate Startup Accelerator 12th cohort as a promising cyber-security solution.  ',
+      'Isoolate is an enterprise security platform providing browser isolation and manageability against critical web-borne threats. I carried out early phase R&D process and product development. We took part successfully in ITU Innogate Startup Accelerator 12th cohort as a promising cyber-security solution.  ',
     position: 'Product Manager',
     dates: '2019 - 2020',
     duration: '1 year',
@@ -222,7 +255,7 @@ export const experiences = [
       {
         title: 'Browser Virtualization Protocol for Seamless Data Security',
         description:
-          'Browser isolation is a paradigm-shifting technology replacing traditional cyber security measures by virtualizing browsers in remote servers and streaming only the video output the user with seamless remote control. ',
+          'Browser isolation is a paradigm-shifting technology replacing traditional cyber security measures by virtualizing browsers in remote servers and streaming only the video output to the user with seamless remote control. ',
         slug: null,
         personal: false,
         link: null,
@@ -239,13 +272,13 @@ export const experiences = [
       {
         title: 'Sales Monitoring Platform for Fast Moving Consumer Goods',
         description:
-          'ESM is a retail sales monitoring platform enabling real-time sales data aggregation from legacy POS systems through a low-cost IoT embedded board. Our machine/ software agnostic board empowered us to seamlessly handle live data previously gathered manually from the field, eliminating human error and delayed time cost. I actively involved in the pilot deployment of 200 devices in major cities of Turkey. My key learning was the significance of the human factor in real-world scenarios and thinking interaction and technology design together.',
+          'ESM is a retail sales monitoring platform enabling real-time sales data aggregation from legacy POS systems through a low-cost IoT embedded board. Our machine/ software agnostic board empowered us to seamlessly handle live data previously gathered manually from the field, eliminating human error and delayed time cost. I was actively involved in the pilot deployment of 200 devices in major cities of Turkey. My key learning was the significance of the human factor in real-world scenarios and thinking interaction and technology design together.',
         slug: null,
         personal: false,
         link: null,
         dates: '2016-2018',
         duration: null,
-        misc: 'Major Tabacco Company',
+        misc: 'Major Tobacco Company',
         icon: null,
         body: null,
         previewItems: [],
@@ -279,7 +312,7 @@ export const experiences = [
         link: null,
         dates: '2015-2016',
         misc: 'TÜBİTAK 1507 R&D Programme',
-        duration: 'string',
+        duration: null,
         icon: null,
         body: null,
         previewItems: [],
@@ -300,7 +333,7 @@ export const experiences = [
         icon: null,
         body: null,
         previewItems: [],
-        tags: ['Set-Top-Box', 'Video-on-Demand', 'Hospitaility'],
+        tags: ['Set-Top-Box', 'Video-on-Demand', 'Hospitality'],
         tools: null,
         imageUrl: null,
       },

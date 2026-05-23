@@ -5,7 +5,7 @@ icon: "🧠"
 cover: ""
 previewItems: Migrating from ReactMarkdown to Tiptap for Enhanced Markdown Rendering in Next.js
 createdAt: 2023-10-01T00:00:00Z
- 2023-10-01T00:00:00Z
+updatedAt: 2023-10-01T00:00:00Z
 description: "Optimizing Performance and Implementing Efficient Saving in a Next.js Note-Taking Application with Tiptap"
 tags : ["tiptap", "nextjs", "react"]
 ---
@@ -38,40 +38,40 @@ One of the most effective initial steps is to isolate the Tiptap editor into its
 
 ```javascript
 
-// ParentComponent.jsx  
-import React, { useState } from 'react';  
+// ParentComponent.jsx
+import React, { useState } from 'react';
 import TiptapEditor from './TiptapEditor';
 
-const ParentComponent \= () \=\> {  
-  const \= useState(false);  
-  const \[noteContent, setNoteContent\] \= useState('\<p\>Initial content\</p\>');
+const ParentComponent = () => {
+  const [sidebarOpen, setSidebarOpen] = useState(false);
+  const [noteContent, setNoteContent] = useState('<p>Initial content</p>');
 
-  return (  
-    \<div\>  
-      \<button onClick\={() \=\> setSidebarOpen(\!sidebarOpen)}\>Toggle Sidebar\</button\>  
-      {sidebarOpen && \<Sidebar /\>}  
-      \<TiptapEditor content\={noteContent} /\>  
-    \</div\>  
-  );  
+  return (
+    <div>
+      <button onClick={() => setSidebarOpen(!sidebarOpen)}>Toggle Sidebar</button>
+      {sidebarOpen && <Sidebar />}
+      <TiptapEditor content={noteContent} />
+    </div>
+  );
 };
 
-// TiptapEditor.jsx  
-import { useEditor, EditorContent } from '@tiptap/react';  
+// TiptapEditor.jsx
+import { useEditor, EditorContent } from '@tiptap/react';
 import StarterKit from '@tiptap/starter-kit';
 
-const TiptapEditor \= ({ content }) \=\> {  
-  const editor \= useEditor({  
-    extensions:,  
-    content,  
+const TiptapEditor = ({ content }) => {
+  const editor = useEditor({
+    extensions: [StarterKit],
+    content,
   });
 
-  if (\!editor) {  
-    return null;  
+  if (!editor) {
+    return null;
   }
 
-  return (  
-    \<EditorContent editor\={editor} /\>  
-  );  
+  return (
+    <EditorContent editor={editor} />
+  );
 };
 
 export default TiptapEditor;

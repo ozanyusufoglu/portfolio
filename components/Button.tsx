@@ -30,8 +30,8 @@ export default function Button({
         // hover
         'hover:shadow-brutalHover hover:-translate-y-1 ',
         // dark
-        `dark:bg-slate-600 dark:shadow-slate-900 dark:hover:shadow-slate-950
-        dark:text-slate-100`,
+        `dark:bg-zinc-800 dark:shadow-zinc-950 dark:hover:shadow-zinc-950
+        dark:text-zinc-100 dark:border-zinc-600`,
 
         className
       )}

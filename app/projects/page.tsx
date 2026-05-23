@@ -1,8 +1,9 @@
-import React, { ReactDOM, ReactElement } from 'react';
+import React from 'react';
+import dynamic from 'next/dynamic';
 import Section from '@/components/Section';
-import ProjectPreview from '@/components/ProjectPreview';
 import { projects } from '@/util/data';
-import WorkExperience from '@/components/WorkExperience';
+
+const ProjectPreview = dynamic(() => import('@/components/ProjectPreview'));
 
 export default async function Projects() {
   const indieProjectPreviews = projects.map((project, index) => {

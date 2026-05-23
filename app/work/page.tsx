@@ -1,8 +1,10 @@
 import React from 'react';
+import dynamic from 'next/dynamic';
 import Section from '@/components/Section';
 import WorkExperienceLite from '@/components/WorkExperienceLite';
 import { experiences } from '@/util/data';
-import ProjectPreview from '@/components/ProjectPreview';
+
+const ProjectPreview = dynamic(() => import('@/components/ProjectPreview'));
 
 export default async function Experience() {
   const rdProjectElements = experiences[4].projects.map((project, index) => {

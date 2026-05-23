@@ -68,7 +68,7 @@ export default function ProjectPreview({
     <span
       key={index}
       className="bg-zinc-100 rounded-md group-hover:bg-zinc-200 transition p-2 text-sm
-        dark:bg-gray-600 dark:group-hover:bg-gray-500"
+        dark:bg-zinc-700 dark:group-hover:bg-zinc-600"
     >
       {tag}
     </span>
@@ -78,7 +78,7 @@ export default function ProjectPreview({
     <span
       key={index}
       className="bg-violet-50 rounded-md group-hover:bg-violet-100 transition p-2 text-sm flex
-        flex-row gap-x-2 items-center dark:bg-gray-600 dark:group-hover:bg-gray-600"
+        flex-row gap-x-2 items-center dark:bg-zinc-700 dark:group-hover:bg-zinc-700"
     >
       <GrTools />
       {tool}
@@ -101,7 +101,7 @@ export default function ProjectPreview({
             'hover:-translate-y-1 hover:shadow-lg ',
 
             // dark
-            'dark:bg-gray-700 dark:hover:bg-gray-900'
+            'dark:bg-zinc-800 dark:hover:bg-zinc-950'
 
             // professional Project
           )}
@@ -155,7 +155,7 @@ export default function ProjectPreview({
             'hover:bg-gray-50',
 
             // dark
-            'dark:bg-gray-700 dark:hover:bg-gray-900 dark:group-hover:hover:bg-gray-600'
+            'dark:bg-zinc-800 dark:hover:bg-zinc-950 dark:group-hover:hover:bg-zinc-700'
           )}
         >
           <div
