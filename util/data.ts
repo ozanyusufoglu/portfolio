@@ -59,12 +59,13 @@ export const projects = [
     body: null,
     previewItems: null,
     tools: [
+      'Anthropic',
+      'Vercel AI SDK',
       'React',
+      'Framer Motion',
       'Next.js',
       'Firebase',
-      'Anthropic Claude',
       'Vercel',
-      'Framer Motion',
     ],
     tags: [
       'attention',

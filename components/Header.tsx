@@ -8,7 +8,7 @@ export default function Header() {
   return (
     <header className="sm:absolute w-screen z-10">
       <motion.div
-        className="flex sm:flex-row items-center justify-between w-screen flex-nowrap px-12"
+        className="flex items-center justify-center sm:justify-between w-screen flex-nowrap px-4 sm:px-12"
         initial={{ y: -100, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
       >
@@ -22,8 +22,7 @@ export default function Header() {
         </NavigationItem>
 
         <nav
-          className="p-2 transition dark:border-slate-950 flex flex-wrap sm:flex-row items-center
-            mr-4 z-40"
+          className="p-2 transition dark:border-slate-950 flex flex-nowrap items-center z-40"
         >
           {links.map((item, index) => (
             <NavigationItem

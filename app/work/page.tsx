@@ -48,7 +48,7 @@ export default async function Experience() {
   });
 
   return (
-    <Section className="flex gap-y-12 flex-col w-screen justify-center xl:w-2/3 lg:mx-auto xl:mt-52 p-4">
+    <Section className="flex gap-y-12 flex-col justify-center max-w-3xl mx-auto xl:mt-24 p-4">
       <div className="flex flex-col gap-4">
         <p className="text-xl font-semibold p-4">Work</p>
 

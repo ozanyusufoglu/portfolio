@@ -17,7 +17,7 @@ export default function Footer() {
             href="https://github.com/ozanyusufoglu/"
             className="dark:text-white text-lg"
           >
-            Özgür Ozan
+            Ozan
           </a>
           <p>with 🐵🧠</p>
           <br />
@@ -30,12 +30,12 @@ export default function Footer() {
           href="https://github.com/ozanyusufoglu/portfolio"
           className="p-0"
         >
-          <div className="flex sm:flex-row flex-col text-right items-end sm:items-center gap-4">
+          <div className="flex sm:flex-row flex-col  items-end sm:items-center gap-4">
             <RxGithubLogo />
-            <p className="">See the source code</p>
+            <p className="self-end">2026</p>
           </div>
         </NavigationItem>
-        <p className="self-end">2026</p>
+      
       </div>
     </div>
   );

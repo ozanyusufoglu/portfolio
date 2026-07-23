@@ -20,6 +20,7 @@ export default function WorkExperienceLite({
 }: experienceProps) {
   return (
     <div
+    data-component="work-experience-lite"
       className={cn(
         // component base
         'flex flex-col rounded-md relative',
@@ -38,7 +39,7 @@ export default function WorkExperienceLite({
         <p className="dark:text-gray-100">{position},</p>
         <h3 className="text-gray-400">{companyName}</h3>
         <p className="border-b-[1px] relative flex-grow"></p>
-        <span className="text-gray-400 ml-auto text-right">{dates}</span>
+        <span className="text-gray-400 ml-auto text-right text-sm">{dates}</span>
       </a>
     </div>
   );

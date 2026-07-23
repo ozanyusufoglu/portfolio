@@ -23,7 +23,7 @@ export default async function Posts() {
     <Section className="flex flex-col gap-8 sm:pt-40 prose-a:no-underline prose ">
       <h1 className="text-4xl font-medium">Blog 🧠</h1>
       <p className="">
-        A mostly a technical blog where I share some cases or challanges when
+        A mostly technical blog where I share cases and challenges when
         building products 🐵 + 🧠 + 🤖
       </p>
       {postPreviews}

@@ -67,7 +67,7 @@ export default function ProjectPreview({
   const tagElements = tags?.map((tag, index) => (
     <span
       key={index}
-      className="bg-zinc-100 rounded-md group-hover:bg-zinc-200 transition p-2 text-sm
+      className="bg-zinc-100 rounded-full group-hover:bg-zinc-100 transition p-2 px-4 text-sm
         dark:bg-zinc-700 dark:group-hover:bg-zinc-600"
     >
       {tag}
@@ -77,10 +77,10 @@ export default function ProjectPreview({
   const toolElements = tools?.map((tool, index) => (
     <span
       key={index}
-      className="bg-violet-50 rounded-md group-hover:bg-violet-100 transition p-2 text-sm flex
+      className="bg-violet-50 rounded-full group-hover:bg-violet-50 transition p-2 text-sm px-4 flex
         flex-row gap-x-2 items-center dark:bg-zinc-700 dark:group-hover:bg-zinc-700"
     >
-      <GrTools />
+      {/* <GrTools /> */}
       {tool}
     </span>
   ));
@@ -91,59 +91,37 @@ export default function ProjectPreview({
       className="group dark:text-gray-300"
     >
       {personal ? (
-        <div
+        <a
+          href={link}
+          target="_blank"
           className={cn(
-            // component base
-            `justify-center text-lg gap-x-8 shadow-md transition-all bg-zinc-50 w-full
-            overflow-hidden relative sm:p-8 min-h-5 rounded`,
-
-            // hover
-            'hover:-translate-y-1 hover:shadow-lg ',
-
-            // dark
+            'flex flex-col lg:flex-row shadow-md transition-all bg-zinc-50 w-full',
+            'overflow-hidden rounded min-h-[280px]',
+            'hover:-translate-y-1 hover:shadow-lg',
             'dark:bg-zinc-800 dark:hover:bg-zinc-950'
-
-            // professional Project
           )}
         >
-          <div
-            className={cn(
-              // textContent & tags base
-              'flex flex-col gap-4 p-4',
-
-              // With images push text left or right
-              imageUrl &&
-                `lg:group-odd:ml-auto lg:group-odd:pl-20 lg:group-even:mr-auto
-                lg:group-even:pr-20 xl:w-2/3`
-            )}
-          >
-            <h1 className="font-bold">{title}</h1>
-            <p className="font-regular line-clamp-4">{description}</p>
-            <div className="flex flex-row items-center justify-between">
-              <div className="flex flex-wrap gap-2 text-sm">
-                {tagElements}
-                {toolElements}
-              </div>
+          {/* Text content */}
+          <div className="flex flex-col gap-4 p-6 sm:p-10 flex-1 justify-center">
+            <h1 className="font-bold text-xl">{title}</h1>
+            <p className="line-clamp-4 text-gray-600 dark:text-gray-400">{description}</p>
+            <div className="flex flex-wrap gap-2 text-sm mt-auto">
+              {tagElements}
             </div>
           </div>
+
+          {/* Image — top on mobile, right panel on desktop */}
           {imageUrl ? (
-            <a
-              href={link}
-              target="_blank"
-              className="cursor-pointer"
-            >
+            <div className="relative w-full h-52 order-first lg:order-last lg:w-72 xl:w-80 lg:h-auto flex-shrink-0">
               <Image
                 src={imageUrl}
                 alt={title}
-                width={300}
-                height={300}
-                className="hidden lg:block absolute group-odd:left-8 top-12 shadow-lg hover:shadow-xl
-                  group-even:right-8 rounded-lg transition group-even:group-hover:-rotate-3
-                  group-odd:group-hover:rotate-3"
+                fill
+                className="object-cover"
               />
-            </a>
+            </div>
           ) : null}
-        </div>
+        </a>
       ) : (
         // prosssional work
         <div
@@ -152,7 +130,7 @@ export default function ProjectPreview({
             relative p-4`,
 
             // hover
-            'hover:bg-gray-50',
+            // 'hover:bg-gray-50',
 
             // dark
             'dark:bg-zinc-800 dark:hover:bg-zinc-950 dark:group-hover:hover:bg-zinc-700'
@@ -165,10 +143,11 @@ export default function ProjectPreview({
               // With images push text left or right
             )}
           >
-            <div className="flex flex-row gap-x-4">
-              <h1 className="font-medium">{title}</h1>
-              <p className="text-gray-400 dark:text-gray-400">{misc}</p>
-              <p className="text-gray-400 dark:text-gray-400 ml-auto">
+            <div className="flex flex-col gap-x-4 sm:flex-row">
+              <div>       <h1 className="font-medium">{title}</h1>
+              <p className="text-gray-500 dark:text-gray-400">{misc}</p></div>
+       
+              <p className="text-gray-400 dark:text-gray-400 sm:ml-auto text-sm">
                 {dates}
               </p>
             </div>

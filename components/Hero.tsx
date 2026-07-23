@@ -28,7 +28,7 @@ export default function Hero() {
             <h1 className="text-4xl sm:text-5xl font-bold text-center sm:text-left">
               Özgür Ozan Yusufoglu
             </h1>
-            <p className="font-semibold text-3xl">Software Engineer</p>
+            <p className="font-normal text-xl text-gray-500">Software / Product Engineer</p>
             <ContactLinks />
           </div>
 
@@ -37,13 +37,13 @@ export default function Hero() {
             alt="ozan portrait"
             width={200}
             height={200}
-            className="rounded-md order-first sm:order-none shadow-lg"
+            className="rounded-2xl order-first sm:order-none shadow-lg"
           ></Image>
         </div>
         <div className="prose antialiased text-lg dark:prose-invert">
           <AboutMe />
         </div>
-        <div className="flex flex-row w-full justify-end">
+        <div className="flex flex-row w-full justify-start">
           <TechStackList />
         </div>
       </motion.div>

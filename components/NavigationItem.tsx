@@ -20,7 +20,7 @@ const NavigationItem = ({ children, href, className }: navItemProps) => {
       <Link href={href}>
         <div
           className={cn(
-            'p-4 cursor-pointer text-lg font-md text-gray-500 transition-all duration-200',
+            'p-2 sm:p-4 cursor-pointer text-lg font-md text-gray-500 transition-all duration-200',
             'ease-out hover:text-violet-950 dark:text-white dark:hover:text-violet-300 z-50',
             className
           )}

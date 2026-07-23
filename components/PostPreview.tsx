@@ -1,6 +1,5 @@
 'use client';
 import Link from 'next/link';
-import Button from './Button';
 
 export type postPreviewProps = {
   title: string;
@@ -13,18 +12,15 @@ export type postPreviewProps = {
 export default function PostPreview({
   title,
   slug,
-  icon,
-  cover,
   previewItems,
 }: postPreviewProps) {
   return (
     <Link href={`/blog/${slug}`}>
       <div
-        className="flex w-full flex-col items-start justify-center gap-4 rounded-lg border-2 prose:
-          prose-p:no-underline decoration-slate-50 prose-p:m-0 prose-h2:m-0
-          prose-h2:no-underline border-neutral-300 border-solid p-6 border-transparent
-          hover:shadow-brutalHover bg-white hover:border-black hover:-translate-y-1
-          transition dark:bg-slate-600 dark:shadow-slate-800 dark:hover:shadow-slate-950"
+        className="flex w-full flex-col items-start justify-center gap-4 rounded-lg p-6
+          ring-2 ring-transparent hover:ring-black hover:-translate-y-1
+          bg-white hover:shadow-brutalHover transition
+          dark:bg-zinc-800 dark:hover:ring-zinc-400 dark:shadow-zinc-900 dark:hover:shadow-zinc-950"
       >
         <div className="flex flex-row items-center">
           {/* <p

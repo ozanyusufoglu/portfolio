@@ -1,15 +1,16 @@
-import { League_Spartan, Bitter } from 'next/font/google';
+import { Bitter } from 'next/font/google';
+import type { Metadata } from 'next';
 
 import Header from '../components/Header';
 import Footer from '../components/Footer';
-import ToggleThemeBtn from '@/components/ToggleThemeBtn';
+
 import './globals.css';
 
 // const karla = Karla({ subsets: ['latin-ext'] });
 // const urbanist = Urbanist({ subsets: ['latin-ext'] });
 const mainFont = Bitter({ subsets: ['latin-ext'] });
 
-export const metadata = {
+export const metadata: Metadata = {
   title: 'Ozan Yusufoglu',
   description: 'Frontend Engineer, Personal Website',
 };
@@ -18,11 +19,12 @@ export default function RootLayout({ children }) {
   return (
     <html
       lang="en"
+      suppressHydrationWarning
     >
       <head>
         <script
           dangerouslySetInnerHTML={{
-            __html: `(function(){try{var t=localStorage.getItem('theme');if(t==='dark'||(t===null&&window.matchMedia('(prefers-color-scheme: dark)').matches)){document.documentElement.classList.add('dark')}}catch(e){}})()`,
+            __html: `(function(){try{if(localStorage.getItem('theme')==='dark'){document.documentElement.classList.add('dark')}}catch(e){}})()`,
           }}
         />
       </head>
@@ -33,7 +35,7 @@ export default function RootLayout({ children }) {
         <Header />
         {children}
         <Footer />
-        <ToggleThemeBtn className="fixed bottom-4 right-4" />
+        {/* <ToggleThemeBtn className="fixed bottom-4 right-4" /> */}
       </body>
     </html>
   );
