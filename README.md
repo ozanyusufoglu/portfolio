@@ -4,7 +4,7 @@ Nice to meet you! My name is **Ozan**. I’m a **Full-stack Developer** with a f
 
 My email: ozan.yusufoglu@protonmail.com
 
-Check Monkeymind: monkeymind.vercel.app
+Check Monkeymind: monkeymind.work
 
 ## **How to use this repo?**
 

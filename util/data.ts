@@ -50,7 +50,7 @@ export const projects = [
     description:
       'Monkeymind is an AI based productivity tool designed to help users strengthen their cognitive muscles, enabling them to stay focused and attentive to their goals. Create your custom sessions to realize goals and track outcomes of your actions.',
     personal: true,
-    link: 'https://monkeymind.vercel.app',
+    link: 'https://monkeymind.work',
     dates: 'May 2024',
     company: null,
     misc: null,
