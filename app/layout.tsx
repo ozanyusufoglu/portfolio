@@ -1,4 +1,4 @@
-import { Bitter } from 'next/font/google';
+import { Urbanist } from 'next/font/google';
 import type { Metadata } from 'next';
 
 import Header from '../components/Header';
@@ -8,11 +8,13 @@ import './globals.css';
 
 // const karla = Karla({ subsets: ['latin-ext'] });
 // const urbanist = Urbanist({ subsets: ['latin-ext'] });
-const mainFont = Bitter({ subsets: ['latin-ext'] });
+// Turkish needs both: ç ö ü ı live in 'latin', ğ ş İ in 'latin-ext'
+const mainFont = Urbanist({ subsets: ['latin', 'latin-ext'] });
 
 export const metadata: Metadata = {
   title: 'Ozan Yusufoglu',
-  description: 'Frontend Engineer, Personal Website',
+  description:
+    'Ozan Yusufoglu, software and product engineer. Full-stack AI products, R&D and interactive prototypes.',
 };
 
 export default function RootLayout({ children }) {

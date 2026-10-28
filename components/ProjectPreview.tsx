@@ -2,10 +2,16 @@
 
 import Image from 'next/image';
 import { StaticImageData } from 'next/image';
-import { motion, useScroll, useTransform } from 'framer-motion';
+import {
+  motion,
+  useReducedMotion,
+  useScroll,
+  useTransform,
+} from 'framer-motion';
 import { useRef } from 'react';
 import { GrTools } from 'react-icons/gr';
 import cn from '@/util/cn';
+import LoopVideo, { loopVideo } from './LoopVideo';
 
 export type projectPreviewProps = {
   title: string;
@@ -22,8 +28,17 @@ export type projectPreviewProps = {
   body: string | null;
   previewItems?: readonly string[] | null;
   imageUrl?: StaticImageData | string | null;
+  // a product loop shown in place of the screenshot
+  video?: loopVideo | null;
   tags: readonly string[] | null;
   tools: readonly string[] | null;
+  outputs?: readonly {
+    title: string;
+    link: string;
+    imageUrl: StaticImageData;
+  }[];
+  // position in its list; odd cards mirror the image side and tilt direction
+  index?: number;
 };
 // 👇 a practical way to declare a types from data throug typeof
 
@@ -45,8 +60,11 @@ export default function ProjectPreview({
   body,
   previewItems,
   imageUrl,
+  video,
   tags,
   tools,
+  outputs,
+  index = 0,
 }: projectPreviewProps) {
   const projectPreviewRef = useRef<HTMLDivElement>(null);
 
@@ -64,6 +82,22 @@ export default function ProjectPreview({
 
   const scaleRatio = useTransform(scrollYProgress, [0, 1], [0.9, 1]);
   const opacityRatio = useTransform(scrollYProgress, [0, 1], [0.9, 1]);
+
+  // the screenshot turns as the card travels through the whole viewport,
+  // from entering at the bottom to leaving at the top
+  const { scrollYProgress: passProgress } = useScroll({
+    target: projectPreviewRef,
+    offset: ['start end', 'end start'],
+  });
+  const imageOnLeft = index % 2 === 1;
+  const tilt = useReducedMotion() ? 0 : imageOnLeft ? -6 : 6;
+  const imageRotate = useTransform(passProgress, [0, 1], [tilt, -tilt]);
+  const imageY = useTransform(
+    passProgress,
+    [0, 1],
+    [tilt === 0 ? 0 : 40, tilt === 0 ? 0 : -40]
+  );
+
   const tagElements = tags?.map((tag, index) => (
     <span
       key={index}
@@ -77,8 +111,8 @@ export default function ProjectPreview({
   const toolElements = tools?.map((tool, index) => (
     <span
       key={index}
-      className="bg-violet-50 rounded-full group-hover:bg-violet-50 transition p-2 text-sm px-4 flex
-        flex-row gap-x-2 items-center dark:bg-zinc-700 dark:group-hover:bg-zinc-700"
+      className="bg-violet-50 rounded-full group-hover:bg-violet-50 transition p-2 text-xs px-4
+        flex flex-row gap-x-2 items-center dark:bg-zinc-700 dark:group-hover:bg-zinc-700"
     >
       {/* <GrTools /> */}
       {tool}
@@ -95,31 +129,65 @@ export default function ProjectPreview({
           href={link}
           target="_blank"
           className={cn(
-            'flex flex-col lg:flex-row shadow-md transition-all bg-zinc-50 w-full',
-            'overflow-hidden rounded min-h-[280px]',
+            'relative flex flex-col shadow-md transition-all bg-zinc-50 w-full text-lg',
+            'overflow-hidden rounded',
             'hover:-translate-y-1 hover:shadow-lg',
-            'dark:bg-zinc-800 dark:hover:bg-zinc-950'
+            'dark:bg-zinc-800 dark:hover:bg-zinc-950',
+            imageUrl && 'lg:min-h-[360px]'
           )}
         >
-          {/* Text content */}
-          <div className="flex flex-col gap-4 p-6 sm:p-10 flex-1 justify-center">
-            <h1 className="font-bold text-xl">{title}</h1>
-            <p className="line-clamp-4 text-gray-600 dark:text-gray-400">{description}</p>
-            <div className="flex flex-wrap gap-2 text-sm mt-auto">
-              {tagElements}
-            </div>
-          </div>
-
-          {/* Image — top on mobile, right panel on desktop */}
+          {/* Image — a banner on top on mobile; always the still, never the video */}
           {imageUrl ? (
-            <div className="relative w-full h-52 order-first lg:order-last lg:w-72 xl:w-80 lg:h-auto flex-shrink-0">
+            <div className="relative w-full h-52 lg:hidden">
               <Image
                 src={imageUrl}
                 alt={title}
                 fill
-                className="object-cover"
+                className="object-cover object-left-top"
               />
             </div>
+          ) : null}
+
+          {/* Text content — pushed to the side opposite the image on desktop */}
+          <div
+            className={cn(
+              'flex flex-col gap-4 p-6 sm:p-10',
+              imageUrl && 'lg:w-[55%]',
+              imageUrl && imageOnLeft && 'lg:ml-auto'
+            )}
+          >
+            <h1 className="font-bold text-xl">{title}</h1>
+            <p className="text-gray-600 dark:text-gray-400">{description}</p>
+            <div className="flex flex-wrap gap-2 mt-auto">{tagElements}</div>
+          </div>
+
+          {/* Image — floats at the side on desktop, tilting with scroll and bleeding off the bottom edge */}
+          {imageUrl ? (
+            <motion.div
+              style={{ rotate: imageRotate, y: imageY }}
+              className={cn(
+                'hidden lg:block absolute top-12 w-[42%]',
+                imageOnLeft ? 'left-8' : 'right-8'
+              )}
+            >
+              {video ? (
+                <LoopVideo
+                  {...video}
+                  title={title}
+                  sizes="(min-width: 1280px) 28vw, 42vw"
+                  media="(min-width: 1024px)"
+                  className="rounded-lg shadow-lg transition-transform duration-300 group-hover:scale-[1.03]"
+                />
+              ) : (
+                <Image
+                  src={imageUrl}
+                  alt=""
+                  className="w-full h-auto rounded-lg shadow-lg transition-transform duration-300
+                    group-hover:scale-[1.03]"
+                  sizes="(min-width: 1280px) 28vw, 42vw"
+                />
+              )}
+            </motion.div>
           ) : null}
         </a>
       ) : (
@@ -144,15 +212,55 @@ export default function ProjectPreview({
             )}
           >
             <div className="flex flex-col gap-x-4 sm:flex-row">
-              <div>       <h1 className="font-medium">{title}</h1>
-              <p className="text-gray-500 dark:text-gray-400">{misc}</p></div>
-       
+              <div>
+                <h1 className="font-medium">
+                  {link ? (
+                    <a
+                      href={link}
+                      target="_blank"
+                      className="underline underline-offset-4"
+                    >
+                      {title}
+                    </a>
+                  ) : (
+                    title
+                  )}
+                </h1>
+                <p className="text-gray-500 dark:text-gray-400">{misc}</p>
+              </div>
+
               <p className="text-gray-400 dark:text-gray-400 sm:ml-auto text-sm">
                 {dates}
               </p>
             </div>
 
             <p className="font-regular">{description}</p>
+            {outputs?.length ? (
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                {outputs.map((output) => (
+                  <a
+                    key={output.link}
+                    href={output.link}
+                    target="_blank"
+                    className={cn(
+                      'flex flex-col overflow-hidden rounded shadow-md transition-all bg-zinc-50',
+                      'hover:-translate-y-1 hover:shadow-lg',
+                      'dark:bg-zinc-800 dark:hover:bg-zinc-950'
+                    )}
+                  >
+                    <div className="relative w-full aspect-video">
+                      <Image
+                        src={output.imageUrl}
+                        alt={output.title}
+                        fill
+                        className="object-cover object-left-top"
+                      />
+                    </div>
+                    <p className="p-3 text-sm font-medium">{output.title} ↗</p>
+                  </a>
+                ))}
+              </div>
+            ) : null}
             <div className="flex flex-row">
               <div className="flex flex-wrap gap-2 text-sm">
                 {tagElements}

@@ -1,7 +1,19 @@
 import kuko from '@/public/kuko_homepage.png';
 import monkeymind_landing from '@/public/monkeymind2.png';
 import indiehood from '@/public/indiehood2.png';
-import { SiTailwindcss } from 'react-icons/si';
+import indiehoodPoster from '@/public/videos/indiehood-poster.jpg';
+import euAiActGlossary from '@/public/eu-ai-act-glossary.jpeg';
+import shadowAiPlayground from '@/public/shadow-ai-playground.jpeg';
+import { FaReact } from 'react-icons/fa6';
+import { TbBrandFirebase, TbBrandNextjs } from 'react-icons/tb';
+import {
+  SiAnthropic,
+  SiFramer,
+  SiMapbox,
+  SiSupabase,
+  SiTypescript,
+  SiVercel,
+} from 'react-icons/si';
 
 export const links = [
   {
@@ -18,37 +30,51 @@ export const links = [
   },
 ] as const;
 
-export const techs = [{ title: 'Tailwind', SVG: SiTailwindcss }];
+export const techs = [
+  { title: 'TypeScript', SVG: SiTypescript },
+  { title: 'React', SVG: FaReact },
+  { title: 'Next.js', SVG: TbBrandNextjs },
+  { title: 'Framer Motion', SVG: SiFramer },
+  { title: 'Mapbox', SVG: SiMapbox },
+  { title: 'Vercel AI SDK', SVG: SiVercel },
+  { title: 'Anthropic', SVG: SiAnthropic },
+  { title: 'Supabase', SVG: SiSupabase },
+  { title: 'Firebase', SVG: TbBrandFirebase },
+];
 export const projects = [
   {
     title: 'Indiehood',
     slug: 'indiehood',
     description:
-      'Indiehood is a community-first map to discover niche events and spaces. ',
+      'A map-based social app for finding alternative events and communities nearby. Curators and users can feed a vision-AI pipeline that turns public social media posts into structured listings, which the community then extends and curates. Live beta in Istanbul.',
     personal: true,
     link: 'https://www.indiehood.io',
-    dates: 'May 2025',
+    dates: 'Feb 2026',
     company: null,
     misc: null,
     duration: null,
     icon: null,
     body: null,
     previewItems: null,
-    tools: ['React', 'Next.js', 'Supabase', 'Mapbox', 'Framer Motion'],
-    tags: [
-      'community',
-      'events',
-      'rsvp',
-      'hyperlocality',
-      'user-generated-content',
+    tools: [
+      'React-map-gl',
+      'Supabase',
+      'Mapbox',
+      'Framer Motion',
+      'Vercel AI SDK',
     ],
+    tags: ['community', 'events', 'RSVP', 'hyper-locality', 'UGC'],
     imageUrl: indiehood,
+    video: {
+      mp4: '/videos/indiehood.mp4',
+      poster: indiehoodPoster,
+    },
   },
   {
     title: 'Monkeymind',
     slug: 'monkeymind',
     description:
-      'Monkeymind is an AI based productivity tool designed to help users strengthen their cognitive muscles, enabling them to stay focused and attentive to their goals. Create your custom sessions to realize goals and track outcomes of your actions.',
+      'A focus assistant, based on the Fogg Behavior Model, that breaks big goals into sessions and helps people build momentum. A UI-aware agent works alongside the user as a body double. Live beta on web and Android.',
     personal: true,
     link: 'https://monkeymind.work',
     dates: 'May 2024',
@@ -59,21 +85,20 @@ export const projects = [
     body: null,
     previewItems: null,
     tools: [
-      'Anthropic',
       'Vercel AI SDK',
       'React',
       'Framer Motion',
       'Next.js',
       'Firebase',
-      'Vercel',
+      'Tiptap',
     ],
     tags: [
       'attention',
       'productivity',
       'pomodoro',
       'time management',
-      'action-driven progress',
-      'mental-wellbeing',
+      'UI aware AI',
+      'ADHD',
     ],
     imageUrl: monkeymind_landing,
   },
@@ -211,11 +236,23 @@ export const experiences = [
     type: 'training',
   },
   {
-    company: 'Freelance',
-    description: '',
-    position: 'R&D Consultant',
-    dates: '2022-present',
+    company: 'Independent',
+    description:
+      'Designed and built full-stack AI products independently, from concept and UX through implementation.',
+    position: 'Product Engineer',
+    dates: '2024 – now',
     duration: '',
+    link: '/projects',
+    projects: null,
+    type: 'work',
+  },
+  {
+    company: 'Freelance',
+    description:
+      'Advised Yenihayat Informatics on its ongoing grant-funded projects through completion and final reporting.',
+    position: 'R&D Consultant',
+    dates: '2021 – 2023',
+    duration: '2 years',
     link: '',
     projects: null,
     type: 'work',
@@ -236,8 +273,8 @@ export const experiences = [
     description:
       'Isoolate is an enterprise security platform providing browser isolation and manageability against critical web-borne threats. I carried out early phase R&D process and product development. We took part successfully in ITU Innogate Startup Accelerator 12th cohort as a promising cyber-security solution.  ',
     position: 'Product Manager',
-    dates: '2019 - 2020',
-    duration: '1 year',
+    dates: '2019 – 2021',
+    duration: '2 years',
     link: 'https://www.defensx.com/',
     projects: null,
     type: 'work',
@@ -248,7 +285,7 @@ export const experiences = [
     position: 'R&D Manager',
     description:
       'I coordinated multiple software projects supported by The Scientific and Technological Research Council of Turkey (TÜBİTAK), the national partner of the EU Horizon 2020 Programme in Turkey. In addition to my roles in technical writing for R&D grants and coordinating the development team according to the roadmap, I played a key role in the product development process, ensuring our projects met market needs and maintained high standards of innovation. I also managed the technical and financial reporting of deliverables. These efforts secured valuable financial resources for our early-phase innovative products. Our MVPs successfully evolved into proprietary solutions within the industry.',
-    dates: '2013 - 2021',
+    dates: '2013 – 2021',
     link: 'https://www.yh.com.tr/en/',
     duration: '8 years',
     type: 'work',
@@ -345,10 +382,82 @@ export const experiences = [
     company: 'Protel Turkey',
     description: '',
     position: 'Software Engineer',
-    dates: '2011 - 2013',
-    duration: '1 year',
+    dates: '2011 – 2013',
+    duration: '2 years',
     link: 'https://www.protelturkey.com/en/',
     projects: null,
     type: 'work',
+  },
+];
+
+export const contractedProjects = [
+  {
+    title: 'Yandex Maps — User & Market Research',
+    description:
+      'Qualitative user and market research on how people in Türkiye use digital maps and discover places. 25 remote video interviews, synthesized into a research report.',
+    slug: null,
+    personal: false,
+    link: null,
+    dates: 'Apr – May 2026',
+    duration: null,
+    misc: 'Yandex',
+    icon: null,
+    body: null,
+    previewItems: [],
+    tags: ['user research', 'interviews', 'market research', 'digital maps'],
+    tools: null,
+    imageUrl: null,
+  },
+  {
+    title: 'Shadow-AI Governance — Domain & Market Research',
+    description:
+      'Two interactive prototypes on shadow-AI risk: an EU AI Act & GDPR glossary drawn as a knowledge graph of connected legal concepts, and a flow-based playground for configuring data flows, protection layers, and scenarios, with an AI-assisted interface backed by a rule engine.',
+    slug: null,
+    personal: false,
+    link: null,
+    dates: '2026',
+    duration: null,
+    misc: 'Client under NDA',
+    icon: null,
+    body: null,
+    previewItems: [],
+    tags: ['AI governance', 'EU AI Act', 'knowledge graph', 'simulation'],
+    tools: null,
+    imageUrl: null,
+    outputs: [
+      {
+        title: 'EU AI Act & GDPR Glossary',
+        link: 'https://eu-ai-act-glossary.vercel.app/',
+        imageUrl: euAiActGlossary,
+      },
+      {
+        title: 'Shadow-AI Playground',
+        link: 'https://shadow-ai-governance.vercel.app/',
+        imageUrl: shadowAiPlayground,
+      },
+    ],
+  },
+  {
+    title: 'Cross-border Payment Corridor — Domain & Market Research',
+    description:
+      'Discovery for a regional cross-border payment corridor carrying person-to-person transfers one way and business payments the other, so most value nets out before cross-border settlement. Mapped licence scopes, instant-payment and A2A rails, and compliance responsibilities on both sides, and designed a reference architecture for one corridor platform shared by consumer, merchant and partner channels.',
+    slug: null,
+    personal: false,
+    link: null,
+    dates: '2026',
+    duration: null,
+    misc: 'Licensed payment institution',
+    icon: null,
+    body: null,
+    previewItems: [],
+    tags: [
+      'payments',
+      'instant payments',
+      'A2A',
+      'compliance',
+      'solution architecture',
+    ],
+    tools: null,
+    imageUrl: null,
   },
 ];

@@ -7,7 +7,7 @@ import { ContactLinks } from './ContactLinks';
 export default function Footer() {
   return (
     <div
-      className="flex flex-row items-center justify-between gap-8 w-screen p-8 md:p-16
+      className="flex flex-row items-center justify-between gap-8 w-screen p-8 md:p-16 mt-16 md:mt-24
         dark:bg-zinc-800 bg-gray-100"
     >
       <div className="flex flex-col gap-8">

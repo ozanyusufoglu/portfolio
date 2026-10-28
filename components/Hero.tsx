@@ -26,7 +26,7 @@ export default function Hero() {
         <div className="flex flex-col md:flex-row gap-8 justify-between items-center w-full">
           <div className="flex flex-col sm:items-start items-center gap-4">
             <h1 className="text-4xl sm:text-5xl font-bold text-center sm:text-left">
-              Özgür Ozan Yusufoglu
+              Ozan Yusufoglu
             </h1>
             <p className="font-normal text-xl text-gray-500">Software / Product Engineer</p>
             <ContactLinks />

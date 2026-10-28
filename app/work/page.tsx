@@ -2,12 +2,24 @@ import React from 'react';
 import dynamic from 'next/dynamic';
 import Section from '@/components/Section';
 import WorkExperienceLite from '@/components/WorkExperienceLite';
-import { experiences } from '@/util/data';
+import { experiences, contractedProjects } from '@/util/data';
 
 const ProjectPreview = dynamic(() => import('@/components/ProjectPreview'));
 
 export default async function Experience() {
-  const rdProjectElements = experiences[4].projects.map((project, index) => {
+  const rdProjects =
+    experiences.find((item) => item.company === 'Yenihayat Informatics')
+      ?.projects ?? [];
+
+  const rdProjectElements = rdProjects.map((project, index) => {
+    return (
+      <React.Fragment key={index}>
+        <ProjectPreview {...project} />
+      </React.Fragment>
+    );
+  });
+
+  const contractedProjectElements = contractedProjects.map((project, index) => {
     return (
       <React.Fragment key={index}>
         <ProjectPreview {...project} />
@@ -50,11 +62,14 @@ export default async function Experience() {
   return (
     <Section className="flex gap-y-12 flex-col justify-center max-w-3xl mx-auto xl:mt-24 p-4">
       <div className="flex flex-col gap-4">
-        <p className="text-xl font-semibold p-4">Work</p>
+        <p className="text-xl font-semibold p-4">Experience</p>
 
         {jobs}
-        <p className="text-xl font-semibold p-4">Trainings</p>
-        {trainings}
+      </div>
+
+      <div>
+        <p className="font-semibold text-xl mb-4 p-4">Contracted Work</p>
+        <div className="flex flex-col gap-y-4">{contractedProjectElements}</div>
       </div>
 
       <div>
@@ -63,6 +78,13 @@ export default async function Experience() {
         ) : null}
         <div className="flex flex-col gap-y-4">{rdProjectElements}</div>
       </div>
+
+      {/* hidden for now; the trainings list above is kept so this can come back
+      <div className="flex flex-col gap-4">
+        <p className="text-xl font-semibold p-4">Trainings</p>
+        {trainings}
+      </div>
+      */}
     </Section>
   );
 }
