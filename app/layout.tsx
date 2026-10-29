@@ -21,6 +21,8 @@ export default function RootLayout({ children }) {
   return (
     <html
       lang="en"
+      // framer-motion's useScroll measures cards against <html>, which must not be position: static
+      className="relative"
       suppressHydrationWarning
     >
       <head>

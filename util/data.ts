@@ -5,9 +5,9 @@ import indiehoodPoster from '@/public/videos/indiehood-poster.jpg';
 import euAiActGlossary from '@/public/eu-ai-act-glossary.jpeg';
 import shadowAiPlayground from '@/public/shadow-ai-playground.jpeg';
 import { FaReact } from 'react-icons/fa6';
-import { TbBrandFirebase, TbBrandNextjs } from 'react-icons/tb';
+import { TbBrandFirebase, TbBrandNextjs, TbMasksTheater } from 'react-icons/tb';
 import {
-  SiAnthropic,
+  SiClaude,
   SiFramer,
   SiMapbox,
   SiSupabase,
@@ -34,10 +34,11 @@ export const techs = [
   { title: 'TypeScript', SVG: SiTypescript },
   { title: 'React', SVG: FaReact },
   { title: 'Next.js', SVG: TbBrandNextjs },
-  { title: 'Framer Motion', SVG: SiFramer },
-  { title: 'Mapbox', SVG: SiMapbox },
   { title: 'Vercel AI SDK', SVG: SiVercel },
-  { title: 'Anthropic', SVG: SiAnthropic },
+  { title: 'Claude Code', SVG: SiClaude },
+  { title: 'Mapbox', SVG: SiMapbox },
+  { title: 'Playwright', SVG: TbMasksTheater },
+  { title: 'Framer Motion', SVG: SiFramer },
   { title: 'Supabase', SVG: SiSupabase },
   { title: 'Firebase', SVG: TbBrandFirebase },
 ];

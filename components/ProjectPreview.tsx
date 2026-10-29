@@ -143,6 +143,7 @@ export default function ProjectPreview({
                 src={imageUrl}
                 alt={title}
                 fill
+                sizes="100vw"
                 className="object-cover object-left-top"
               />
             </div>
@@ -253,6 +254,8 @@ export default function ProjectPreview({
                         src={output.imageUrl}
                         alt={output.title}
                         fill
+                        // two tiles side by side in the work page's 3xl column
+                        sizes="(min-width: 640px) 360px, 100vw"
                         className="object-cover object-left-top"
                       />
                     </div>
