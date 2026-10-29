@@ -1,0 +1,357 @@
+{
+  "$schema": "https://raw.githubusercontent.com/jsonresume/resume-schema/master/schema.json",
+  "basics": {
+    "name": "Ozan Yusufoglu",
+    "label": "Software / Product Engineer",
+    "image": "/ozgur_ozan.jpeg",
+    "email": "ozan.yusufoglu@gmail.com",
+    "url": "https://ozanyusufoglu.dev",
+    "about": [
+      "Hi 👋",
+      "I'm a **software and product engineer** with a background in R&D and product design. I like researching complex domains and turning them into something people can understand, explore or use.",
+      "I studied Electrical & Electronics Engineering and spent eight years as an **R&D Manager**, coordinating grant-funded software projects in retail IoT, cybersecurity and digital broadcasting. It taught me that the real-world context around a problem matters as much as the technology.",
+      "Since 2024 I've been building full-stack indie products, from concept and UX through implementation. I also take on research and prototyping work: user research, domain and market research, and interactive prototypes. You'll find it in the [Work](/#work) section below.",
+      "I prototype and build products with **TypeScript**, **React** and **Next.js**, and use the Vercel AI SDK with the Anthropic API for agents. I'm drawn to data visualization, cartography and cognitive science, and enjoy working with people from multidisciplinary backgrounds."
+    ],
+    "summary": "Software and product engineer with a background in R&D and product design. Studied Electrical & Electronics Engineering and spent eight years as an R&D Manager coordinating grant-funded software projects in retail IoT, cybersecurity and digital broadcasting. Since 2024, building full-stack AI products independently, from concept and UX through implementation, and taking on user research, domain and market research, and interactive prototyping for clients. Primary stack: TypeScript, React, Next.js, Vercel AI SDK, Anthropic API. Interested in data visualization, cartography and cognitive science.",
+    "location": {
+      "postalCode": "",
+      "city": "Istanbul",
+      "countryCode": "TR",
+      "region": ""
+    },
+    "profiles": [
+      {
+        "network": "GitHub",
+        "username": "ozanyusufoglu",
+        "url": "https://github.com/ozanyusufoglu/"
+      },
+      {
+        "network": "LinkedIn",
+        "username": "ozanyusufoglu",
+        "url": "https://www.linkedin.com/in/ozanyusufoglu/"
+      },
+      {
+        "network": "Email (secondary)",
+        "username": "ozan.yusufoglu@protonmail.com",
+        "url": "mailto:ozan.yusufoglu@protonmail.com"
+      }
+    ]
+  },
+  "work": [
+    {
+      "name": "Independent",
+      "position": "Product Engineer",
+      "url": "https://ozanyusufoglu.dev/projects",
+      "startDate": "2024",
+      "endDate": "",
+      "summary": "Designed and built full-stack AI products independently, from concept and UX through implementation. Alongside, contracted user research, domain and market research, and interactive prototyping.",
+      "highlights": [
+        "Indiehood and Monkeymind, both in live beta (see projects).",
+        "Client work for Yandex and for clients under NDA (see projects)."
+      ]
+    },
+    {
+      "name": "Freelance",
+      "position": "R&D Consultant",
+      "url": "",
+      "startDate": "2021",
+      "endDate": "2023",
+      "summary": "Advised Yenihayat Informatics on its ongoing grant-funded projects through completion and final reporting.",
+      "highlights": []
+    },
+    {
+      "name": "Isoolate Cyber-Security",
+      "position": "Product Manager",
+      "url": "https://www.defensx.com/",
+      "startDate": "2019",
+      "endDate": "2021",
+      "summary": "Isoolate is an enterprise security platform providing browser isolation and manageability against critical web-borne threats. Carried out the early-phase R&D process and product development.",
+      "highlights": [
+        "Took part successfully in ITU Innogate Startup Accelerator's 12th cohort as a promising cyber-security solution."
+      ]
+    },
+    {
+      "name": "Yenihayat Informatics",
+      "position": "R&D Manager",
+      "url": "https://www.yh.com.tr/en/",
+      "startDate": "2013",
+      "endDate": "2021",
+      "summary": "Coordinated multiple software projects supported by TÜBİTAK (The Scientific and Technological Research Council of Turkey, the national partner of the EU Horizon 2020 Programme in Turkey). Handled technical writing for R&D grants, coordinated the development team against the roadmap, drove product decisions to meet market needs, and managed technical and financial reporting of deliverables.",
+      "highlights": [
+        "Secured financial resources for early-phase innovative products via successful R&D grant applications.",
+        "Guided MVPs through to proprietary industry solutions (see linked projects below).",
+        "Deployed a retail sales-monitoring IoT board to a pilot fleet of 200 devices across major Turkish cities."
+      ]
+    },
+    {
+      "name": "Protel Turkey",
+      "position": "Software Engineer",
+      "url": "https://www.protelturkey.com/en/",
+      "startDate": "2011",
+      "endDate": "2013",
+      "summary": "",
+      "highlights": []
+    }
+  ],
+  "education": [
+    {
+      "institution": "İnönü University",
+      "url": "",
+      "area": "Electrical & Electronics Engineering",
+      "studyType": "B.Sc.",
+      "startDate": "2005",
+      "endDate": "2009",
+      "score": "",
+      "courses": ["Digital Electronics & Signal Processing"]
+    },
+    {
+      "institution": "Scrimba",
+      "url": "https://scrimba.com/",
+      "area": "Advanced React & Ecosystem",
+      "studyType": "Bootcamp",
+      "startDate": "2023",
+      "endDate": "2023",
+      "score": "",
+      "courses": []
+    },
+    {
+      "institution": "Innogate Startup Accelerator",
+      "url": "https://innogate.org/en/homepage/",
+      "area": "Product Management / US Market Readiness",
+      "studyType": "Startup Accelerator Program",
+      "startDate": "2020",
+      "endDate": "2020",
+      "score": "",
+      "courses": []
+    }
+  ],
+  "projects": [
+    {
+      "name": "Indiehood",
+      "description": "A map-based social app for finding alternative events and communities nearby. Curators and users can feed a vision-AI pipeline that turns public social media posts into structured listings, which the community then extends and curates. Live beta in Istanbul.",
+      "highlights": [
+        "Stack: React, Next.js, react-map-gl, Mapbox, Supabase, Framer Motion, Vercel AI SDK."
+      ],
+      "keywords": [
+        "community",
+        "events",
+        "rsvp",
+        "hyperlocality",
+        "user-generated-content"
+      ],
+      "startDate": "2025-05",
+      "endDate": "",
+      "url": "https://www.indiehood.io",
+      "entity": "Personal",
+      "type": "application"
+    },
+    {
+      "name": "Monkeymind",
+      "description": "A focus assistant, based on the Fogg Behavior Model, that breaks big goals into sessions and helps people build momentum. A UI-aware agent works alongside the user as a body double. Live beta on web and Android.",
+      "highlights": [
+        "Stack: React, Next.js, TypeScript, Framer Motion, Firebase, Vercel AI SDK, Anthropic API (earlier iterations also used OpenAI and Tiptap)."
+      ],
+      "keywords": [
+        "attention",
+        "productivity",
+        "time management",
+        "UI-aware AI",
+        "ADHD"
+      ],
+      "startDate": "2024-05",
+      "endDate": "",
+      "url": "https://monkeymind.work",
+      "entity": "Personal",
+      "type": "application"
+    },
+    {
+      "name": "Yandex Maps — User & Market Research",
+      "description": "Qualitative user and market research on how people in Türkiye use digital maps and discover places. 25 remote video interviews, synthesized into a research report.",
+      "highlights": [],
+      "keywords": ["user research", "interviews", "market research", "digital maps"],
+      "startDate": "2026-04",
+      "endDate": "2026-05",
+      "url": "",
+      "entity": "Yandex",
+      "type": "contract"
+    },
+    {
+      "name": "Shadow-AI Governance — Domain & Market Research",
+      "description": "Two interactive prototypes on shadow-AI risk: an EU AI Act & GDPR glossary drawn as a knowledge graph of connected legal concepts, and a flow-based playground for configuring data flows, protection layers, and scenarios, with an AI-assisted interface backed by a rule engine.",
+      "highlights": [
+        "EU AI Act & GDPR Glossary: https://eu-ai-act-glossary.vercel.app/",
+        "Shadow-AI Playground: https://shadow-ai-governance.vercel.app/"
+      ],
+      "keywords": ["AI governance", "EU AI Act", "knowledge graph", "simulation"],
+      "startDate": "2026",
+      "endDate": "2026",
+      "url": "",
+      "entity": "Client under NDA",
+      "type": "contract"
+    },
+    {
+      "name": "Cross-border Payment Corridor — Domain & Market Research",
+      "description": "Discovery for a regional cross-border payment corridor carrying person-to-person transfers one way and business payments the other, so most value nets out before cross-border settlement. Mapped licence scopes, instant-payment and A2A rails, and compliance responsibilities on both sides, and designed a reference architecture for one corridor platform shared by consumer, merchant and partner channels.",
+      "highlights": [],
+      "keywords": ["payments", "instant payments", "A2A", "compliance", "solution architecture"],
+      "startDate": "2026",
+      "endDate": "2026",
+      "url": "",
+      "entity": "Licensed payment institution",
+      "type": "contract"
+    },
+    {
+      "name": "KUKO Leipzig Event Site",
+      "description": "Kültür Kollektiv Leipzig e.V. — Association for transcultural change of perspective, encounter and exchange with people, languages, literatures, cultures, art and music from Turkey in Leipzig.",
+      "highlights": [],
+      "keywords": ["Leipzig", "community", "events", "culture", "solidarity"],
+      "startDate": "2021",
+      "endDate": "",
+      "url": "https://www.kuko-leipzig.de/",
+      "entity": "Personal",
+      "type": "application"
+    },
+    {
+      "name": "Browser Virtualization Protocol for Seamless Data Security",
+      "description": "Browser isolation is a paradigm-shifting technology replacing traditional cyber security measures by virtualizing browsers on remote servers and streaming only the video output to the user with seamless remote control.",
+      "highlights": ["Funded under the TÜBİTAK 1507 R&D Programme."],
+      "keywords": [
+        "virtualization",
+        "rdp",
+        "remote rendering",
+        "cybersecurity"
+      ],
+      "startDate": "2016",
+      "endDate": "2018",
+      "url": "",
+      "entity": "Yenihayat Informatics",
+      "type": "professional"
+    },
+    {
+      "name": "Sales Monitoring Platform for Fast Moving Consumer Goods",
+      "description": "ESM is a retail sales monitoring platform enabling real-time sales data aggregation from legacy POS systems through a low-cost, machine/software-agnostic IoT embedded board — eliminating manual data collection, human error, and delayed time cost. Actively involved in the pilot deployment of 200 devices across major Turkish cities.",
+      "highlights": [
+        "Client: a major tobacco company.",
+        "Key learning: the significance of the human factor in real-world deployments, and designing interaction and technology together."
+      ],
+      "keywords": ["FMCG", "IoT", "Retail", "PoS", "Data aggregation"],
+      "startDate": "2016",
+      "endDate": "2018",
+      "url": "",
+      "entity": "Yenihayat Informatics",
+      "type": "professional"
+    },
+    {
+      "name": "Cloud-based Point-of-Sale Application for IoT Ready Platform",
+      "description": "Retail management platform and cloud-based point-of-sale application running on Beko 520TR IoT Ready hardware, integrated with new-generation cash registers per new Turkish law. Built in cooperation with Arçelik A.Ş.",
+      "highlights": ["Funded under the TÜBİTAK 1507 R&D Programme."],
+      "keywords": [],
+      "startDate": "2016",
+      "endDate": "2018",
+      "url": "",
+      "entity": "Yenihayat Informatics",
+      "type": "professional"
+    },
+    {
+      "name": "High-density DVB-IP Transmodulator Appliance",
+      "description": "Scalable and modular digital headend platform featuring trans-modulation between QPSK/QAM and IP television sources, with PID analysis and filtering.",
+      "highlights": ["Funded under the TÜBİTAK 1507 R&D Programme."],
+      "keywords": ["Iptv", "Digital Video Broadcasting"],
+      "startDate": "2015",
+      "endDate": "2016",
+      "url": "",
+      "entity": "Yenihayat Informatics",
+      "type": "professional"
+    },
+    {
+      "name": "DVB-IP Streamer Middleware Platform for Hospitality",
+      "description": "All-in-one IPTV streaming platform capable of QPSK demodulation and MPTS, set-top box & user management, VoD, and digital services over STB.",
+      "highlights": ["Funded under the KOSGEB R&D SME Grant Program 2013.33."],
+      "keywords": ["IPTV", "Set-Top-Box", "Video-on-Demand", "Hospitality"],
+      "startDate": "2013",
+      "endDate": "2013",
+      "url": "",
+      "entity": "Yenihayat Informatics",
+      "type": "professional"
+    }
+  ],
+  "skills": [
+    {
+      "name": "Frontend Engineering",
+      "level": "",
+      "keywords": [
+        "TypeScript",
+        "React",
+        "Next.js",
+        "Tailwind CSS",
+        "Framer Motion"
+      ]
+    },
+    {
+      "name": "AI Engineering",
+      "level": "",
+      "keywords": [
+        "Vercel AI SDK",
+        "Anthropic API",
+        "OpenAI API",
+        "Claude Code",
+        "AI Agents"
+      ]
+    },
+    {
+      "name": "Backend & Data",
+      "level": "",
+      "keywords": ["Firebase", "Supabase", "Mapbox"]
+    },
+    {
+      "name": "Tools & Design",
+      "level": "",
+      "keywords": ["Figma", "Git", "Playwright"]
+    },
+    {
+      "name": "R&D / Embedded / IoT",
+      "level": "",
+      "keywords": [
+        "IoT",
+        "Embedded Systems",
+        "Digital Video Broadcasting",
+        "Point-of-Sale Systems",
+        "Ruby",
+        "Middleman (SSG)"
+      ]
+    },
+    {
+      "name": "Product & Program Management",
+      "level": "",
+      "keywords": [
+        "Product Management",
+        "R&D Grant Writing (TÜBİTAK, KOSGEB)",
+        "Technical & Financial Reporting",
+        "Browser Isolation / Cybersecurity"
+      ]
+    }
+  ],
+  "languages": [
+    { "language": "Turkish", "fluency": "Native speaker" },
+    { "language": "English", "fluency": "Professional working proficiency" },
+    { "language": "German", "fluency": "B1 (Goethe-Zertifikat)" }
+  ],
+  "interests": [
+    {
+      "name": "Multidisciplinary product design",
+      "keywords": ["data visualization", "cartography", "cognitive science"]
+    }
+  ],
+  "references": [],
+  "meta": {
+    "canonical": "https://jsonresume.org/schema",
+    "version": "1.0.0",
+    "generatedFrom": [
+      "util/data.ts",
+      "ozanyusufoglu-cv-may-2025.pdf"
+    ],
+    "lastModified": "2026-10-29",
+    "notes": "Single source of truth for CV/resume content. Phone, street address and the regional block (date of birth, gender, nationality) live in the git-ignored resume.private.json; merge it over this file when generating a CV. The site reads only basics.about from here; the work and project cards still come from util/data.ts, so edit both when either changes. Contract projects keep client confidentiality: the cross-border and Shadow-AI clients stay unnamed, and no Yandex research findings are published."
+  }
+}

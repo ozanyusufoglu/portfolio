@@ -1,44 +1,24 @@
-import { FaReact } from 'react-icons/fa6';
-import { TbBrandFirebase, TbBrandNextjs } from 'react-icons/tb';
-import {
-  SiOpenai,
-  SiTailwindcss,
-  SiTypescript,
-  SiFramer,
-  SiAnthropic,
-} from 'react-icons/si';
-
 import { techs } from '@/util/data';
 
 export default function TechStackList() {
   return (
-    <div className="flex flex-col gap-8 items-center">
-      <p className="self-center font-bold">Techs I use</p>
-      <div className="flex flex-row justify-center flex-wrap gap-8 text-lg">
-        <p className="flex flex-row gap-2 items-center rounded-full bg-zinc-100 px-4 p-2">
-          React <FaReact className="inline" />
-        </p>
-        <p className="flex flex-row gap-2 items-center rounded-full bg-zinc-100 px-4 p-2">
-          Typescript <SiTypescript className="inline " />
-        </p>
-        <p className="flex flex-row gap-2 items-center rounded-full bg-zinc-100 px-4 p-2">
-          Next.js <TbBrandNextjs className="inline" />
-        </p>
-        <p className="flex flex-row gap-2 items-center rounded-full bg-zinc-100 px-4 p-2">
-          Tailwind <SiTailwindcss className="inline" />
-        </p>
-        <p className="flex flex-row gap-2 items-center rounded-full bg-zinc-100 px-4 p-2">
-          Firebase <TbBrandFirebase className="inline" />
-        </p>
-        <p className="flex flex-row gap-2 items-center rounded-full bg-zinc-100 px-4 p-2">
-          OpenAI <SiOpenai className="inline" />
-        </p>
-        <p className="flex flex-row gap-2 items-center rounded-full bg-zinc-100 px-4 p-2">
-          Framer Motion <SiFramer className="inline" />
-        </p>
-        <p className="flex flex-row gap-2 items-center rounded-full bg-zinc-100 px-4 p-2">
-          Anthropic <SiAnthropic className="inline" />
-        </p>
+    <div className="flex flex-col gap-4 sm:items-start justify-center items-center">
+      <p className="text-xs font-medium uppercase tracking-wider text-gray-500">
+        My tech stack
+      </p>
+      <div
+        className="flex flex-row w-full gap-4 mt-4 text-sm flex-wrap sm:justify-start
+          justify-center"
+      >
+        {techs.map(({ title, SVG }) => (
+          <p
+            key={title}
+            className="flex flex-row gap-1.5 items-center whitespace-nowrap rounded-full bg-zinc-100
+              px-3 py-1.5 dark:bg-zinc-800"
+          >
+            <SVG className="inline shrink-0" /> {title}
+          </p>
+        ))}
       </div>
     </div>
   );
