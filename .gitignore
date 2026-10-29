@@ -37,3 +37,6 @@ next-env.d.ts
 
 # private resume fields (phone, address, date of birth)
 /content/resume.private.json
+
+# draft notes for the CV/portfolio copy, not for publishing
+/content/projects-long.md
