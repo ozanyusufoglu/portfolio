@@ -136,15 +136,17 @@ export default function ProjectPreview({
             imageUrl && 'lg:min-h-[360px]'
           )}
         >
-          {/* Image — a banner on top on mobile; always the still, never the video */}
+          {/* Image — a banner on top on mobile; always the still, never the video.
+              16:9 matches the landing screenshots, so they show whole and centered;
+              taller ones (KUKO) keep their top */}
           {imageUrl ? (
-            <div className="relative w-full h-52 lg:hidden">
+            <div className="relative w-full aspect-video lg:hidden">
               <Image
                 src={imageUrl}
                 alt={title}
                 fill
                 sizes="100vw"
-                className="object-cover object-left-top"
+                className="object-cover object-top"
               />
             </div>
           ) : null}

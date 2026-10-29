@@ -2,16 +2,21 @@ import { techs } from '@/util/data';
 
 export default function TechStackList() {
   return (
-    <div className="flex flex-col gap-4 items-center">
-      <p className="">My tech stack</p>
-      <div className="flex flex-row flex-wrap gap-4 text-sm">
+    <div className="flex flex-col gap-4 sm:items-start justify-center items-center">
+      <p className="text-xs font-medium uppercase tracking-wider text-gray-500">
+        My tech stack
+      </p>
+      <div
+        className="flex flex-row w-full gap-4 mt-4 text-sm flex-wrap sm:justify-start
+          justify-center"
+      >
         {techs.map(({ title, SVG }) => (
           <p
             key={title}
-            className="flex flex-row gap-1.5 items-center rounded-full bg-zinc-100 px-4 py-1.5
-              dark:bg-zinc-800"
+            className="flex flex-row gap-1.5 items-center whitespace-nowrap rounded-full bg-zinc-100
+              px-3 py-1.5 dark:bg-zinc-800"
           >
-            <SVG className="inline" /> {title}
+            <SVG className="inline shrink-0" /> {title}
           </p>
         ))}
       </div>

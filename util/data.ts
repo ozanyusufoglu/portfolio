@@ -22,7 +22,7 @@ export const links = [
   },
   {
     title: 'Work',
-    link: '/work',
+    link: '/#work',
   },
   {
     title: 'Blog',

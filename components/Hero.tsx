@@ -26,7 +26,7 @@ export default function Hero({ about }: { about: readonly string[] }) {
           // one column on phones (photo, name, about, techs);
           // from lg two columns: name + about on the left, photo + techs on the right
           'relative grid grid-cols-1 gap-8 text-lg w-full',
-          'lg:grid-cols-[minmax(0,1fr)_220px] lg:gap-x-16'
+          'lg:grid-cols-[minmax(0,1fr)_300px] lg:gap-x-16'
         )}
       >
         {/* sits at the bottom of the photo's row so it leads straight into the about text */}
@@ -46,10 +46,12 @@ export default function Hero({ about }: { about: readonly string[] }) {
         <Image
           src="/ozgur_ozan.jpeg"
           alt="ozan portrait"
-          width={220}
-          height={220}
+          width={200}
+          height={200}
           className={cn(
-            'rounded-2xl shadow-lg order-first justify-self-center sm:justify-self-start',
+            `w-full max-w-[200px] h-auto rounded-2xl shadow-lg order-first
+            justify-self-center`,
+            'sm:justify-self-start',
             'lg:order-none lg:col-start-2 lg:row-start-1'
           )}
         />
@@ -65,7 +67,9 @@ export default function Hero({ about }: { about: readonly string[] }) {
           ))}
         </div>
 
-        <div className="lg:col-start-2 lg:row-start-2">
+        <div
+          className="w-full sm:mt-12 lg:col-start-2 lg:row-start-2"
+        >
           <TechStackList />
         </div>
       </motion.div>
