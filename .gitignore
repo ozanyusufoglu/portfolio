@@ -34,3 +34,6 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# private resume fields (phone, address, date of birth)
+/content/resume.private.json

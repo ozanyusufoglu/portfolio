@@ -1,0 +1,300 @@
+{
+  "$schema": "https://raw.githubusercontent.com/jsonresume/resume-schema/master/schema.json",
+  "basics": {
+    "name": "Özgür Ozan Yusufoglu",
+    "label": "Full-stack Software Developer — AI & Interaction Design",
+    "image": "/ozgur_ozan.jpeg",
+    "email": "ozan.yusufoglu@gmail.com",
+    "url": "https://ozanyusufoglu.dev",
+    "about": [
+      "Hi 👋",
+      "I'm a **software and product engineer** with a background in R&D and product design. I like researching complex domains and turning them into something people can understand, explore or use.",
+      "I studied Electrical & Electronics Engineering and spent eight years as an **R&D Manager**, coordinating grant-funded software projects in retail IoT, cybersecurity and digital broadcasting. It taught me that the real-world context around a problem matters as much as the technology.",
+      "Since 2024 I've been building full-stack indie products, from concept and UX through implementation. I also take on research and prototyping work: user research, domain and market research, and interactive prototypes. You'll find it on the [Work](/work) page.",
+      "I mostly build with **TypeScript**, **React** and **Next.js**, and use the Vercel AI SDK with the Anthropic API for agents. I'm drawn to data visualization, cartography and cognitive science, and enjoy working with people from multidisciplinary backgrounds."
+    ],
+    "summary": "Full-stack Software Developer with a focus on AI and interaction design. Background in Electrical & Electronics Engineering, previously working as an R&D Manager coordinating multiple software projects across domains. Moved toward frontend engineering and UX design to build indie consumer products, and more recently into weaving AI agents into products in ways that combine intuitive interfaces with AI to empower human agency rather than replace it. Primary stack: TypeScript, React, Next.js, Vercel AI SDK, Anthropic API. Interested in data visualization, cartography, and cognitive science.",
+    "location": {
+      "postalCode": "",
+      "city": "Istanbul",
+      "countryCode": "TR",
+      "region": ""
+    },
+    "profiles": [
+      {
+        "network": "GitHub",
+        "username": "ozanyusufoglu",
+        "url": "https://github.com/ozanyusufoglu/"
+      },
+      {
+        "network": "LinkedIn",
+        "username": "ozanyusufoglu",
+        "url": "https://www.linkedin.com/in/ozanyusufoglu/"
+      },
+      {
+        "network": "Email (secondary)",
+        "username": "ozan.yusufoglu@protonmail.com",
+        "url": "mailto:ozan.yusufoglu@protonmail.com"
+      }
+    ]
+  },
+  "work": [
+    {
+      "name": "Monkeymind",
+      "position": "Founder / Fullstack Developer",
+      "url": "https://monkeymind.work",
+      "startDate": "2023",
+      "endDate": "",
+      "summary": "An AI-based productivity tool to help divergent minds with focus and time management. Brings science-based methods together with an engaging, rewarding user experience.",
+      "highlights": [
+        "Stack: React, Next.js, TypeScript, Framer Motion, Vercel AI SDK, Anthropic API (earlier iterations also used OpenAI and Tiptap APIs)."
+      ]
+    },
+    {
+      "name": "Freelance",
+      "position": "R&D Consultant",
+      "url": "",
+      "startDate": "2022",
+      "endDate": "2023",
+      "summary": "",
+      "highlights": []
+    },
+    {
+      "name": "Isoolate Cyber-Security",
+      "position": "Product Manager",
+      "url": "https://www.defensx.com/",
+      "startDate": "2019",
+      "endDate": "2021",
+      "summary": "Isoolate is an enterprise security platform providing browser isolation and manageability against critical web-borne threats. Carried out the early-phase R&D process and product development.",
+      "highlights": [
+        "Took part successfully in ITU Innogate Startup Accelerator's 12th cohort as a promising cyber-security solution."
+      ]
+    },
+    {
+      "name": "Yenihayat Informatics",
+      "position": "R&D Manager",
+      "url": "https://www.yh.com.tr/en/",
+      "startDate": "2013",
+      "endDate": "2021",
+      "summary": "Coordinated multiple software projects supported by TÜBİTAK (The Scientific and Technological Research Council of Turkey, the national partner of the EU Horizon 2020 Programme in Turkey). Handled technical writing for R&D grants, coordinated the development team against the roadmap, drove product decisions to meet market needs, and managed technical and financial reporting of deliverables.",
+      "highlights": [
+        "Secured financial resources for early-phase innovative products via successful R&D grant applications.",
+        "Guided MVPs through to proprietary industry solutions (see linked projects below).",
+        "Deployed a retail sales-monitoring IoT board to a pilot fleet of 200 devices across major Turkish cities."
+      ]
+    },
+    {
+      "name": "Protel Turkey",
+      "position": "Software Engineer",
+      "url": "https://www.protelturkey.com/en/",
+      "startDate": "2011",
+      "endDate": "2013",
+      "summary": "",
+      "highlights": []
+    }
+  ],
+  "education": [
+    {
+      "institution": "İnönü University",
+      "url": "",
+      "area": "Electrical & Electronics Engineering",
+      "studyType": "B.Sc.",
+      "startDate": "2005",
+      "endDate": "2009",
+      "score": "",
+      "courses": ["Digital Electronics & Signal Processing"]
+    },
+    {
+      "institution": "Scrimba",
+      "url": "https://scrimba.com/",
+      "area": "Advanced React & Ecosystem",
+      "studyType": "Bootcamp",
+      "startDate": "2023",
+      "endDate": "2023",
+      "score": "",
+      "courses": []
+    },
+    {
+      "institution": "Innogate Startup Accelerator",
+      "url": "https://innogate.org/en/homepage/",
+      "area": "Product Management / US Market Readiness",
+      "studyType": "Startup Accelerator Program",
+      "startDate": "2020",
+      "endDate": "2020",
+      "score": "",
+      "courses": []
+    }
+  ],
+  "projects": [
+    {
+      "name": "Indiehood",
+      "description": "A community-first map to discover niche events and spaces.",
+      "highlights": [],
+      "keywords": [
+        "community",
+        "events",
+        "rsvp",
+        "hyperlocality",
+        "user-generated-content"
+      ],
+      "startDate": "2025-05",
+      "endDate": "",
+      "url": "https://www.indiehood.io",
+      "entity": "Personal",
+      "type": "application"
+    },
+    {
+      "name": "KUKO Leipzig Event Site",
+      "description": "Kültür Kollektiv Leipzig e.V. — Association for transcultural change of perspective, encounter and exchange with people, languages, literatures, cultures, art and music from Turkey in Leipzig.",
+      "highlights": [],
+      "keywords": ["Leipzig", "community", "events", "culture", "solidarity"],
+      "startDate": "2021",
+      "endDate": "",
+      "url": "https://www.kuko-leipzig.de/",
+      "entity": "Personal",
+      "type": "application"
+    },
+    {
+      "name": "Browser Virtualization Protocol for Seamless Data Security",
+      "description": "Browser isolation is a paradigm-shifting technology replacing traditional cyber security measures by virtualizing browsers on remote servers and streaming only the video output to the user with seamless remote control.",
+      "highlights": ["Funded under the TÜBİTAK 1507 R&D Programme."],
+      "keywords": [
+        "virtualization",
+        "rdp",
+        "remote rendering",
+        "cybersecurity"
+      ],
+      "startDate": "2016",
+      "endDate": "2018",
+      "url": "",
+      "entity": "Yenihayat Informatics",
+      "type": "professional"
+    },
+    {
+      "name": "Sales Monitoring Platform for Fast Moving Consumer Goods",
+      "description": "ESM is a retail sales monitoring platform enabling real-time sales data aggregation from legacy POS systems through a low-cost, machine/software-agnostic IoT embedded board — eliminating manual data collection, human error, and delayed time cost. Actively involved in the pilot deployment of 200 devices across major Turkish cities.",
+      "highlights": [
+        "Client: a major tobacco company.",
+        "Key learning: the significance of the human factor in real-world deployments, and designing interaction and technology together."
+      ],
+      "keywords": ["FMCG", "IoT", "Retail", "PoS", "Data aggregation"],
+      "startDate": "2016",
+      "endDate": "2018",
+      "url": "",
+      "entity": "Yenihayat Informatics",
+      "type": "professional"
+    },
+    {
+      "name": "Cloud-based Point-of-Sale Application for IoT Ready Platform",
+      "description": "Retail management platform and cloud-based point-of-sale application running on Beko 520TR IoT Ready hardware, integrated with new-generation cash registers per new Turkish law. Built in cooperation with Arçelik A.Ş.",
+      "highlights": ["Funded under the TÜBİTAK 1507 R&D Programme."],
+      "keywords": [],
+      "startDate": "2016",
+      "endDate": "2018",
+      "url": "",
+      "entity": "Yenihayat Informatics",
+      "type": "professional"
+    },
+    {
+      "name": "High-density DVB-IP Transmodulator Appliance",
+      "description": "Scalable and modular digital headend platform featuring trans-modulation between QPSK/QAM and IP television sources, with PID analysis and filtering.",
+      "highlights": ["Funded under the TÜBİTAK 1507 R&D Programme."],
+      "keywords": ["Iptv", "Digital Video Broadcasting"],
+      "startDate": "2015",
+      "endDate": "2016",
+      "url": "",
+      "entity": "Yenihayat Informatics",
+      "type": "professional"
+    },
+    {
+      "name": "DVB-IP Streamer Middleware Platform for Hospitality",
+      "description": "All-in-one IPTV streaming platform capable of QPSK demodulation and MPTS, set-top box & user management, VoD, and digital services over STB.",
+      "highlights": ["Funded under the KOSGEB R&D SME Grant Program 2013.33."],
+      "keywords": ["IPTV", "Set-Top-Box", "Video-on-Demand", "Hospitality"],
+      "startDate": "2013",
+      "endDate": "2013",
+      "url": "",
+      "entity": "Yenihayat Informatics",
+      "type": "professional"
+    }
+  ],
+  "skills": [
+    {
+      "name": "Frontend Engineering",
+      "level": "",
+      "keywords": [
+        "TypeScript",
+        "React",
+        "Next.js",
+        "Tailwind CSS",
+        "Framer Motion"
+      ]
+    },
+    {
+      "name": "AI Engineering",
+      "level": "",
+      "keywords": [
+        "Vercel AI SDK",
+        "Anthropic API",
+        "OpenAI API",
+        "Tiptap",
+        "AI Agents"
+      ]
+    },
+    {
+      "name": "Backend & Data",
+      "level": "",
+      "keywords": ["Firebase", "Supabase", "Mapbox"]
+    },
+    {
+      "name": "Tools & Design",
+      "level": "",
+      "keywords": ["Figma", "Git"]
+    },
+    {
+      "name": "R&D / Embedded / IoT",
+      "level": "",
+      "keywords": [
+        "IoT",
+        "Embedded Systems",
+        "Digital Video Broadcasting",
+        "Point-of-Sale Systems",
+        "Ruby",
+        "Middleman (SSG)"
+      ]
+    },
+    {
+      "name": "Product & Program Management",
+      "level": "",
+      "keywords": [
+        "Product Management",
+        "R&D Grant Writing (TÜBİTAK, KOSGEB)",
+        "Technical & Financial Reporting",
+        "Browser Isolation / Cybersecurity"
+      ]
+    }
+  ],
+  "languages": [
+    { "language": "Turkish", "fluency": "Native speaker" },
+    { "language": "English", "fluency": "Professional working proficiency" },
+    { "language": "German", "fluency": "B1 (Goethe-Zertifikat)" }
+  ],
+  "interests": [
+    {
+      "name": "Multidisciplinary product design",
+      "keywords": ["data visualization", "cartography", "cognitive science"]
+    }
+  ],
+  "references": [],
+  "meta": {
+    "canonical": "https://jsonresume.org/schema",
+    "version": "1.0.0",
+    "generatedFrom": [
+      "util/data.ts",
+      "components/about-me.mdx",
+      "ozanyusufoglu-cv-may-2025.pdf"
+    ],
+    "lastModified": "2026-10-29",
+    "notes": "Single source of truth for CV/resume content. Phone, street address and the regional block (date of birth, gender, nationality) live in the git-ignored resume.private.json; merge it over this file when generating a CV. util/data.ts is NOT yet wired to this file — the site still reads its own data.ts arrays. Reconciled against a previously-submitted CV (May 2025): resolved email, current-role framing (Monkeymind became a 'work' entry as Founder, Freelance R&D Consultant closed out in 2023), and the Isoolate end date (2021) in favor of the CV where the two disagreed."
+  }
+}
