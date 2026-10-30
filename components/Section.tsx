@@ -1,6 +1,4 @@
-'use client';
 import React, { ReactNode } from 'react';
-import { motion } from 'framer-motion';
 import cn from '@/util/cn';
 type sectionProps = {
   id?: string;
@@ -9,13 +7,11 @@ type sectionProps = {
 };
 export default function Section({ id, children, className }: sectionProps) {
   return (
-    <motion.section
+    <section
       id={id}
-      initial={{ y: 20, opacity: 0 }}
-      animate={{ y: 0, opacity: 1 }}
-      className={cn('w-full p-8', className)}
+      className={cn('w-full p-8 animate-enter', className)}
     >
       {children}
-    </motion.section>
+    </section>
   );
 }

@@ -2,6 +2,27 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer base {
+  html {
+    color-scheme: light;
+  }
+
+  html.dark {
+    color-scheme: dark;
+  }
+
+  :focus-visible {
+    outline: 2px solid #7c3aed;
+    outline-offset: 2px;
+  }
+
+  /* no double-tap zoom delay on phones */
+  a,
+  button {
+    touch-action: manipulation;
+  }
+}
+
 a {
   @apply cursor-pointer;
 }
@@ -28,6 +49,31 @@ body {
 @layer utilities {
   .text-balance {
     text-wrap: balance;
+  }
+
+  /* entrance in CSS rather than framer-motion, so content can't stay hidden
+     when JavaScript is slow or fails; --enter-y sets the slide distance */
+  .animate-enter {
+    animation: enter 0.5s ease-out backwards;
+  }
+}
+
+@keyframes enter {
+  from {
+    opacity: 0;
+    transform: translateY(var(--enter-y, 20px));
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-enter {
+    animation-name: fade-in;
   }
 }
 
@@ -63,7 +109,8 @@ html.light {
   }
 }
 
-code {
+/* inline code only: blocks keep their highlighting theme's own colors */
+:not(pre) > code {
   background: #f5f3ff;
-  color: #c4b5fd;
+  color: #6d28d9;
 }

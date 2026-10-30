@@ -1,7 +1,4 @@
-'use client';
-
 import React from 'react';
-import { motion } from 'framer-motion';
 import Image from 'next/image';
 import Section from './Section';
 import InlineMarkdown from './InlineMarkdown';
@@ -9,8 +6,6 @@ import { ContactLinks } from './ContactLinks';
 import TechStackList from './TechStackLinks';
 import cn from '@/util/cn';
 
-// `about` is passed in by a server component rather than imported here,
-// so the rest of resume.json (phone, address) never reaches the client bundle
 export default function Hero({ about }: { about: readonly string[] }) {
   return (
     // same column as the project list below (app/projects/page.tsx)
@@ -18,14 +13,12 @@ export default function Hero({ about }: { about: readonly string[] }) {
       className="flex flex-col items-center justify-center gap-20 sm:mt-24 w-full xl:w-2/3
         mx-auto"
     >
-      <motion.div
-        initial={{ opacity: 0, y: 100 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 0.1 }}
+      <div
         className={cn(
           // one column on phones (photo, name, about, techs);
           // from lg two columns: name + about on the left, photo + techs on the right
           'relative grid grid-cols-1 gap-8 text-lg w-full',
+          'animate-enter [--enter-y:100px] [animation-delay:100ms]',
           'lg:grid-cols-[minmax(0,1fr)_300px] lg:gap-x-16'
         )}
       >
@@ -34,7 +27,7 @@ export default function Hero({ about }: { about: readonly string[] }) {
           className="flex flex-col sm:items-start items-center gap-4 lg:col-start-1 lg:row-start-1
             lg:self-center"
         >
-          <h1 className="text-4xl sm:text-5xl font-bold text-center sm:text-left">
+          <h1 className="text-4xl sm:text-5xl font-bold text-center sm:text-left text-balance">
             Ozan Yusufoglu
           </h1>
           <p className="font-normal text-xl text-gray-500">
@@ -45,9 +38,11 @@ export default function Hero({ about }: { about: readonly string[] }) {
 
         <Image
           src="/ozgur_ozan.jpeg"
-          alt="ozan portrait"
+          alt="Ozan Yusufoglu"
           width={200}
           height={200}
+          // above the fold: load it right away instead of lazily
+          priority
           className={cn(
             `w-full max-w-[200px] h-auto rounded-2xl shadow-lg order-first
             justify-self-center`,
@@ -72,7 +67,7 @@ export default function Hero({ about }: { about: readonly string[] }) {
         >
           <TechStackList />
         </div>
-      </motion.div>
+      </div>
     </Section>
   );
 }

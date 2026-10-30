@@ -17,7 +17,7 @@ export default async function Projects() {
   return (
     <Section className="flex gap-12 flex-col w-full xl:w-2/3 mx-auto">
       <div className="flex flex-col gap-x-20 gap-y-12 justify-center items-center">
-        <h1 className="text-2xl font-bold self-start">Indie Projects</h1>
+        <h2 className="text-2xl font-bold self-start">Indie Projects</h2>
         {indieProjectPreviews}
       </div>
     </Section>

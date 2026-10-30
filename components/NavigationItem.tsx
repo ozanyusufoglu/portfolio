@@ -1,34 +1,31 @@
-'use client';
 import Link from 'next/link';
 import React, { ReactNode } from 'react';
-import { motion } from 'framer-motion';
 import cn from '@/util/cn';
 
 export type navItemProps = {
   children: ReactNode;
   href: string;
   className?: string;
+  // for items whose content is an icon or logo rather than readable text
+  label?: string;
 };
 
-const NavigationItem = ({ children, href, className }: navItemProps) => {
+const NavigationItem = ({ children, href, className, label }: navItemProps) => {
   return (
-    <motion.li
-      className="list-none cursor-default"
-      initial={{ y: -100, opacity: 0 }}
-      animate={{ y: 0, opacity: 1 }}
-    >
-      <Link href={href}>
+    <li className="list-none cursor-default animate-enter [--enter-y:-100px]">
+      <Link href={href} aria-label={label} className="group/nav">
         <div
           className={cn(
-            'p-2 sm:p-4 cursor-pointer text-lg font-md text-gray-500 transition-all duration-200',
-            'ease-out hover:text-violet-950 dark:text-white dark:hover:text-violet-300 z-50',
+            'p-2 sm:p-4 cursor-pointer text-lg font-md text-gray-500 transition-colors duration-200',
+            'ease-out hover:text-violet-950 group-focus-visible/nav:text-violet-950',
+            'dark:text-white dark:hover:text-violet-300 dark:group-focus-visible/nav:text-violet-300',
             className
           )}
         >
           {children}
         </div>
       </Link>
-    </motion.li>
+    </li>
   );
 };
 

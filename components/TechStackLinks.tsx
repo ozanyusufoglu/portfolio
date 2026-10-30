@@ -6,20 +6,21 @@ export default function TechStackList() {
       <p className="text-xs font-medium uppercase tracking-wider text-gray-500">
         My tech stack
       </p>
-      <div
+      <ul
         className="flex flex-row w-full gap-4 mt-4 text-sm flex-wrap sm:justify-start
           justify-center"
       >
         {techs.map(({ title, SVG }) => (
-          <p
+          <li
             key={title}
             className="flex flex-row gap-1.5 items-center whitespace-nowrap rounded-full bg-zinc-100
               px-3 py-1.5 dark:bg-zinc-800"
           >
-            <SVG className="inline shrink-0" /> {title}
-          </p>
+            <SVG className="inline shrink-0" aria-hidden="true" />{' '}
+            <span translate="no">{title}</span>
+          </li>
         ))}
-      </div>
+      </ul>
     </div>
   );
 }

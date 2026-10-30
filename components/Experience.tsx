@@ -86,7 +86,9 @@ export default function Experience({
       </div>
 
       <div>
-        {rdProjectElements ? <h2 className={headingClassName}>R&D Projects</h2> : null}
+        {rdProjectElements.length ? (
+          <h2 className={headingClassName}>R&D Projects</h2>
+        ) : null}
         <div className={listClassName}>{rdProjectElements}</div>
       </div>
 

@@ -29,6 +29,8 @@ export default function Button({
 
         // hover
         'hover:shadow-brutalHover hover:-translate-y-1 ',
+        // keyboard focus gets the same lift
+        'focus-visible:shadow-brutalHover focus-visible:-translate-y-1',
         // dark
         `dark:bg-zinc-800 dark:shadow-zinc-950 dark:hover:shadow-zinc-950
         dark:text-zinc-100 dark:border-zinc-600`,

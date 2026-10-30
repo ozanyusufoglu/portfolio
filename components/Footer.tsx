@@ -6,7 +6,7 @@ import { ContactLinks } from './ContactLinks';
 
 export default function Footer() {
   return (
-    <div
+    <footer
       className="flex flex-row items-center justify-between gap-8 w-screen p-8 md:p-16 mt-16 md:mt-24
         dark:bg-zinc-800 bg-gray-100"
     >
@@ -25,18 +25,18 @@ export default function Footer() {
         </div>
       </div>
 
-      <div className="flex flex-col self-end">
+      <ul className="flex flex-col self-end">
         <NavigationItem
           href="https://github.com/ozanyusufoglu/portfolio"
           className="p-0"
+          label="Site source on GitHub"
         >
           <div className="flex sm:flex-row flex-col  items-end sm:items-center gap-4">
-            <RxGithubLogo />
+            <RxGithubLogo aria-hidden="true" />
             <p className="self-end">2026</p>
           </div>
         </NavigationItem>
-      
-      </div>
-    </div>
+      </ul>
+    </footer>
   );
 }

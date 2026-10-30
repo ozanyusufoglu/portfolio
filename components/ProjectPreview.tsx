@@ -80,7 +80,9 @@ export default function ProjectPreview({
     offset: ['0 1', '1.33 1'],
   });
 
-  const scaleRatio = useTransform(scrollYProgress, [0, 1], [0.9, 1]);
+  // scroll-linked styles bypass MotionConfig's reducedMotion, so they check it themselves
+  const reduceMotion = useReducedMotion();
+  const scaleRatio = useTransform(scrollYProgress, [0, 1], [reduceMotion ? 1 : 0.9, 1]);
   const opacityRatio = useTransform(scrollYProgress, [0, 1], [0.9, 1]);
 
   // the screenshot turns as the card travels through the whole viewport,
@@ -90,7 +92,7 @@ export default function ProjectPreview({
     offset: ['start end', 'end start'],
   });
   const imageOnLeft = index % 2 === 1;
-  const tilt = useReducedMotion() ? 0 : imageOnLeft ? -6 : 6;
+  const tilt = reduceMotion ? 0 : imageOnLeft ? -6 : 6;
   const imageRotate = useTransform(passProgress, [0, 1], [tilt, -tilt]);
   const imageY = useTransform(
     passProgress,
@@ -129,10 +131,12 @@ export default function ProjectPreview({
           href={link}
           target="_blank"
           className={cn(
-            'relative flex flex-col shadow-md transition-all bg-zinc-50 w-full text-lg',
+            `relative flex flex-col shadow-md transition-[transform,box-shadow,background-color]
+            bg-zinc-50 w-full text-lg`,
             'overflow-hidden rounded',
             'hover:-translate-y-1 hover:shadow-lg',
-            'dark:bg-zinc-800 dark:hover:bg-zinc-950',
+            'focus-visible:-translate-y-1 focus-visible:shadow-lg',
+            'dark:bg-zinc-800 dark:hover:bg-zinc-950 dark:focus-visible:bg-zinc-950',
             imageUrl && 'lg:min-h-[360px]'
           )}
         >
@@ -159,7 +163,7 @@ export default function ProjectPreview({
               imageUrl && imageOnLeft && 'lg:ml-auto'
             )}
           >
-            <h1 className="font-bold text-xl">{title}</h1>
+            <h3 className="font-bold text-xl text-balance">{title}</h3>
             <p className="text-gray-600 dark:text-gray-400">{description}</p>
             <div className="flex flex-wrap gap-2 mt-auto">{tagElements}</div>
           </div>
@@ -197,7 +201,7 @@ export default function ProjectPreview({
         // prosssional work
         <div
           className={cn(
-            `group rounded-md flex flex-row text-md transition-all w-full overflow-hidden
+            `group rounded-md flex flex-row text-md transition-colors w-full overflow-hidden
             relative p-4`,
 
             // hover
@@ -216,7 +220,7 @@ export default function ProjectPreview({
           >
             <div className="flex flex-col gap-x-4 sm:flex-row">
               <div>
-                <h1 className="font-medium">
+                <h3 className="font-medium text-balance">
                   {link ? (
                     <a
                       href={link}
@@ -228,7 +232,7 @@ export default function ProjectPreview({
                   ) : (
                     title
                   )}
-                </h1>
+                </h3>
                 <p className="text-gray-500 dark:text-gray-400">{misc}</p>
               </div>
 
@@ -246,9 +250,11 @@ export default function ProjectPreview({
                     href={output.link}
                     target="_blank"
                     className={cn(
-                      'flex flex-col overflow-hidden rounded shadow-md transition-all bg-zinc-50',
+                      `flex flex-col overflow-hidden rounded shadow-md bg-zinc-50
+                      transition-[transform,box-shadow,background-color]`,
                       'hover:-translate-y-1 hover:shadow-lg',
-                      'dark:bg-zinc-800 dark:hover:bg-zinc-950'
+                      'focus-visible:-translate-y-1 focus-visible:shadow-lg',
+                      'dark:bg-zinc-800 dark:hover:bg-zinc-950 dark:focus-visible:bg-zinc-950'
                     )}
                   >
                     <div className="relative w-full aspect-video">

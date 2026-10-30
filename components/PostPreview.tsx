@@ -15,12 +15,14 @@ export default function PostPreview({
   previewItems,
 }: postPreviewProps) {
   return (
-    <Link href={`/blog/${slug}`}>
+    <Link href={`/blog/${slug}`} className="group/post">
       <div
         className="flex w-full flex-col items-start justify-center gap-4 rounded-lg p-6
           ring-2 ring-transparent hover:ring-black hover:-translate-y-1
-          bg-white hover:shadow-brutalHover transition
-          dark:bg-zinc-800 dark:hover:ring-zinc-400 dark:shadow-zinc-900 dark:hover:shadow-zinc-950"
+          group-focus-visible/post:ring-black group-focus-visible/post:-translate-y-1
+          bg-white hover:shadow-brutalHover group-focus-visible/post:shadow-brutalHover transition
+          dark:bg-zinc-800 dark:hover:ring-zinc-400 dark:group-focus-visible/post:ring-zinc-400
+          dark:shadow-zinc-900 dark:hover:shadow-zinc-950"
       >
         <div className="flex flex-row items-center">
           {/* <p
@@ -29,7 +31,7 @@ export default function PostPreview({
           >
             {icon}
           </p> */}
-          <h2 className="text-2xl font-medium">{title}</h2>
+          <h2 className="text-2xl font-medium text-balance">{title}</h2>
         </div>
 
         <p className="font-light text-lg line-clamp-6">{previewItems}</p>

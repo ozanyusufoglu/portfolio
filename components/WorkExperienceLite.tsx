@@ -34,12 +34,12 @@ export default function WorkExperienceLite({
         href={link}
         target="_blank"
         className="cursor-pointer py-[2px] w-full rounded-lg hover:bg-indigo-100
-          dark:hover:bg-indigo-500 flex flex-row gap-x-2 items-center p-4"
+          focus-visible:bg-indigo-100 dark:hover:bg-indigo-500 dark:focus-visible:bg-indigo-500 flex flex-row gap-x-2 items-center p-4"
       >
         <p className="dark:text-gray-100">{position},</p>
         <h3 className="text-gray-400">{companyName}</h3>
-        <p className="border-b-[1px] relative flex-grow"></p>
-        <span className="text-gray-400 ml-auto text-right text-sm">{dates}</span>
+        <span aria-hidden="true" className="border-b-[1px] relative flex-grow"></span>
+        <span className="text-gray-400 ml-auto text-right text-sm tabular-nums">{dates}</span>
       </a>
     </div>
   );
